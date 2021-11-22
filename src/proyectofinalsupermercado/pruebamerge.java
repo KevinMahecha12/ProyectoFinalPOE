@@ -7,8 +7,8 @@ package proyectofinalsupermercado;
 
 /**
  *
- * @author Admin
+ * @author kevin
  */
-public class q {
+public class pruebamerge {
     
 }
