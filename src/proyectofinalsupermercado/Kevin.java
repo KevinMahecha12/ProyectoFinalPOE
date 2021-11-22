@@ -10,5 +10,6 @@ package proyectofinalsupermercado;
  * @author kevin
  */
 public class Kevin {
-    
+        //prueba de merge  asdasdasdasd 
+    int x  = 0;
 }
