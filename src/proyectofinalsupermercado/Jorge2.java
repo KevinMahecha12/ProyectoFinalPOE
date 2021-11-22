@@ -7,4 +7,5 @@ package proyectofinalsupermercado;
  */
 public class Jorge2 {
     int x;
+    hola, comit1;
 }
