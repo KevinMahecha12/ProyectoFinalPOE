@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//CAMBIO
 package proyectofinalsupermercado;
 
-/**
- *
- * @author kevin
- */
+
 public class GestionProductos extends javax.swing.JFrame {
 
     /**
