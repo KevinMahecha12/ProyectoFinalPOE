@@ -1,14 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectofinalsupermercado;
 
-/**
- *
- * @author kevin
- */
+
 public class Horario {
+    String Dia;
+    String Hora_Entrada;
+    String Hora_Salida;
+
+    public Horario(String Dia, String Hora_Entrada, String Hora_Salida) {
+        this.Dia = Dia;
+        this.Hora_Entrada = Hora_Entrada;
+        this.Hora_Salida = Hora_Salida;
+    }
+
+    public Horario() {
+    }
+
+    public String getDia() {
+        return Dia;
+    }
+
+    public void setDia(String Dia) {
+        this.Dia = Dia;
+    }
+
+    public String getHora_Entrada() {
+        return Hora_Entrada;
+    }
+
+    public void setHora_Entrada(String Hora_Entrada) {
+        this.Hora_Entrada = Hora_Entrada;
+    }
+
+    public String getHora_Salida() {
+        return Hora_Salida;
+    }
+
+    public void setHora_Salida(String Hora_Salida) {
+        this.Hora_Salida = Hora_Salida;
+    }
     
 }
