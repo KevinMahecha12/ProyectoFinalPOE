@@ -23,17 +23,83 @@ public class GestionEmpleados extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtableEmpleadosRegistrados = new javax.swing.JTable();
+        jbutton_Editar = new javax.swing.JButton();
+        jbutton_ConfirmarAsistencia = new javax.swing.JButton();
+        jbutton_EliminarEmpleado = new javax.swing.JButton();
+        jbutton_VolverAlMenu1 = new javax.swing.JButton();
+        jlabelEmpleadosRegistrados = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jtableEmpleadosRegistrados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID_EMPLEADO", "Nombre_Empleado", "Area_Trabajo", "Turno"
+            }
+        ));
+        jtableEmpleadosRegistrados.setToolTipText("EmpleadosRegistradosMostrar");
+        jScrollPane1.setViewportView(jtableEmpleadosRegistrados);
+
+        jbutton_Editar.setText("Editar");
+        jbutton_Editar.setToolTipText("EditarEmpleado");
+
+        jbutton_ConfirmarAsistencia.setText("Confirmar Asistencia");
+        jbutton_ConfirmarAsistencia.setToolTipText("Asistencia ");
+
+        jbutton_EliminarEmpleado.setText("Eliminar");
+        jbutton_EliminarEmpleado.setToolTipText("EliminarEmpleado");
+
+        jbutton_VolverAlMenu1.setText("Volver");
+        jbutton_VolverAlMenu1.setToolTipText("RegresarMenu1");
+
+        jlabelEmpleadosRegistrados.setToolTipText("EmpleadosRegistrados");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jlabelEmpleadosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbutton_Editar)
+                                .addGap(27, 27, 27)
+                                .addComponent(jbutton_ConfirmarAsistencia)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jbutton_EliminarEmpleado)))
+                        .addGap(37, 37, 37)
+                        .addComponent(jbutton_VolverAlMenu1)
+                        .addGap(22, 22, 22))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jlabelEmpleadosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbutton_Editar)
+                    .addComponent(jbutton_ConfirmarAsistencia)
+                    .addComponent(jbutton_EliminarEmpleado)
+                    .addComponent(jbutton_VolverAlMenu1))
+                .addGap(36, 36, 36))
         );
 
         pack();
@@ -75,5 +141,12 @@ public class GestionEmpleados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbutton_ConfirmarAsistencia;
+    private javax.swing.JButton jbutton_Editar;
+    private javax.swing.JButton jbutton_EliminarEmpleado;
+    private javax.swing.JButton jbutton_VolverAlMenu1;
+    private javax.swing.JLabel jlabelEmpleadosRegistrados;
+    private javax.swing.JTable jtableEmpleadosRegistrados;
     // End of variables declaration//GEN-END:variables
 }
