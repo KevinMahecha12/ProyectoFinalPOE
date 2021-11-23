@@ -54,6 +54,11 @@ public class RegistrarInventario extends javax.swing.JFrame {
 
         BT_AGREGARPROD.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         BT_AGREGARPROD.setText("Agregar producto");
+        BT_AGREGARPROD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_AGREGARPRODActionPerformed(evt);
+            }
+        });
 
         BT_VOLVER.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         BT_VOLVER.setText("Volver");
@@ -145,6 +150,25 @@ public class RegistrarInventario extends javax.swing.JFrame {
          menu.setVisible(true);
           this.setVisible(false);        
     }//GEN-LAST:event_BT_VOLVERActionPerformed
+
+    private void BT_AGREGARPRODActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AGREGARPRODActionPerformed
+       Inventario inv =  new Inventario();
+       inv.setID_Producto(Integer.parseInt(TF_IDPROD.getText()));
+       inv.setCant_prod(Integer.parseInt(TF_CANTPROD.getText()));
+       inv.setNombre_producto(TF_NOMPROD.getText());
+       inv.setDesc_prod(TXA_DESPROD.getText());
+       inv.setPrecio_Producto(Double.parseDouble(TF_PRECIOPROD.getText()));
+       ColaID cola1 = new ColaID();
+       ColaCantProd cola2 =  new ColaCantProd();
+       ColaNombreProd cola3 =  new ColaNombreProd();
+       ColaDesProd cola4 = new ColaDesProd();
+       ColaPrecioProd cola5 = new ColaPrecioProd(); 
+        cola1.insertar(inv.getID_Producto());
+        cola2.insertar(inv.getCant_prod());
+        cola3.insertar(inv.getNombre_producto());
+        cola4.insertar(inv.getDesc_prod());
+        cola5.insertar(inv.getPrecio_Producto());
+    }//GEN-LAST:event_BT_AGREGARPRODActionPerformed
 
    
     public static void main(String args[]) {

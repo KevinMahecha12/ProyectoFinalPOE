@@ -1,6 +1,8 @@
 //CAMBIO
 package proyectofinalsupermercado;
 
+import javax.swing.table.DefaultTableModel;
+
 
 public class GestionProductos extends javax.swing.JFrame {
 
@@ -33,6 +35,9 @@ public class GestionProductos extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTable_MostrarProductos);
+        if (jTable_MostrarProductos.getColumnModel().getColumnCount() > 0) {
+            jTable_MostrarProductos.getColumnModel().getColumn(3).setPreferredWidth(200);
+        }
 
         jbutton_EditarProducto.setText("Editar");
         jbutton_EditarProducto.setToolTipText("EditarProducto");
@@ -44,6 +49,11 @@ public class GestionProductos extends javax.swing.JFrame {
 
         jbutton_VolverAlMenu2.setText("Volver");
         jbutton_VolverAlMenu2.setToolTipText("RegresarMenu2");
+        jbutton_VolverAlMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbutton_VolverAlMenu2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,7 +61,7 @@ public class GestionProductos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
@@ -84,31 +94,22 @@ public class GestionProductos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jbutton_VolverAlMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu2ActionPerformed
+        MenuPrincipal menu  =  new MenuPrincipal(); 
+         menu.setVisible(true);
+          this.setVisible(false);        
+    }//GEN-LAST:event_jbutton_VolverAlMenu2ActionPerformed
 
-        /* Create and display the form */
+    public static void main(String args[]) {
+       DefaultTableModel modelo = (DefaultTableModel) jTable_MostrarProductos.getModel();
+            ColaID cola1 = new ColaID();
+       ColaCantProd cola2 =  new ColaCantProd();
+       ColaNombreProd cola3 =  new ColaNombreProd();
+       ColaDesProd cola4 = new ColaDesProd();
+       ColaPrecioProd cola5 = new ColaPrecioProd(); 
+       for (int i=0; i<1; i++) {
+             modelo.insertRow(i,new Object[]{cola1.toString(),cola3.toString(),cola2.toString(),cola4.toString(),cola5.toString()});
+        }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GestionProductos().setVisible(true);
@@ -119,7 +120,7 @@ public class GestionProductos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel_TotalProductos;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable_MostrarProductos;
+    private static javax.swing.JTable jTable_MostrarProductos;
     private javax.swing.JButton jbutton_EditarProducto;
     private javax.swing.JButton jbutton_EliminarProducto;
     private javax.swing.JButton jbutton_VolverAlMenu2;
