@@ -7,11 +7,11 @@ package proyectofinalsupermercado;
  */
 public class GestionEmpleados extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GestionEmpleados
-     */
-    public GestionEmpleados() {
+    Empleados[] empleados = new Empleados[20];
+    public GestionEmpleados(Empleados[] emple) {
         initComponents();
+        
+        empleados = emple;
     }
 
     /**
@@ -58,6 +58,11 @@ public class GestionEmpleados extends javax.swing.JFrame {
 
         jbutton_VolverAlMenu1.setText("Volver");
         jbutton_VolverAlMenu1.setToolTipText("RegresarMenu1");
+        jbutton_VolverAlMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbutton_VolverAlMenu1ActionPerformed(evt);
+            }
+        });
 
         jlabelEmpleadosRegistrados.setToolTipText("EmpleadosRegistrados");
 
@@ -105,6 +110,12 @@ public class GestionEmpleados extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbutton_VolverAlMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu1ActionPerformed
+        MenuPrincipal menu  =  new MenuPrincipal(empleados); 
+        menu.setVisible(true);
+        this.setVisible(false);  
+    }//GEN-LAST:event_jbutton_VolverAlMenu1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -135,7 +146,7 @@ public class GestionEmpleados extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionEmpleados().setVisible(true);
+                new GestionEmpleados(null).setVisible(true);
             }
         });
     }

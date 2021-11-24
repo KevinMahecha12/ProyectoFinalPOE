@@ -2,8 +2,15 @@ package proyectofinalsupermercado;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 
-    public MenuPrincipal() {
+    Empleados[] empleados = new Empleados[20];
+    
+    public MenuPrincipal(Empleados[] emp) {
         initComponents();
+        
+        if(emp!=null){
+            empleados = emp;
+        }
+        
     }
 
 
@@ -119,13 +126,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMI_REMPLEADOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_REMPLEADOSActionPerformed
-         RegistrarEmpleados REGM  =  new  RegistrarEmpleados(); 
+         RegistrarEmpleados REGM  =  new  RegistrarEmpleados(empleados); 
          REGM.setVisible(true);
          this.setVisible(false);     
     }//GEN-LAST:event_JMI_REMPLEADOSActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        RegistrarInventario REGINV  =  new  RegistrarInventario (); 
+        RegistrarInventario REGINV  =  new  RegistrarInventario(empleados); 
         REGINV.setVisible(true);
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem2ActionPerformed
@@ -135,7 +142,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuPrincipal().setVisible(true);
+                new MenuPrincipal(null).setVisible(true);
             }
         });
     }
