@@ -3,8 +3,12 @@ package proyectofinalsupermercado;
 
 public class RegistrarInventario extends javax.swing.JFrame {
 
-    public RegistrarInventario() {
+    Empleados[] empleados = new Empleados[20];
+    
+    public RegistrarInventario(Empleados[] emple) {
         initComponents();
+        
+        empleados=emple;
     }
 
     @SuppressWarnings("unchecked")
@@ -141,9 +145,9 @@ public class RegistrarInventario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BT_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VOLVERActionPerformed
-         MenuPrincipal menu  =  new MenuPrincipal(); 
-         menu.setVisible(true);
-          this.setVisible(false);        
+        MenuPrincipal menu  =  new MenuPrincipal(empleados); 
+        menu.setVisible(true);
+        this.setVisible(false);        
     }//GEN-LAST:event_BT_VOLVERActionPerformed
 
    
@@ -151,7 +155,7 @@ public class RegistrarInventario extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarInventario().setVisible(true);
+                new RegistrarInventario(null).setVisible(true);
             }
         });
     }
