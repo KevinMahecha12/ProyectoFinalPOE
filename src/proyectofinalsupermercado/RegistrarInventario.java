@@ -2,11 +2,17 @@ package proyectofinalsupermercado;
 
 
 public class RegistrarInventario extends javax.swing.JFrame {
-
+Cola c = new Cola();
     public RegistrarInventario() {
         initComponents();
     }
-
+String[] ID = new String[100];
+String[] arr1 =  new String[100];
+String[] arr2 =  new String[100];
+String[] arr3 =  new String[100];
+String[] arr4 =  new String[100];
+String[] arr5 =  new String[100];
+Object[] datos = new Object[100];
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -144,30 +150,26 @@ public class RegistrarInventario extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+     Inventario inv =  new Inventario();
+       Object x;
+       int contador;
+       int id;
+        int y = 1;
     private void BT_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VOLVERActionPerformed
-         MenuPrincipal menu  =  new MenuPrincipal(); 
+         MenuPrincipal menu  =  new MenuPrincipal(contador,c); 
          menu.setVisible(true);
-          this.setVisible(false);        
+         this.setVisible(false);         
     }//GEN-LAST:event_BT_VOLVERActionPerformed
 
     private void BT_AGREGARPRODActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AGREGARPRODActionPerformed
-       Inventario inv =  new Inventario();
        inv.setID_Producto(Integer.parseInt(TF_IDPROD.getText()));
        inv.setCant_prod(Integer.parseInt(TF_CANTPROD.getText()));
        inv.setNombre_producto(TF_NOMPROD.getText());
        inv.setDesc_prod(TXA_DESPROD.getText());
        inv.setPrecio_Producto(Double.parseDouble(TF_PRECIOPROD.getText()));
-       ColaID cola1 = new ColaID();
-       ColaCantProd cola2 =  new ColaCantProd();
-       ColaNombreProd cola3 =  new ColaNombreProd();
-       ColaDesProd cola4 = new ColaDesProd();
-       ColaPrecioProd cola5 = new ColaPrecioProd(); 
-        cola1.insertar(inv.getID_Producto());
-        cola2.insertar(inv.getCant_prod());
-        cola3.insertar(inv.getNombre_producto());
-        cola4.insertar(inv.getDesc_prod());
-        cola5.insertar(inv.getPrecio_Producto());
+  contador++;
+   Producto obj = new Producto(inv.getID_Producto(),inv.getCant_prod(),inv.getNombre_producto(),inv.getDesc_prod(),inv.getPrecio_Producto());
+            c.push(obj);
     }//GEN-LAST:event_BT_AGREGARPRODActionPerformed
 
    

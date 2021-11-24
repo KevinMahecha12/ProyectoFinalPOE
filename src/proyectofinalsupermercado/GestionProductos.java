@@ -1,15 +1,25 @@
-//CAMBIO
 package proyectofinalsupermercado;
 
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-
 public class GestionProductos extends javax.swing.JFrame {
+    
+ Producto[] array;
+ private int cont;
+Cola cola_inventario = new Cola();
 
-    public GestionProductos() {
+    public GestionProductos(int Contador,Cola COLA_INVENTARIO) {
+         cola_inventario  = COLA_INVENTARIO;
+         cont = Contador;
+         array = new Producto[cola_inventario.tamaño];
+         array = cola_inventario.recorrer();
         initComponents();
+         DefaultTableModel modelo = (DefaultTableModel) jTable_MostrarProductos.getModel();
+        System.out.println("Elementos en tabla:  "+modelo.getColumnCount());
+         funcionamiento();
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -25,10 +35,7 @@ public class GestionProductos extends javax.swing.JFrame {
 
         jTable_MostrarProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID_PRODUCTO", "Nombre_Producto", "Cantidad_Producto (Stock)", "Descripcion_Producto", "Precio_Producto"
@@ -92,27 +99,35 @@ public class GestionProductos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+public void funcionamiento() {
+       DefaultTableModel modelo = (DefaultTableModel) jTable_MostrarProductos.getModel();
+       DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+       tcr.setHorizontalAlignment(SwingConstants.CENTER);
+        Object[] datosx = new Object[5];
+       
+    for (int i=0; i<cont; i++){
+        jTable_MostrarProductos.getColumnModel().getColumn(i).setCellRenderer(tcr);
+            datosx[0] = array[i].ID_Producto;
+            datosx[1] = array[i].Nombre_producto;
+            datosx[2] = array[i].Cant_prod;
+            datosx[3] = array[i].Desc_prod;
+            datosx[4] = array[i].Precio_Producto;
+        modelo.addRow(datosx);
+    }
+}
     private void jbutton_VolverAlMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu2ActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(); 
+        MenuPrincipal menu  =  new MenuPrincipal(cont,cola_inventario); 
          menu.setVisible(true);
           this.setVisible(false);        
     }//GEN-LAST:event_jbutton_VolverAlMenu2ActionPerformed
 
     public static void main(String args[]) {
-       DefaultTableModel modelo = (DefaultTableModel) jTable_MostrarProductos.getModel();
-            ColaID cola1 = new ColaID();
-       ColaCantProd cola2 =  new ColaCantProd();
-       ColaNombreProd cola3 =  new ColaNombreProd();
-       ColaDesProd cola4 = new ColaDesProd();
-       ColaPrecioProd cola5 = new ColaPrecioProd(); 
-       for (int i=0; i<1; i++) {
-             modelo.insertRow(i,new Object[]{cola1.toString(),cola3.toString(),cola2.toString(),cola4.toString(),cola5.toString()});
-        }
+       
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionProductos().setVisible(true);
+                new GestionProductos(0,null).setVisible(true);
             }
         });
     }

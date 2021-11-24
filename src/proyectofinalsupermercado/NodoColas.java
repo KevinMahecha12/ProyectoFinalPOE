@@ -29,7 +29,6 @@ public class NodoColas
  {
  this.next = next;
  }
- 
  //Metodo toString
  public String toString()
  {

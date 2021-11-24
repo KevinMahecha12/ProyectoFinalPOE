@@ -1,12 +1,13 @@
 package proyectofinalsupermercado;
 
 public class MenuPrincipal extends javax.swing.JFrame {
-
-    public MenuPrincipal() {
+private int cont;
+Cola cola_inventario = new Cola();
+public MenuPrincipal(int Contador,Cola COLA_INVENTARIO) {
         initComponents();
+        cola_inventario  = COLA_INVENTARIO;
+        cont = Contador;
     }
-
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -73,9 +74,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3.setText("Inventario");
 
         jMenuItem5.setText("Registrar Inventario");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem5);
 
         jMenuItem6.setText("Gestión de Inventarios");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem6);
 
         jMenuBar1.add(jMenu3);
@@ -93,7 +104,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(JL_Hora)
                     .addComponent(JL_TRegistrados)
                     .addComponent(JL_PInventario))
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jButton1)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -111,7 +122,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(JL_PInventario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,12 +141,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+      GestionProductos GPROD =  new  GestionProductos(cont,cola_inventario); 
+        GPROD.setVisible(true);
+        this.setVisible(false);     
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+       RegistrarInventario REGINV  =  new  RegistrarInventario(); 
+        REGINV.setVisible(true);
+        this.setVisible(false);     
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
 
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuPrincipal().setVisible(true);
+                new MenuPrincipal(0,null).setVisible(true);
             }
         });
     }
