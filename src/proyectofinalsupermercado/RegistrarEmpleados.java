@@ -183,7 +183,15 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                     }
                 }
             }//else
-
+            
+            //for(int i=0;i<empleados.length;i++){ Esto nomas pá checarf que si jala
+                //if(empleados[i] == null){
+                    //i=empleados.length;
+                //}else{
+                    //System.out.println(empleados[i].getID_EMPLEADO() + " " + empleados[i].Nombre_Empleado + " " + empleados[i].Area_Trabajador + empleados[i].Turno);
+                //}
+            //}
+            
         }// else     
     }//GEN-LAST:event_BT_REGActionPerformed
 
