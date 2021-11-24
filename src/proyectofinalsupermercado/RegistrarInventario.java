@@ -1,5 +1,7 @@
 package proyectofinalsupermercado;
 
+import javax.swing.JOptionPane;
+
 
 public class RegistrarInventario extends javax.swing.JFrame {
 Cola c = new Cola();
@@ -156,12 +158,15 @@ Object[] datos = new Object[100];
        int id;
         int y = 1;
     private void BT_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VOLVERActionPerformed
-         MenuPrincipal menu  =  new MenuPrincipal(contador,c); 
+         MenuPrincipal menu  =  new MenuPrincipal(contador,c,null,null); 
          menu.setVisible(true);
          this.setVisible(false);         
     }//GEN-LAST:event_BT_VOLVERActionPerformed
 
     private void BT_AGREGARPRODActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AGREGARPRODActionPerformed
+       if(TF_IDPROD.getText().equals("") || TF_CANTPROD.getText().equals("") || TF_NOMPROD.getText().equals("") || TXA_DESPROD.getText().equals("") || TF_PRECIOPROD.getText().equals("")){
+           JOptionPane.showMessageDialog(this, "Porfavor, ingrese los campos vacios!","Campos vacíos", JOptionPane.WARNING_MESSAGE);
+       } else {
        inv.setID_Producto(Integer.parseInt(TF_IDPROD.getText()));
        inv.setCant_prod(Integer.parseInt(TF_CANTPROD.getText()));
        inv.setNombre_producto(TF_NOMPROD.getText());
@@ -170,6 +175,7 @@ Object[] datos = new Object[100];
   contador++;
    Producto obj = new Producto(inv.getID_Producto(),inv.getCant_prod(),inv.getNombre_producto(),inv.getDesc_prod(),inv.getPrecio_Producto());
             c.push(obj);
+       }
     }//GEN-LAST:event_BT_AGREGARPRODActionPerformed
 
    

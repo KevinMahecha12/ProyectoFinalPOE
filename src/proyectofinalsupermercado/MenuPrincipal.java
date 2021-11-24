@@ -3,10 +3,14 @@ package proyectofinalsupermercado;
 public class MenuPrincipal extends javax.swing.JFrame {
 private int cont;
 Cola cola_inventario = new Cola();
-public MenuPrincipal(int Contador,Cola COLA_INVENTARIO) {
+String NombreRecibido;
+public MenuPrincipal(int Contador,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora) {
         initComponents();
         cola_inventario  = COLA_INVENTARIO;
         cont = Contador;
+        NombreRecibido = Nombre_Administrador;
+        JL_NombreAdmin.setText("Bienvenido: " + NombreRecibido);
+        System.out.println("Nombre que se recibio" + NombreRecibido);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -17,6 +21,8 @@ public MenuPrincipal(int Contador,Cola COLA_INVENTARIO) {
         JL_TRegistrados = new javax.swing.JLabel();
         JL_PInventario = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        rSLabelFecha1 = new rojeru_san.RSLabelFecha();
+        rSLabelHora1 = new rojeru_san.RSLabelHora();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         JMI_REMPLEADOS = new javax.swing.JMenuItem();
@@ -31,6 +37,7 @@ public MenuPrincipal(int Contador,Cola COLA_INVENTARIO) {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu principal");
 
+        JL_NombreAdmin.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         JL_NombreAdmin.setText("Bienvenido: ");
 
         JL_Hora.setText("Hora actual: ");
@@ -100,29 +107,37 @@ public MenuPrincipal(int Contador,Cola COLA_INVENTARIO) {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JL_NombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JL_Hora)
                     .addComponent(JL_TRegistrados)
-                    .addComponent(JL_PInventario))
-                .addContainerGap(222, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(JL_PInventario)
+                    .addComponent(jButton1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(JL_Hora)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JL_NombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rSLabelFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(JL_NombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JL_Hora)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JL_TRegistrados)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JL_PInventario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rSLabelFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(JL_NombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(JL_Hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JL_TRegistrados)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JL_PInventario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         pack();
@@ -158,7 +173,7 @@ public MenuPrincipal(int Contador,Cola COLA_INVENTARIO) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuPrincipal(0,null).setVisible(true);
+                new MenuPrincipal(0,null,null,null).setVisible(true);
             }
         });
     }
@@ -179,5 +194,7 @@ public MenuPrincipal(int Contador,Cola COLA_INVENTARIO) {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private rojeru_san.RSLabelFecha rSLabelFecha1;
+    private rojeru_san.RSLabelHora rSLabelHora1;
     // End of variables declaration//GEN-END:variables
 }
