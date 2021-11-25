@@ -100,40 +100,26 @@
                   <Component id="JL_TRegistrados" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="JL_PInventario" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="JL_Hora" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="rSLabelHora1" min="-2" pref="100" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="JL_Hora" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="JL_NombreAdmin" min="-2" pref="349" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="rSLabelFecha1" min="-2" pref="106" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="118" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="rSLabelFecha1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="JL_NombreAdmin" min="-2" pref="34" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="JL_Hora" max="32767" attributes="0"/>
-                          <Component id="rSLabelHora1" min="-2" pref="16" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="JL_TRegistrados" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="JL_PInventario" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="JL_NombreAdmin" min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="JL_Hora" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="JL_TRegistrados" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="JL_PInventario" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="105" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -167,10 +153,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
-    </Component>
-    <Component class="rojeru_san.RSLabelFecha" name="rSLabelFecha1">
-    </Component>
-    <Component class="rojeru_san.RSLabelHora" name="rSLabelHora1">
     </Component>
   </SubComponents>
 </Form>

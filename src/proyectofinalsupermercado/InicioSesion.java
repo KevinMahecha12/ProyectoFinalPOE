@@ -31,8 +31,6 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         BotonIngresar = new javax.swing.JButton();
         Error = new javax.swing.JLabel();
-        rSLabelFecha2 = new rojeru_san.RSLabelFecha();
-        rSLabelHora1 = new rojeru_san.RSLabelHora();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,12 +83,7 @@ public class InicioSesion extends javax.swing.JFrame {
                                 .addComponent(ComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rSLabelFecha2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -99,7 +92,7 @@ public class InicioSesion extends javax.swing.JFrame {
                         .addComponent(Error, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BotonIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(jLabel4)
@@ -109,16 +102,11 @@ public class InicioSesion extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(rSLabelFecha2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(ComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(ComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
@@ -158,12 +146,12 @@ public class InicioSesion extends javax.swing.JFrame {
         }
         System.out.println(turn);
         String HoraCaptada;
-        HoraCaptada = String.valueOf(rSLabelHora1);
+        //HoraCaptada = String.valueOf(rSLabelHora1);
         for (int i=0; i<e.empleados.length; i++){
            
           System.out.println(e.empleados[i]);
           if (e.empleados[i].toString().equals(usr+cont + e.getTurno())) {
-          MenuPrincipal c = new MenuPrincipal(0,null,usr, HoraCaptada);
+          MenuPrincipal c = new MenuPrincipal(0,null,usr, null);
           c.setVisible(true);
           this.setVisible(false);
       } else {
@@ -236,8 +224,6 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private rojeru_san.RSLabelFecha rSLabelFecha2;
-    private rojeru_san.RSLabelHora rSLabelHora1;
     private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
