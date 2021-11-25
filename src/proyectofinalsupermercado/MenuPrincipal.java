@@ -1,19 +1,24 @@
 package proyectofinalsupermercado;
 
 public class MenuPrincipal extends javax.swing.JFrame {
-
-    Empleados[] empleados = new Empleados[20];
-    
-    public MenuPrincipal(Empleados[] emp) {
+private int cont;
+Cola cola_inventario = new Cola();
+String NombreRecibido;
+public MenuPrincipal(int Contador,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora) {
         initComponents();
         
-        if(emp!=null){
-            empleados = emp;
-        }
+        //if(emp!=null){
+            //empleados = emp;
+        //}
         
+
+        cola_inventario  = COLA_INVENTARIO;
+        cont = Contador;
+        NombreRecibido = Nombre_Administrador;
+        JL_NombreAdmin.setText("Bienvenido: " + NombreRecibido);
+        System.out.println("Nombre que se recibio" + NombreRecibido);
+
     }
-
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -37,6 +42,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu principal");
 
+        JL_NombreAdmin.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         JL_NombreAdmin.setText("Bienvenido: ");
 
         JL_Hora.setText("Hora actual: ");
@@ -80,9 +86,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3.setText("Inventario");
 
         jMenuItem5.setText("Registrar Inventario");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem5);
 
         jMenuItem6.setText("Gestión de Inventarios");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem6);
 
         jMenuBar1.add(jMenu3);
@@ -96,14 +112,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JL_NombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JL_Hora)
                     .addComponent(JL_TRegistrados)
-                    .addComponent(JL_PInventario))
-                .addContainerGap(231, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(JL_PInventario)
+                    .addComponent(jButton1)
+                    .addComponent(JL_Hora)
+                    .addComponent(JL_NombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +132,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(JL_PInventario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         pack();
@@ -126,23 +140,34 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMI_REMPLEADOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_REMPLEADOSActionPerformed
-         RegistrarEmpleados REGM  =  new  RegistrarEmpleados(empleados); 
-         REGM.setVisible(true);
+        // RegistrarEmpleados REGM  =  new  RegistrarEmpleados(empleados); 
+        // REGM.setVisible(true);
          this.setVisible(false);     
     }//GEN-LAST:event_JMI_REMPLEADOSActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        GestionEmpleados REGINV  =  new  GestionEmpleados(empleados); 
-        REGINV.setVisible(true);
+       // GestionEmpleados REGINV  =  new  GestionEmpleados(empleados); 
+       // REGINV.setVisible(true);
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+      GestionProductos GPROD =  new  GestionProductos(cont,cola_inventario); 
+        GPROD.setVisible(true);
+        this.setVisible(false);     
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+       RegistrarInventario REGINV  =  new  RegistrarInventario(); 
+        REGINV.setVisible(true);
+        this.setVisible(false);     
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
 
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuPrincipal(null).setVisible(true);
             }
         });
     }
@@ -165,3 +190,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
+

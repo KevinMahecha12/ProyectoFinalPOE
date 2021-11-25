@@ -33,7 +33,7 @@ public class GestionEmpleados extends javax.swing.JFrame {
                 if(empleados[i]==null){
             i=empleados.length;
         }else{    
-                datos[0]=empleados[i].getID_EMPLEADO();
+                //datos[0]=empleados[i].getID_EMPLEADO();
                 datos[1]=empleados[i].getNombre_Empleado();
                 datos[2]=empleados[i].getArea_Trabajador();
                 datos[3]=empleados[i].getTurno();
@@ -154,8 +154,9 @@ public class GestionEmpleados extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jlabelEmpleadosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
                                 .addComponent(jbutton_Editar)
-                                .addGap(27, 27, 27)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jbutton_ConfirmarAsistencia)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jbutton_EliminarEmpleado)))
@@ -184,8 +185,8 @@ public class GestionEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbutton_VolverAlMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu1ActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(empleados); 
-        menu.setVisible(true);
+        //*MenuPrincipal menu  =  new MenuPrincipal(empleados); 
+       //* menu.setVisible(true);
         this.setVisible(false);  
     }//GEN-LAST:event_jbutton_VolverAlMenu1ActionPerformed
 

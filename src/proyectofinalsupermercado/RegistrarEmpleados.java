@@ -153,7 +153,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BT_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VolverActionPerformed
-         MenuPrincipal menu  =  new MenuPrincipal(empleados); 
+         MenuPrincipal menu  =  new MenuPrincipal(0,null,null,null); 
          menu.setVisible(true);
           this.setVisible(false);        
     }//GEN-LAST:event_BT_VolverActionPerformed
@@ -172,13 +172,13 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 turno=2;
             }
             
-            Empleados obj = new Empleados(id, name, area, turno);
+            //**Empleados obj = new Empleados(id, name, area, turno);
             if(empleados.length==0){
-                empleados[0] = obj;
+            // **   empleados[0] = obj;
             }else{
                 for(int i=0;i<empleados.length;i++){
                     if(empleados[i] == null){
-                        empleados[i] = obj;
+                        //**empleados[i] = obj;
                         i=empleados.length;
                     }
                 }

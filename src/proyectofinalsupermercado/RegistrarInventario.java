@@ -1,16 +1,22 @@
 package proyectofinalsupermercado;
 
+import javax.swing.JOptionPane;
+
 
 public class RegistrarInventario extends javax.swing.JFrame {
-
-    Empleados[] empleados = new Empleados[20];
-    
-    public RegistrarInventario(Empleados[] emple) {
+Cola c = new Cola();
+    public RegistrarInventario() {
         initComponents();
         
-        empleados=emple;
+        //empleados=emple;
     }
-
+String[] ID = new String[100];
+String[] arr1 =  new String[100];
+String[] arr2 =  new String[100];
+String[] arr3 =  new String[100];
+String[] arr4 =  new String[100];
+String[] arr5 =  new String[100];
+Object[] datos = new Object[100];
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -58,6 +64,11 @@ public class RegistrarInventario extends javax.swing.JFrame {
 
         BT_AGREGARPROD.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         BT_AGREGARPROD.setText("Agregar producto");
+        BT_AGREGARPROD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_AGREGARPRODActionPerformed(evt);
+            }
+        });
 
         BT_VOLVER.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         BT_VOLVER.setText("Volver");
@@ -143,19 +154,42 @@ public class RegistrarInventario extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+     Inventario inv =  new Inventario();
+       Object x;
+       int contador;
+       int id;
+        int y = 1;
     private void BT_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VOLVERActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(empleados); 
-        menu.setVisible(true);
+
+        //menu.setVisible(true);
         this.setVisible(false);        
+         MenuPrincipal menu  =  new MenuPrincipal(contador,c,null,null); 
+         menu.setVisible(true);
+         this.setVisible(false);         
+
     }//GEN-LAST:event_BT_VOLVERActionPerformed
+
+    private void BT_AGREGARPRODActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AGREGARPRODActionPerformed
+       if(TF_IDPROD.getText().equals("") || TF_CANTPROD.getText().equals("") || TF_NOMPROD.getText().equals("") || TXA_DESPROD.getText().equals("") || TF_PRECIOPROD.getText().equals("")){
+           JOptionPane.showMessageDialog(this, "Porfavor, ingrese los campos vacios!","Campos vacíos", JOptionPane.WARNING_MESSAGE);
+       } else {
+       inv.setID_Producto(Integer.parseInt(TF_IDPROD.getText()));
+       inv.setCant_prod(Integer.parseInt(TF_CANTPROD.getText()));
+       inv.setNombre_producto(TF_NOMPROD.getText());
+       inv.setDesc_prod(TXA_DESPROD.getText());
+       inv.setPrecio_Producto(Double.parseDouble(TF_PRECIOPROD.getText()));
+  contador++;
+   Producto obj = new Producto(inv.getID_Producto(),inv.getCant_prod(),inv.getNombre_producto(),inv.getDesc_prod(),inv.getPrecio_Producto());
+            c.push(obj);
+       }
+    }//GEN-LAST:event_BT_AGREGARPRODActionPerformed
 
    
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarInventario(null).setVisible(true);
+               // new RegistrarInventario(null).setVisible(true);
             }
         });
     }
