@@ -1,19 +1,23 @@
 package proyectofinalsupermercado;
 
 public class MenuPrincipal extends javax.swing.JFrame {
-private int contInv,contEmp;
+private  int contInv,contEmp;
 Cola cola_inventario = new Cola();
 String NombreRecibido;
 Empleados[] empleados = new Empleados[20];
 public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora) {
         initComponents();
-        cola_inventario  = COLA_INVENTARIO;
-        contInv = ContadorInv;
-        contEmp = ContadorEmp;
+          cola_inventario  = COLA_INVENTARIO;
         NombreRecibido = Nombre_Administrador;
         JL_NombreAdmin.setText("Bienvenido: " + NombreRecibido);
         System.out.println("Nombre que se recibio" + NombreRecibido);
-         
+        contInv = ContadorInv;
+        contEmp = ContadorEmp;
+        
+          if(cola_inventario!=null){
+           System.out.println("DATOS INVENTARIO" + cola_inventario.toString());
+            
+        }
         if(emp!=null){
            System.out.println("INFO DE EMPLEADOS: "+emp[0]);
             empleados = emp;
@@ -157,7 +161,7 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
       GestionProductos GPROD =  new  GestionProductos(contInv,cola_inventario); 
-        GPROD.setVisible(true);
+      GPROD.setVisible(true);
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 

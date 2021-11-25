@@ -5,18 +5,13 @@ import javax.swing.JOptionPane;
 
 public class RegistrarInventario extends javax.swing.JFrame {
 Cola c = new Cola();
+   Inventario inv =  new Inventario();
+       int contador;
     public RegistrarInventario() {
         initComponents();
-        
-        //empleados=emple;
+
     }
-String[] ID = new String[100];
-String[] arr1 =  new String[100];
-String[] arr2 =  new String[100];
-String[] arr3 =  new String[100];
-String[] arr4 =  new String[100];
-String[] arr5 =  new String[100];
-Object[] datos = new Object[100];
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -154,15 +149,9 @@ Object[] datos = new Object[100];
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-     Inventario inv =  new Inventario();
-       Object x;
-       int contador;
-       int id;
-        int y = 1;
+  
     private void BT_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VOLVERActionPerformed
-
-        //menu.setVisible(true);
-        this.setVisible(false);        
+  
          MenuPrincipal menu  =  new MenuPrincipal(contador,0,null,c,null,null); 
          menu.setVisible(true);
          this.setVisible(false);         
@@ -185,11 +174,11 @@ Object[] datos = new Object[100];
     }//GEN-LAST:event_BT_AGREGARPRODActionPerformed
 
    
-    public static void main(String args[]) {
+   public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new RegistrarInventario(null).setVisible(true);
+                new RegistrarInventario().setVisible(true);
             }
         });
     }
