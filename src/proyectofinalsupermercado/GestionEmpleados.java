@@ -1,6 +1,9 @@
 //CAMBIO
 package proyectofinalsupermercado;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author kevin
@@ -8,11 +11,41 @@ package proyectofinalsupermercado;
 public class GestionEmpleados extends javax.swing.JFrame {
 
     Empleados[] empleados = new Empleados[20];
+    
     public GestionEmpleados(Empleados[] emple) {
         initComponents();
         
         empleados = emple;
-    }
+       
+        
+        
+        String[] cabecera ={"ID_Empleado","Nombre","Area de Trabajo","Turno"};
+        
+        
+       DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.setColumnIdentifiers(cabecera);
+        
+        Object []  datos = new Object[4];
+     int j=0;
+        if(empleados[j]==null){
+            j=empleados.length;
+        }else {
+            for( int i=j; i<empleados.length;i++){
+                
+                datos[0]=empleados[i].getID_EMPLEADO();
+                datos[1]=empleados[i].getNombre_Empleado();
+                datos[2]=empleados[i].getArea_Trabajador();
+                datos[3]=empleados[i].getTurno();
+            
+                modelo.addRow(datos);
+        }
+        
+        }
+           jtableEmpleadosRegistrados.setModel(modelo);
+                    
+        }  
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,23 +71,61 @@ public class GestionEmpleados extends javax.swing.JFrame {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "ID_EMPLEADO", "Nombre_Empleado", "Area_Trabajo", "Turno"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
-        jtableEmpleadosRegistrados.setToolTipText("EmpleadosRegistradosMostrar");
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jtableEmpleadosRegistrados);
 
         jbutton_Editar.setText("Editar");
         jbutton_Editar.setToolTipText("EditarEmpleado");
+        jbutton_Editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbutton_EditarActionPerformed(evt);
+            }
+        });
 
         jbutton_ConfirmarAsistencia.setText("Confirmar Asistencia");
         jbutton_ConfirmarAsistencia.setToolTipText("Asistencia ");
+        jbutton_ConfirmarAsistencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbutton_ConfirmarAsistenciaActionPerformed(evt);
+            }
+        });
 
         jbutton_EliminarEmpleado.setText("Eliminar");
         jbutton_EliminarEmpleado.setToolTipText("EliminarEmpleado");
+        jbutton_EliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbutton_EliminarEmpleadoActionPerformed(evt);
+            }
+        });
 
         jbutton_VolverAlMenu1.setText("Volver");
         jbutton_VolverAlMenu1.setToolTipText("RegresarMenu1");
@@ -94,9 +165,9 @@ public class GestionEmpleados extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jlabelEmpleadosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -107,7 +178,8 @@ public class GestionEmpleados extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(532, 410));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbutton_VolverAlMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu1ActionPerformed
@@ -115,6 +187,18 @@ public class GestionEmpleados extends javax.swing.JFrame {
         menu.setVisible(true);
         this.setVisible(false);  
     }//GEN-LAST:event_jbutton_VolverAlMenu1ActionPerformed
+
+    private void jbutton_EliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_EliminarEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbutton_EliminarEmpleadoActionPerformed
+
+    private void jbutton_ConfirmarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_ConfirmarAsistenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbutton_ConfirmarAsistenciaActionPerformed
+
+    private void jbutton_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_EditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbutton_EditarActionPerformed
 
     /**
      * @param args the command line arguments

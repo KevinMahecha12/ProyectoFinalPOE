@@ -132,7 +132,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_JMI_REMPLEADOSActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        RegistrarInventario REGINV  =  new  RegistrarInventario(empleados); 
+        GestionEmpleados REGINV  =  new  GestionEmpleados(empleados); 
         REGINV.setVisible(true);
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem2ActionPerformed
