@@ -153,7 +153,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BT_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VolverActionPerformed
-         MenuPrincipal menu  =  new MenuPrincipal(0,null,null,null); 
+         MenuPrincipal menu  =  new MenuPrincipal(0,empleados,null,null,null); 
          menu.setVisible(true);
           this.setVisible(false);        
     }//GEN-LAST:event_BT_VolverActionPerformed

@@ -4,19 +4,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
 private int cont;
 Cola cola_inventario = new Cola();
 String NombreRecibido;
-public MenuPrincipal(int Contador,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora) {
+Empleados[] empleados = new Empleados[20];
+public MenuPrincipal(int Contador,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora) {
         initComponents();
         
-        //if(emp!=null){
-            //empleados = emp;
-        //}
-        
-
         cola_inventario  = COLA_INVENTARIO;
         cont = Contador;
         NombreRecibido = Nombre_Administrador;
         JL_NombreAdmin.setText("Bienvenido: " + NombreRecibido);
         System.out.println("Nombre que se recibio" + NombreRecibido);
+         
+        if(emp!=null){
+           System.out.println("INFO DE EMPLEADOS: "+emp[0]);
+            empleados = emp;
+        }
+        
+
+       
 
     }
     @SuppressWarnings("unchecked")
@@ -140,14 +144,14 @@ public MenuPrincipal(int Contador,Cola COLA_INVENTARIO,String Nombre_Administrad
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMI_REMPLEADOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_REMPLEADOSActionPerformed
-        // RegistrarEmpleados REGM  =  new  RegistrarEmpleados(empleados); 
-        // REGM.setVisible(true);
+        RegistrarEmpleados REGM  =  new  RegistrarEmpleados(empleados); 
+        REGM.setVisible(true);
          this.setVisible(false);     
     }//GEN-LAST:event_JMI_REMPLEADOSActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       // GestionEmpleados REGINV  =  new  GestionEmpleados(empleados); 
-       // REGINV.setVisible(true);
+       GestionEmpleados REGINV  =  new  GestionEmpleados(empleados); 
+       REGINV.setVisible(true);
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -168,6 +172,7 @@ public MenuPrincipal(int Contador,Cola COLA_INVENTARIO,String Nombre_Administrad
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                 new MenuPrincipal(0,null,null,null,null).setVisible(true);
             }
         });
     }

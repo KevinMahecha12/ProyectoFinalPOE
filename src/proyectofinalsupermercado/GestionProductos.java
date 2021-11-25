@@ -146,7 +146,7 @@ public void funcionamiento() {
     }
 }
     private void jbutton_VolverAlMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu2ActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(cont,cola_inventario,null,null); 
+        MenuPrincipal menu  =  new MenuPrincipal(cont,null,cola_inventario,null,null); 
          menu.setVisible(true);
           this.setVisible(false);        
     }//GEN-LAST:event_jbutton_VolverAlMenu2ActionPerformed

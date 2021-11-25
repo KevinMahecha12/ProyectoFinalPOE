@@ -163,7 +163,7 @@ Object[] datos = new Object[100];
 
         //menu.setVisible(true);
         this.setVisible(false);        
-         MenuPrincipal menu  =  new MenuPrincipal(contador,c,null,null); 
+         MenuPrincipal menu  =  new MenuPrincipal(contador,null,c,null,null); 
          menu.setVisible(true);
          this.setVisible(false);         
 
