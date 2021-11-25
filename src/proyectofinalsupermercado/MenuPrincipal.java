@@ -1,15 +1,15 @@
 package proyectofinalsupermercado;
 
 public class MenuPrincipal extends javax.swing.JFrame {
-private int cont;
+private int contInv,contEmp;
 Cola cola_inventario = new Cola();
 String NombreRecibido;
 Empleados[] empleados = new Empleados[20];
-public MenuPrincipal(int Contador,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora) {
+public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora) {
         initComponents();
-        
         cola_inventario  = COLA_INVENTARIO;
-        cont = Contador;
+        contInv = ContadorInv;
+        contEmp = ContadorEmp;
         NombreRecibido = Nombre_Administrador;
         JL_NombreAdmin.setText("Bienvenido: " + NombreRecibido);
         System.out.println("Nombre que se recibio" + NombreRecibido);
@@ -150,13 +150,13 @@ public MenuPrincipal(int Contador,Empleados[] emp,Cola COLA_INVENTARIO,String No
     }//GEN-LAST:event_JMI_REMPLEADOSActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       GestionEmpleados REGINV  =  new  GestionEmpleados(empleados); 
+       GestionEmpleados REGINV  =  new  GestionEmpleados(contEmp,empleados); 
        REGINV.setVisible(true);
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-      GestionProductos GPROD =  new  GestionProductos(cont,cola_inventario); 
+      GestionProductos GPROD =  new  GestionProductos(contInv,cola_inventario); 
         GPROD.setVisible(true);
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem6ActionPerformed
@@ -172,7 +172,7 @@ public MenuPrincipal(int Contador,Empleados[] emp,Cola COLA_INVENTARIO,String No
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                 new MenuPrincipal(0,null,null,null,null).setVisible(true);
+                 new MenuPrincipal(0,0,null,null,null,null).setVisible(true);
             }
         });
     }

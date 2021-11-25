@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 public class RegistrarEmpleados extends javax.swing.JFrame {
 
     Empleados[] empleados = new Empleados[20];
-    
+    int ContadorEmpleados;
     public RegistrarEmpleados(Empleados[] emple) {
         initComponents();
         BGROUP.add(RB_MATU);
@@ -153,7 +153,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BT_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VolverActionPerformed
-         MenuPrincipal menu  =  new MenuPrincipal(0,empleados,null,null,null); 
+         MenuPrincipal menu  =  new MenuPrincipal(0,ContadorEmpleados,empleados,null,null,null); 
          menu.setVisible(true);
           this.setVisible(false);        
     }//GEN-LAST:event_BT_VolverActionPerformed
@@ -162,6 +162,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         if(TF_NOMEMPLEADO.getText().equals("") || TF_ID.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
         }else{
+            ContadorEmpleados++;
             int id = Integer.parseInt(TF_ID.getText());
             String name = TF_NOMEMPLEADO.getText();
             String area = JCB_AREATRABAJO.getSelectedItem().toString();
@@ -172,13 +173,13 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 turno=2;
             }
             
-            //**Empleados obj = new Empleados(id, name, area, turno);
+            Empleados obj = new Empleados(id, name, area, turno);
             if(empleados.length==0){
-            // **   empleados[0] = obj;
+            empleados[0] = obj;
             }else{
                 for(int i=0;i<empleados.length;i++){
                     if(empleados[i] == null){
-                        //**empleados[i] = obj;
+                        empleados[i] = obj;
                         i=empleados.length;
                     }
                 }

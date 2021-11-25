@@ -14,8 +14,7 @@ static Cola cola_inventario = new Cola();
     public GestionProductos(int Contador,Cola COLA_INVENTARIO) {
          cola_inventario  = COLA_INVENTARIO;
          cont = Contador;
-         array = new Producto[cola_inventario.tamaño];
-         array = cola_inventario.recorrer();
+         
         initComponents();
          DefaultTableModel modelo = (DefaultTableModel) jTable_MostrarProductos.getModel();
         System.out.println("Elementos en tabla:  "+modelo.getColumnCount());
@@ -132,9 +131,11 @@ public void funcionamiento() {
             JL_ERROR.setText("No hay datos registrados!");
          } 
          for (int i=0; i<cont; i++){
-             ContadorProductos = ContadorProductos+1;
-             setContadorProductos(ContadorProductos);
-             System.out.println("Existen: "+getContadorProductos());
+             array = new Producto[cola_inventario.tamaño];
+             array = cola_inventario.recorrer();
+              ContadorProductos = ContadorProductos+1;
+              setContadorProductos(ContadorProductos);
+              System.out.println("Existen: "+getContadorProductos());
                jLabel_TotalProductos.setText(String.valueOf("Productos registrados: "+getContadorProductos()));
          jTable_MostrarProductos.getColumnModel().getColumn(i).setCellRenderer(tcr);
             datosx[0] = array[i].ID_Producto;
@@ -146,7 +147,7 @@ public void funcionamiento() {
     }
 }
     private void jbutton_VolverAlMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu2ActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(cont,null,cola_inventario,null,null); 
+        MenuPrincipal menu  =  new MenuPrincipal(cont,0,null,cola_inventario,null,null); 
          menu.setVisible(true);
           this.setVisible(false);        
     }//GEN-LAST:event_jbutton_VolverAlMenu2ActionPerformed

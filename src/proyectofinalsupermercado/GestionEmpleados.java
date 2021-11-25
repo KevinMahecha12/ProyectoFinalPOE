@@ -11,25 +11,22 @@ import javax.swing.table.DefaultTableModel;
 public class GestionEmpleados extends javax.swing.JFrame {
 
     Empleados[] empleados = new Empleados[20];
-    
-    public GestionEmpleados(Empleados[] emple) {
+    int contEmp;
+    public GestionEmpleados(int ContEmp,Empleados[] emple) {
               initComponents();
-        
+        contEmp = ContEmp;
         empleados = emple;
-       
-        
-        
         String[] cabecera ={"ID_Empleado","Nombre","Area de Trabajo","Turno"};
-        
         
        DefaultTableModel modelo = new DefaultTableModel();
         
         modelo.setColumnIdentifiers(cabecera);
         
         Object []  datos = new Object[4];
-   
-         
-            for( int i=0; i<empleados.length;i++){
+        if (contEmp<1) {
+            JL_ERROR.setText("No hay ningun empleado registrado!");
+        } else {
+                 for( int i=0; i<empleados.length;i++){
                 if(empleados[i]==null){
             i=empleados.length;
         }else{    
@@ -41,12 +38,12 @@ public class GestionEmpleados extends javax.swing.JFrame {
                 modelo.addRow(datos);
                 }
         }
-        
-        
            jtableEmpleadosRegistrados.setModel(modelo);
                     
         }  
     
+        }
+       
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,6 +60,7 @@ public class GestionEmpleados extends javax.swing.JFrame {
         jbutton_EliminarEmpleado = new javax.swing.JButton();
         jbutton_VolverAlMenu1 = new javax.swing.JButton();
         jlabelEmpleadosRegistrados = new javax.swing.JLabel();
+        JL_ERROR = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -135,7 +133,10 @@ public class GestionEmpleados extends javax.swing.JFrame {
             }
         });
 
+        jlabelEmpleadosRegistrados.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlabelEmpleadosRegistrados.setToolTipText("EmpleadosRegistrados");
+
+        JL_ERROR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,49 +145,48 @@ public class GestionEmpleados extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JL_ERROR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jlabelEmpleadosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jbutton_Editar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbutton_ConfirmarAsistencia)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbutton_EliminarEmpleado)))
-                        .addGap(37, 37, 37)
-                        .addComponent(jbutton_VolverAlMenu1)
-                        .addGap(22, 22, 22))))
+                    .addComponent(jlabelEmpleadosRegistrados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(jbutton_Editar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbutton_ConfirmarAsistencia)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbutton_EliminarEmpleado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbutton_VolverAlMenu1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jlabelEmpleadosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(JL_ERROR, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlabelEmpleadosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbutton_Editar)
                     .addComponent(jbutton_ConfirmarAsistencia)
                     .addComponent(jbutton_EliminarEmpleado)
                     .addComponent(jbutton_VolverAlMenu1))
-                .addGap(36, 36, 36))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(532, 410));
+        setSize(new java.awt.Dimension(648, 341));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbutton_VolverAlMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu1ActionPerformed
-        //*MenuPrincipal menu  =  new MenuPrincipal(empleados); 
-       //* menu.setVisible(true);
-        this.setVisible(false);  
+       MenuPrincipal menu  =  new MenuPrincipal(0,contEmp,empleados,null,null,null); 
+       menu.setVisible(true);
+       this.setVisible(false);  
     }//GEN-LAST:event_jbutton_VolverAlMenu1ActionPerformed
 
     private void jbutton_EliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_EliminarEmpleadoActionPerformed
@@ -231,12 +231,13 @@ public class GestionEmpleados extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionEmpleados(null).setVisible(true);
+                new GestionEmpleados(0,null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JL_ERROR;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbutton_ConfirmarAsistencia;
     private javax.swing.JButton jbutton_Editar;
