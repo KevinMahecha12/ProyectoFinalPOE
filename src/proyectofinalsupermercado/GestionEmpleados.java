@@ -13,7 +13,7 @@ public class GestionEmpleados extends javax.swing.JFrame {
     Empleados[] empleados = new Empleados[20];
     
     public GestionEmpleados(Empleados[] emple) {
-        initComponents();
+              initComponents();
         
         empleados = emple;
        
@@ -33,7 +33,7 @@ public class GestionEmpleados extends javax.swing.JFrame {
                 if(empleados[i]==null){
             i=empleados.length;
         }else{    
-                //datos[0]=empleados[i].getID_EMPLEADO();
+                datos[0]=empleados[i].getID_EMPLEADO();
                 datos[1]=empleados[i].getNombre_Empleado();
                 datos[2]=empleados[i].getArea_Trabajador();
                 datos[3]=empleados[i].getTurno();
@@ -47,7 +47,6 @@ public class GestionEmpleados extends javax.swing.JFrame {
                     
         }  
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

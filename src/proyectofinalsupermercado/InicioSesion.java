@@ -7,12 +7,11 @@ public class InicioSesion extends javax.swing.JFrame {
     DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
     Date date = new Date();
     boolean siguienteVentana = false;
-    Empleados a[]= new Empleados[5];
-    private static Empleados e = new Empleados();
+    static EmpleadosInicioSesion  a[]= new EmpleadosInicioSesion[5];
+    private static EmpleadosInicioSesion e = new EmpleadosInicioSesion();
     public InicioSesion() {
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,11 +170,11 @@ public class InicioSesion extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         
-         e.empleados[0]=new Empleados( "Kevin", "12345", 1);
-         e.empleados[1]=new Empleados( "Rogelio", "12345", 1);
-         e.empleados[2]=new Empleados( "Angel", "12345", 2);
-         e.empleados[3]=new Empleados( "Jorge", "12345", 2);
-         e.empleados[4]=new Empleados( "Erick", "12345", 2);
+         e.empleados[0]=new EmpleadosInicioSesion( "Kevin", "12345", 1);
+         e.empleados[1]=new EmpleadosInicioSesion( "Rogelio", "12345", 1);
+         e.empleados[2]=new EmpleadosInicioSesion( "Angel", "12345", 2);
+         e.empleados[3]=new EmpleadosInicioSesion( "Jorge", "12345", 2);
+         e.empleados[4]=new EmpleadosInicioSesion( "Erick", "12345", 2);
          
     /*a[0]=new Empleados(123,"Kevin","12345",1);
     a[1]=new Empleados(123,"Rogelio","12345",1);
