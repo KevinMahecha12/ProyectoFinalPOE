@@ -27,21 +27,22 @@ public class GestionEmpleados extends javax.swing.JFrame {
         modelo.setColumnIdentifiers(cabecera);
         
         Object []  datos = new Object[4];
-     int j=0;
-        if(empleados[j]==null){
-            j=empleados.length;
-        }else {
-            for( int i=j; i<empleados.length;i++){
-                
+   
+         
+            for( int i=0; i<empleados.length;i++){
+                if(empleados[i]==null){
+            i=empleados.length;
+        }else{    
                 datos[0]=empleados[i].getID_EMPLEADO();
                 datos[1]=empleados[i].getNombre_Empleado();
                 datos[2]=empleados[i].getArea_Trabajador();
                 datos[3]=empleados[i].getTurno();
             
                 modelo.addRow(datos);
+                }
         }
         
-        }
+        
            jtableEmpleadosRegistrados.setModel(modelo);
                     
         }  
