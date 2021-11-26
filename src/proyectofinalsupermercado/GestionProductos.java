@@ -125,20 +125,19 @@ public class GestionProductos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 public void funcionamiento() {
        DefaultTableModel modelo = (DefaultTableModel) jTable_MostrarProductos.getModel();
-       DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
-       tcr.setHorizontalAlignment(SwingConstants.CENTER);
-     
+DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+
+
          if (cont<1) {
             JL_ERROR.setText("No hay datos registrados!");
          } 
           array = new Producto[cola_inventario.tamaño];
           System.out.println(array.length);
           array = cola_inventario.recorrer();
-              
+
          for (int i=0; i<array.length; i++){
            ContadorProductos = ContadorProductos+1;
             setContadorProductos(ContadorProductos);
-            jTable_MostrarProductos.getColumnModel().getColumn(i).setCellRenderer(tcr);
             datosx[0] = array[i].ID_Producto;
             datosx[1] = array[i].Nombre_producto;
             datosx[2] = array[i].Cant_prod;
