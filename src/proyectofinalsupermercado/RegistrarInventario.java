@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 
 public class RegistrarInventario extends javax.swing.JFrame {
-    Cola c = new Cola();
+    static Cola c = new Cola();
     Inventario inv = new Inventario();
     int contador;
     public RegistrarInventario(Cola cola_inventario) {
@@ -179,7 +179,7 @@ public class RegistrarInventario extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarInventario(null).setVisible(true);
+                new RegistrarInventario(c).setVisible(true);
             }
         });
     }
