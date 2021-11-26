@@ -73,6 +73,11 @@ public class GestionHorarios extends javax.swing.JFrame {
         BotonEditar.setText("Editar");
 
         CrearHorario.setText("Crear nuevo horario predefinido");
+        CrearHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearHorarioActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Sinhala MN", 2, 24)); // NOI18N
         jLabel3.setText("Gestion de Horarios");
@@ -100,13 +105,14 @@ public class GestionHorarios extends javax.swing.JFrame {
                 .addComponent(jLabel2))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtRegresar)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(BotonEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtRegresar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CrearHorario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -128,9 +134,9 @@ public class GestionHorarios extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CrearHorario)
                     .addComponent(BotonEditar)
-                    .addComponent(AsignarHorario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(txtRegresar))
+                    .addComponent(AsignarHorario)
+                    .addComponent(txtRegresar))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 630, 394);
@@ -139,6 +145,10 @@ public class GestionHorarios extends javax.swing.JFrame {
     private void AsignarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarHorarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AsignarHorarioActionPerformed
+
+    private void CrearHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearHorarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CrearHorarioActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,30 +1,40 @@
 package proyectofinalsupermercado;
 
 
-
-public class Empleados {
-    int ID_EMPLEADO;
+public class EmpleadosInicioSesion {
+  
     String Nombre_Empleado;
     String Area_Trabajador;
     int Turno;
+    
+    EmpleadosInicioSesion  empleados[]=new EmpleadosInicioSesion[5];
 
-    public Empleados(int ID_EMPLEADO, String Nombre_Empleado, String Area_Trabajador, int Turno) {
-        this.ID_EMPLEADO = ID_EMPLEADO;
+    @Override
+    public String toString() {
+        
+        this.setNombre_Empleado(Nombre_Empleado);
+        this.setArea_Trabajador(Area_Trabajador);
+        this.setTurno(Turno);
+        
+        return Nombre_Empleado + Area_Trabajador + Turno;
+        
+        
+        
+    }
+
+    
+    public EmpleadosInicioSesion( String Nombre_Empleado, String Area_Trabajador, int Turno) {
+       
         this.Nombre_Empleado = Nombre_Empleado;
         this.Area_Trabajador = Area_Trabajador;
         this.Turno = Turno;
+        
     }
 
-    public Empleados() {
-    }
+    public EmpleadosInicioSesion() {
+        }
 
-    public int getID_EMPLEADO() {
-        return ID_EMPLEADO;
-    }
-
-    public void setID_EMPLEADO(int ID_EMPLEADO) {
-        this.ID_EMPLEADO = ID_EMPLEADO;
-    }
+   
 
     public String getNombre_Empleado() {
         return Nombre_Empleado;

@@ -1,11 +1,19 @@
 package proyectofinalsupermercado;
 
+import javax.swing.JOptionPane;
+
 public class RegistrarEmpleados extends javax.swing.JFrame {
 
-    public RegistrarEmpleados() {
+    Empleados[] empleados = new Empleados[20];
+    int ContadorEmpleados;
+    public RegistrarEmpleados(Empleados[] emple) {
         initComponents();
         BGROUP.add(RB_MATU);
         BGROUP.add(RB_VESP);
+        
+        if(emple!=null){
+            empleados = emple;
+        }
 
     }
 
@@ -54,6 +62,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         jLabel5.setText("Seleccione el turno del empleado: ");
 
         RB_MATU.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        RB_MATU.setSelected(true);
         RB_MATU.setText("Matutino");
 
         RB_VESP.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -61,6 +70,11 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
         BT_REG.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         BT_REG.setText("Registrar");
+        BT_REG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_REGActionPerformed(evt);
+            }
+        });
 
         BT_Volver.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         BT_Volver.setText("Volver");
@@ -139,17 +153,55 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BT_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VolverActionPerformed
-         MenuPrincipal menu  =  new MenuPrincipal(); 
+         MenuPrincipal menu  =  new MenuPrincipal(0,ContadorEmpleados,empleados,null,null,null); 
          menu.setVisible(true);
           this.setVisible(false);        
     }//GEN-LAST:event_BT_VolverActionPerformed
+
+    private void BT_REGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_REGActionPerformed
+        if(TF_NOMEMPLEADO.getText().equals("") || TF_ID.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
+        }else{
+            ContadorEmpleados++;
+            int id = Integer.parseInt(TF_ID.getText());
+            String name = TF_NOMEMPLEADO.getText();
+            String area = JCB_AREATRABAJO.getSelectedItem().toString();
+            int turno;
+            if(RB_MATU.isSelected()){
+                turno=1;
+            }else{
+                turno=2;
+            }
+            
+            Empleados obj = new Empleados(id, name, area, turno);
+            if(empleados.length==0){
+            empleados[0] = obj;
+            }else{
+                for(int i=0;i<empleados.length;i++){
+                    if(empleados[i] == null){
+                        empleados[i] = obj;
+                        i=empleados.length;
+                    }
+                }
+            }//else
+            
+            //for(int i=0;i<empleados.length;i++){ Esto nomas pá checarf que si jala
+                //if(empleados[i] == null){
+                    //i=empleados.length;
+                //}else{
+                    //System.out.println(empleados[i].getID_EMPLEADO() + " " + empleados[i].Nombre_Empleado + " " + empleados[i].Area_Trabajador + empleados[i].Turno);
+                //}
+            //}
+            
+        }// else     
+    }//GEN-LAST:event_BT_REGActionPerformed
 
 
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarEmpleados().setVisible(true);
+                new RegistrarEmpleados(null).setVisible(true);
             }
         });
     }
