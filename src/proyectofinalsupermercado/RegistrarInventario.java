@@ -5,10 +5,17 @@ import javax.swing.JOptionPane;
 
 public class RegistrarInventario extends javax.swing.JFrame {
     static Cola c = new Cola();
-    public RegistrarInventario(Cola cola_inventario) {
+    Inventario inv = new Inventario();
+    static int contador;
+    public RegistrarInventario(int ContadorInv,Cola cola_inventario) {
         initComponents();
-        c=cola_inventario;
         
+        if(cola_inventario!=null){
+            c=cola_inventario;
+        }
+        if(ContadorInv!=0){
+           contador = ContadorInv;
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -148,11 +155,7 @@ public class RegistrarInventario extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-     Inventario inv =  new Inventario();
-       Object x;
-       int contador;
-       int id;
-        int y = 1;
+  
     private void BT_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VOLVERActionPerformed
       
         MenuPrincipal menu  =  new MenuPrincipal(contador,0,null,c,null,null); 
@@ -177,11 +180,11 @@ public class RegistrarInventario extends javax.swing.JFrame {
     }//GEN-LAST:event_BT_AGREGARPRODActionPerformed
 
    
-    public static void main(String args[]) {
+   public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-             new RegistrarInventario(c).setVisible(true);
+                new RegistrarInventario(contador,c).setVisible(true);
             }
         });
     }

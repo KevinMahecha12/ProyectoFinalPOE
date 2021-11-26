@@ -6,7 +6,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     Empleados[] empleados = new Empleados[20];
     int ContadorEmpleados;
-    public RegistrarEmpleados(Empleados[] emple) {
+    public RegistrarEmpleados(int contEmp,Empleados[] emple) {
         initComponents();
         BGROUP.add(RB_MATU);
         BGROUP.add(RB_VESP);
@@ -14,7 +14,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         if(emple!=null){
             empleados = emple;
         }
-
+        if(contEmp!=0){
+           ContadorEmpleados = contEmp;
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -201,7 +203,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarEmpleados(null).setVisible(true);
+                new RegistrarEmpleados(0,null).setVisible(true);
             }
         });
     }

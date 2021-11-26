@@ -1,7 +1,7 @@
 package proyectofinalsupermercado;
 
 public class MenuPrincipal extends javax.swing.JFrame {
-private int contInv,contEmp;
+private  int contInv,contEmp;
 Cola cola_inventario = new Cola();
 String NombreRecibido;
 Empleados[] empleados = new Empleados[20];
@@ -15,12 +15,13 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         NombreRecibido = Nombre_Administrador;
         JL_NombreAdmin.setText("Bienvenido: " + NombreRecibido);
         System.out.println("Nombre que se recibio" + NombreRecibido);
-         
-        if(emp!=null){
+        contInv = ContadorInv;
+        contEmp = ContadorEmp;
+                  if(emp!=null){
            System.out.println("INFO DE EMPLEADOS: "+emp[0]);
             empleados = emp;
         }
-        
+       
 
        
 
@@ -146,7 +147,7 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMI_REMPLEADOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_REMPLEADOSActionPerformed
-        RegistrarEmpleados REGM  =  new  RegistrarEmpleados(empleados); 
+        RegistrarEmpleados REGM  =  new  RegistrarEmpleados(contEmp,empleados); 
         REGM.setVisible(true);
          this.setVisible(false);     
     }//GEN-LAST:event_JMI_REMPLEADOSActionPerformed
@@ -159,12 +160,12 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
       GestionProductos GPROD =  new  GestionProductos(contInv,cola_inventario); 
-        GPROD.setVisible(true);
+      GPROD.setVisible(true);
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-       RegistrarInventario REGINV  =  new  RegistrarInventario(cola_inventario); 
+       RegistrarInventario REGINV  =  new  RegistrarInventario(contInv,cola_inventario); 
         REGINV.setVisible(true);
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem5ActionPerformed

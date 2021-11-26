@@ -1,6 +1,4 @@
-
 package proyectofinalsupermercado;
-
 
 public class Cola {
     public Producto inicio;
@@ -55,5 +53,6 @@ public class Cola {
         return array;
     }
     
+
 
 }
