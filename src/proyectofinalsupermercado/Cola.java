@@ -19,12 +19,12 @@ public class Cola {
         nuevo = obj;
         if(inicio == null){
             inicio = nuevo;
+            tamaño++;
         }else{
             Producto aux = inicio;
             while(true){
                 if(aux.siguienteProducto!=null){
                     aux = aux.siguienteProducto;
-                     tamaño++;
                 }else{
                     aux.siguienteProducto=nuevo;
                      tamaño++;
