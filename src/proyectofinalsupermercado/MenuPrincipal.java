@@ -7,7 +7,11 @@ String NombreRecibido;
 Empleados[] empleados = new Empleados[20];
 public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora) {
         initComponents();
-          cola_inventario  = COLA_INVENTARIO;
+        if(COLA_INVENTARIO!=null){
+            cola_inventario  = COLA_INVENTARIO;
+        }
+        contInv = ContadorInv;
+        contEmp = ContadorEmp;
         NombreRecibido = Nombre_Administrador;
         JL_NombreAdmin.setText("Bienvenido: " + NombreRecibido);
         System.out.println("Nombre que se recibio" + NombreRecibido);
@@ -166,7 +170,7 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-       RegistrarInventario REGINV  =  new  RegistrarInventario(); 
+       RegistrarInventario REGINV  =  new  RegistrarInventario(cola_inventario); 
         REGINV.setVisible(true);
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem5ActionPerformed
