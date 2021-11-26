@@ -23,9 +23,10 @@ public class GestionEmpleados extends javax.swing.JFrame {
         modelo.setColumnIdentifiers(cabecera);
         
         Object []  datos = new Object[4];
+        System.out.println("empleados contados: "+contEmp);
         if (contEmp<1) {
             JL_ERROR.setText("No hay ningun empleado registrado!");
-        } else {
+        }
                  for( int i=0; i<empleados.length;i++){
                 if(empleados[i]==null){
             i=empleados.length;
@@ -40,10 +41,10 @@ public class GestionEmpleados extends javax.swing.JFrame {
         }
            jtableEmpleadosRegistrados.setModel(modelo);
                     
-        }  
+        
     
-        }
-       
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
