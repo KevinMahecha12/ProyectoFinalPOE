@@ -17,16 +17,11 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         System.out.println("Nombre que se recibio" + NombreRecibido);
         contInv = ContadorInv;
         contEmp = ContadorEmp;
-        
-          if(cola_inventario!=null){
-           System.out.println("DATOS INVENTARIO" + cola_inventario.toString());
-            
-        }
-        if(emp!=null){
+                  if(emp!=null){
            System.out.println("INFO DE EMPLEADOS: "+emp[0]);
             empleados = emp;
         }
-        
+       
 
        
 
@@ -152,7 +147,7 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMI_REMPLEADOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_REMPLEADOSActionPerformed
-        RegistrarEmpleados REGM  =  new  RegistrarEmpleados(empleados); 
+        RegistrarEmpleados REGM  =  new  RegistrarEmpleados(contEmp,empleados); 
         REGM.setVisible(true);
          this.setVisible(false);     
     }//GEN-LAST:event_JMI_REMPLEADOSActionPerformed
@@ -170,7 +165,7 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-       RegistrarInventario REGINV  =  new  RegistrarInventario(cola_inventario); 
+       RegistrarInventario REGINV  =  new  RegistrarInventario(contInv,cola_inventario); 
         REGINV.setVisible(true);
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem5ActionPerformed

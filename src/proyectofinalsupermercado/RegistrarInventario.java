@@ -6,11 +6,16 @@ import javax.swing.JOptionPane;
 public class RegistrarInventario extends javax.swing.JFrame {
     static Cola c = new Cola();
     Inventario inv = new Inventario();
-    int contador;
-    public RegistrarInventario(Cola cola_inventario) {
+    static int contador;
+    public RegistrarInventario(int ContadorInv,Cola cola_inventario) {
         initComponents();
-        c=cola_inventario;
         
+        if(cola_inventario!=null){
+            c=cola_inventario;
+        }
+        if(ContadorInv!=0){
+           contador = ContadorInv;
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -179,7 +184,7 @@ public class RegistrarInventario extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarInventario(c).setVisible(true);
+                new RegistrarInventario(contador,c).setVisible(true);
             }
         });
     }
