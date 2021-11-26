@@ -6,19 +6,19 @@ import javax.swing.table.DefaultTableModel;
 
 public class GestionProductos extends javax.swing.JFrame {
     
- Producto[] array;
- private static int cont;
-static Cola cola_inventario = new Cola();
-  Object[] datosx = new Object[5];
-  int ContadorProductos;
+       Producto[] array;
+       private static int cont;
+       static Cola cola_inventario = new Cola();
+       Object[] datosx = new Object[5];
+       int ContadorProductos;
+         
     public GestionProductos(int Contador,Cola COLA_INVENTARIO) {
-         cola_inventario  = COLA_INVENTARIO;
-         cont = Contador;
-         array = new Producto[cola_inventario.tamaño];
-         array = cola_inventario.recorrer();
+        cola_inventario  = COLA_INVENTARIO;
+        cont = Contador;
+         
         initComponents();
          DefaultTableModel modelo = (DefaultTableModel) jTable_MostrarProductos.getModel();
-        System.out.println("Elementos en tabla:  "+modelo.getColumnCount());
+        System.out.println("Elementos en tabla:  "+ modelo.getColumnCount());
          funcionamiento();
     }
 
@@ -124,27 +124,30 @@ static Cola cola_inventario = new Cola();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 public void funcionamiento() {
-         DefaultTableModel modelo = (DefaultTableModel) jTable_MostrarProductos.getModel();
-       DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
-       tcr.setHorizontalAlignment(SwingConstants.CENTER);
-     
+       DefaultTableModel modelo = (DefaultTableModel) jTable_MostrarProductos.getModel();
+DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+
+
          if (cont<1) {
             JL_ERROR.setText("No hay datos registrados!");
          } 
-         for (int i=0; i<cont; i++){
-             ContadorProductos = ContadorProductos+1;
-             setContadorProductos(ContadorProductos);
-             System.out.println("Existen: "+getContadorProductos());
-               jLabel_TotalProductos.setText(String.valueOf("Productos registrados: "+getContadorProductos()));
-         jTable_MostrarProductos.getColumnModel().getColumn(i).setCellRenderer(tcr);
+          array = new Producto[cola_inventario.tamaño];
+          System.out.println(array.length);
+          array = cola_inventario.recorrer();
+
+         for (int i=0; i<array.length; i++){
+           ContadorProductos = ContadorProductos+1;
+            setContadorProductos(ContadorProductos);
             datosx[0] = array[i].ID_Producto;
             datosx[1] = array[i].Nombre_producto;
             datosx[2] = array[i].Cant_prod;
             datosx[3] = array[i].Desc_prod;
             datosx[4] = array[i].Precio_Producto;
-        modelo.addRow(datosx);
-    }
-        
+            modelo.addRow(datosx);
+        }
+         System.out.println("Existen: "+getContadorProductos());
+         jLabel_TotalProductos.setText(String.valueOf("Productos registrados: "+getContadorProductos()));
+          
 }
     private void jbutton_VolverAlMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu2ActionPerformed
         MenuPrincipal menu  =  new MenuPrincipal(cont,0,null,cola_inventario,null,null); 

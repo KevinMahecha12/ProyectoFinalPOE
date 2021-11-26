@@ -4,12 +4,13 @@ import javax.swing.JOptionPane;
 
 
 public class RegistrarInventario extends javax.swing.JFrame {
-Cola c = new Cola();
-   Inventario inv =  new Inventario();
-       int contador;
-    public RegistrarInventario() {
+    Cola c = new Cola();
+    Inventario inv = new Inventario();
+    int contador;
+    public RegistrarInventario(Cola cola_inventario) {
         initComponents();
-
+        c=cola_inventario;
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -151,10 +152,10 @@ Cola c = new Cola();
     }// </editor-fold>//GEN-END:initComponents
   
     private void BT_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VOLVERActionPerformed
-  
-         MenuPrincipal menu  =  new MenuPrincipal(contador,0,null,c,null,null); 
-         menu.setVisible(true);
-         this.setVisible(false);         
+      
+        MenuPrincipal menu  =  new MenuPrincipal(contador,0,null,c,null,null); 
+        menu.setVisible(true);
+        this.setVisible(false);         
 
     }//GEN-LAST:event_BT_VOLVERActionPerformed
 
@@ -162,13 +163,13 @@ Cola c = new Cola();
        if(TF_IDPROD.getText().equals("") || TF_CANTPROD.getText().equals("") || TF_NOMPROD.getText().equals("") || TXA_DESPROD.getText().equals("") || TF_PRECIOPROD.getText().equals("")){
            JOptionPane.showMessageDialog(this, "Porfavor, ingrese los campos vacios!","Campos vacíos", JOptionPane.WARNING_MESSAGE);
        } else {
-       inv.setID_Producto(Integer.parseInt(TF_IDPROD.getText()));
-       inv.setCant_prod(Integer.parseInt(TF_CANTPROD.getText()));
-       inv.setNombre_producto(TF_NOMPROD.getText());
-       inv.setDesc_prod(TXA_DESPROD.getText());
-       inv.setPrecio_Producto(Double.parseDouble(TF_PRECIOPROD.getText()));
-  contador++;
-   Producto obj = new Producto(inv.getID_Producto(),inv.getCant_prod(),inv.getNombre_producto(),inv.getDesc_prod(),inv.getPrecio_Producto());
+            inv.setID_Producto(Integer.parseInt(TF_IDPROD.getText()));
+            inv.setCant_prod(Integer.parseInt(TF_CANTPROD.getText()));
+            inv.setNombre_producto(TF_NOMPROD.getText());
+            inv.setDesc_prod(TXA_DESPROD.getText());
+            inv.setPrecio_Producto(Double.parseDouble(TF_PRECIOPROD.getText()));
+            contador++;
+            Producto obj = new Producto(inv.getID_Producto(),inv.getCant_prod(),inv.getNombre_producto(),inv.getDesc_prod(),inv.getPrecio_Producto());
             c.push(obj);
        }
     }//GEN-LAST:event_BT_AGREGARPRODActionPerformed
@@ -178,7 +179,7 @@ Cola c = new Cola();
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarInventario().setVisible(true);
+                new RegistrarInventario(null).setVisible(true);
             }
         });
     }
