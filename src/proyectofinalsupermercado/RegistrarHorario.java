@@ -11,11 +11,17 @@ package proyectofinalsupermercado;
  */
 public class RegistrarHorario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistrarHorario
-     */
-    public RegistrarHorario() {
+    Empleados[] empleados = new Empleados[20];
+    Cola cola = new Cola();
+    Horario[] horario = new Horario[20];
+    HorariosAsignados[] asignados = new HorariosAsignados[20];
+    
+    public RegistrarHorario(Cola c,Empleados[] emple, Horario[] h, HorariosAsignados[] a) {
         initComponents();
+        horario=h;
+        empleados = emple;
+        cola=c;
+        asignados=a;
     }
 
     /**
@@ -80,6 +86,11 @@ public class RegistrarHorario extends javax.swing.JFrame {
         jLabel6.setText("H. Salida:");
 
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         btnRegistrar.setText("Registrar");
 
@@ -171,7 +182,14 @@ public class RegistrarHorario extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        MenuPrincipal menu  =  new MenuPrincipal(0,0,empleados,cola,null,null, horario,asignados); 
+        menu.setVisible(true);
+        this.setVisible(false);  
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,7 +221,7 @@ public class RegistrarHorario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarHorario().setVisible(true);
+                new RegistrarHorario(null,null,null,null).setVisible(true);
             }
         });
     }

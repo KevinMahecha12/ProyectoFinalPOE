@@ -10,11 +10,34 @@ package proyectofinalsupermercado;
  */
 public class AsignarHorarioTrabajador extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AsignarHorarioTrabajador
-     */
-    public AsignarHorarioTrabajador() {
+    Empleados[] empleados = new Empleados[20];
+    Cola cola = new Cola();
+    Horario[] horario = new Horario[20];
+    HorariosAsignados[] asignados = new HorariosAsignados[20];
+    
+    public AsignarHorarioTrabajador(Cola c,Empleados[] emple, Horario[] h, HorariosAsignados[] a) {
         initComponents();
+        horario=h;
+        empleados = emple;
+        cola=c;
+        asignados=a;
+        
+        for (Empleados empleado : empleados) {
+            if(empleado!=null){
+                cbbTrabajador.addItem(empleado.Nombre_Empleado);
+            }else{
+                break;
+            }
+        }
+        
+        for(Horario hora : horario){
+            if(hora!=null){
+                cbbHorarios.addItem(new ComboItem(hora.Dia + " / Entrada: " + hora.Hora_Entrada + " / Salida: " + hora.Hora_Salida, String.valueOf(hora.ID)));
+            }else{
+                break;
+            }
+        }
+        
     }
 
     /**
@@ -29,8 +52,8 @@ public class AsignarHorarioTrabajador extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtRegresar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbbTrabajador = new javax.swing.JComboBox<>();
+        cbbHorarios = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,21 +61,35 @@ public class AsignarHorarioTrabajador extends javax.swing.JFrame {
         jLabel3.setText("Asignar Horario a trabajador");
 
         txtRegresar.setText("Regresar");
+        txtRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRegresarActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Añadir Horario");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbTrabajador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbTrabajadorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
                 .addComponent(txtRegresar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1))
+                .addComponent(jButton1)
+                .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -61,29 +98,89 @@ public class AsignarHorarioTrabajador extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, 373, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                            .addComponent(cbbTrabajador, 0, 373, Short.MAX_VALUE)
+                            .addComponent(cbbHorarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel3)
                 .addGap(34, 34, 34)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbbTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addContainerGap())
-                    .addComponent(txtRegresar, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addComponent(cbbHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(txtRegresar))
+                .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(518, 385));
+        setSize(new java.awt.Dimension(518, 253));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegresarActionPerformed
+        GestionHorarios nvo  =  new GestionHorarios(cola,empleados,horario, asignados); 
+        nvo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_txtRegresarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int id=0;
+        int turno=0;
+        String seleccionadoEmpleado = cbbTrabajador.getSelectedItem().toString();
+        String dias="";
+        String entrada="";
+        String salida="";
+        
+        Object item = cbbHorarios.getSelectedItem();
+        String value = ((ComboItem)item).getValue();
+        
+        for(Empleados empleado: empleados){
+            if(empleado!=null){
+                if(empleado.Nombre_Empleado.equals(seleccionadoEmpleado)){
+                id = empleado.ID_EMPLEADO;
+                turno = empleado.Turno;
+            }
+            }else{
+                break;
+            }
+           
+        }//for empleados
+        
+        for(Horario hora: horario){
+            if(hora!=null){
+                if(hora.ID==Integer.parseInt(value)){
+                    dias = hora.Dia;
+                    entrada = hora.Hora_Entrada;
+                    salida = hora.Hora_Salida;
+                }
+            }else{
+                break;
+            }
+
+        }//for empleados
+        
+        HorariosAsignados obj = new HorariosAsignados(id,seleccionadoEmpleado,dias,turno,entrada,salida);
+        
+        if(asignados.length==0){
+                asignados[0] = obj;
+            }else{
+                for(int i=0;i<asignados.length;i++){
+                    if(asignados[i] == null){
+                        asignados[i] = obj;
+                        i=asignados.length;
+                    }
+                }
+            }//else
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cbbTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTrabajadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbTrabajadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,15 +212,15 @@ public class AsignarHorarioTrabajador extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AsignarHorarioTrabajador().setVisible(true);
+                new AsignarHorarioTrabajador(null,null,null,null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<ComboItem> cbbHorarios;
+    private javax.swing.JComboBox<String> cbbTrabajador;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton txtRegresar;
     // End of variables declaration//GEN-END:variables
