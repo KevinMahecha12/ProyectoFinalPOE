@@ -15,6 +15,7 @@ HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 Inventario inv = new Inventario();
 String NombreRecibido;
+
     
     public RegistrarInventario(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
        if(ContadorEmp!=0){
@@ -23,7 +24,8 @@ String NombreRecibido;
         if(ContadorInv!=0){
             contInv=ContadorInv;
         }
-     
+              ImagenFondo imgf = new ImagenFondo("src/imagenes/invent.jpg");
+        this.setContentPane(imgf); 
           initComponents();
            if(COLA_INVENTARIO!=null){
             c  = COLA_INVENTARIO;
@@ -61,77 +63,96 @@ String NombreRecibido;
         TXA_DESPROD = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         TF_PRECIOPROD = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
         BT_AGREGARPROD = new javax.swing.JButton();
         BT_VOLVER = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registrar productos");
 
-        jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Registrar un producto");
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("Ingrese un ID para el producto: ");
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        TF_IDPROD.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        TF_IDPROD.setForeground(new java.awt.Color(0, 0, 102));
+
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 102));
         jLabel3.setText("Nombre del producto:");
 
-        jLabel4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        TF_NOMPROD.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        TF_NOMPROD.setForeground(new java.awt.Color(0, 0, 102));
+
+        jLabel4.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 102));
         jLabel4.setText("Introduzca la cantidad del producto: ");
 
-        jLabel5.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        TF_CANTPROD.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        TF_CANTPROD.setForeground(new java.awt.Color(0, 0, 102));
+
+        jLabel5.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 102));
         jLabel5.setText("Descripcion del producto:");
 
         TXA_DESPROD.setColumns(20);
+        TXA_DESPROD.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        TXA_DESPROD.setForeground(new java.awt.Color(0, 0, 102));
         TXA_DESPROD.setRows(5);
         jScrollPane1.setViewportView(TXA_DESPROD);
 
-        jLabel6.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 102));
         jLabel6.setText("Ingrese el precio del producto:");
 
-        BT_AGREGARPROD.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        TF_PRECIOPROD.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        TF_PRECIOPROD.setForeground(new java.awt.Color(0, 0, 102));
+
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0, 15, 0));
+
+        BT_AGREGARPROD.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        BT_AGREGARPROD.setForeground(new java.awt.Color(0, 0, 102));
         BT_AGREGARPROD.setText("Agregar producto");
         BT_AGREGARPROD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BT_AGREGARPRODActionPerformed(evt);
             }
         });
+        jPanel1.add(BT_AGREGARPROD);
 
-        BT_VOLVER.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        BT_VOLVER.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        BT_VOLVER.setForeground(new java.awt.Color(0, 0, 102));
         BT_VOLVER.setText("Volver");
         BT_VOLVER.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BT_VOLVERActionPerformed(evt);
             }
         });
+        jPanel1.add(BT_VOLVER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(99, 99, 99)
-                                .addComponent(BT_AGREGARPROD)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BT_VOLVER))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel5)))
-                        .addGap(0, 97, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(TF_PRECIOPROD))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TF_NOMPROD))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -139,13 +160,15 @@ String NombreRecibido;
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(TF_CANTPROD, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                                    .addComponent(TF_IDPROD))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TF_NOMPROD)))))
+                                    .addComponent(TF_IDPROD)))
+                            .addComponent(jLabel5)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 10, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,19 +187,17 @@ String NombreRecibido;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(TF_NOMPROD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(TF_PRECIOPROD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BT_AGREGARPROD)
-                    .addComponent(BT_VOLVER))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,6 +258,7 @@ String NombreRecibido;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

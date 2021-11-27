@@ -13,6 +13,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     String NombreRecibido;
     
     public RegistrarEmpleados(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
+        ImagenFondo imgf = new ImagenFondo("src/imagenes/Rempleados.jpg");
+        this.setContentPane(imgf);
         initComponents();
         BGROUP.add(RB_MATU);
         BGROUP.add(RB_VESP);
@@ -54,37 +56,37 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registrar empleado");
 
-        jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Registrar un empleado");
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jLabel2.setText("Introduzca ID del empleado:");
 
         TF_ID.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jLabel3.setText("Nombre del empleado:");
 
         TF_NOMEMPLEADO.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jLabel4.setText("Seleccione la área de trabajo:");
 
-        JCB_AREATRABAJO.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        JCB_AREATRABAJO.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         JCB_AREATRABAJO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Limpieza ( Intendencia )", "Cajero", "Mascotas", "Ropa para bébes", "Comida", "Electrónicos", "Vigilancia ( seguridad ) ", "Bodegas ( manejo mercancía )", "Gerencia ", "Control de inventarios" }));
 
-        jLabel5.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jLabel5.setText("Seleccione el turno del empleado: ");
 
-        RB_MATU.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        RB_MATU.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         RB_MATU.setSelected(true);
         RB_MATU.setText("Matutino");
 
-        RB_VESP.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        RB_VESP.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         RB_VESP.setText("Vespertino");
 
-        BT_REG.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        BT_REG.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         BT_REG.setText("Registrar");
         BT_REG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +94,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
             }
         });
 
-        BT_Volver.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        BT_Volver.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         BT_Volver.setText("Volver");
         BT_Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,31 +110,33 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BT_REG)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BT_Volver)
-                .addGap(209, 209, 209))
+                .addComponent(BT_Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(258, 258, 258))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TF_NOMEMPLEADO)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(TF_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 218, Short.MAX_VALUE)
-                        .addComponent(JCB_AREATRABAJO, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(RB_MATU)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(RB_VESP)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(TF_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JCB_AREATRABAJO, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(TF_NOMEMPLEADO, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(RB_MATU)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(RB_VESP)))
+                        .addGap(0, 65, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -144,10 +148,10 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(TF_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(TF_NOMEMPLEADO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TF_NOMEMPLEADO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -159,9 +163,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                     .addComponent(RB_VESP))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BT_REG)
-                    .addComponent(BT_Volver))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(BT_REG, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BT_Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
