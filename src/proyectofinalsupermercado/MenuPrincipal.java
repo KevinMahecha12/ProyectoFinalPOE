@@ -49,6 +49,8 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         jMenu1 = new javax.swing.JMenu();
         JMI_REMPLEADOS = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        BuscarEmpleado = new javax.swing.JMenuItem();
+        EliminarEmpleado = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -87,6 +89,22 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
             }
         });
         jMenu1.add(jMenuItem2);
+
+        BuscarEmpleado.setText("Buscar Empleado");
+        BuscarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarEmpleadoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(BuscarEmpleado);
+
+        EliminarEmpleado.setText("Eliminar Empleados");
+        EliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarEmpleadoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(EliminarEmpleado);
 
         jMenuBar1.add(jMenu1);
 
@@ -202,6 +220,20 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void BuscarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarEmpleadoActionPerformed
+        // TODO add your handling code here:
+        BuscarEmpleado REGINV  =  new  BuscarEmpleado(cola_inventario,contEmp,empleados, horario,asignados); 
+       REGINV.setVisible(true);
+        this.setVisible(false);  
+    }//GEN-LAST:event_BuscarEmpleadoActionPerformed
+
+    private void EliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarEmpleadoActionPerformed
+        // TODO add your handling code here:
+        EliminarEmpleados REGINV  =  new  EliminarEmpleados(cola_inventario,contEmp,empleados, horario,asignados); 
+       REGINV.setVisible(true);
+        this.setVisible(false); 
+    }//GEN-LAST:event_EliminarEmpleadoActionPerformed
+
 
     public static void main(String args[]) {
 
@@ -213,6 +245,8 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem BuscarEmpleado;
+    private javax.swing.JMenuItem EliminarEmpleado;
     private javax.swing.JLabel JL_Hora;
     private javax.swing.JLabel JL_NombreAdmin;
     private javax.swing.JLabel JL_PInventario;

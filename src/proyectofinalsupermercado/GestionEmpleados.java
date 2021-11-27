@@ -207,6 +207,8 @@ public class GestionEmpleados extends javax.swing.JFrame {
 
     private void jbutton_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_EditarActionPerformed
         // TODO add your handling code here:
+        
+       
     }//GEN-LAST:event_jbutton_EditarActionPerformed
 
     /**
