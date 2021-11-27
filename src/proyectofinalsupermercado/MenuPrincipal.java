@@ -1,5 +1,8 @@
 package proyectofinalsupermercado;
 
+import java.awt.Font;
+import javax.swing.UIManager;
+
 public class MenuPrincipal extends javax.swing.JFrame {
 private  int contInv,contEmp;
 Cola cola_inventario = new Cola();
@@ -9,9 +12,19 @@ Horario[] horario = new Horario[20];
 HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
+        ImagenFondo imgf = new ImagenFondo("src/imagenes/menu3.jpg");
+        this.setContentPane(imgf);
         initComponents();
         System.out.println("TRABAJADORES CONTADOS: "+ContadorEmp);
         System.out.println("INVENTARIOS CONTADOS: "+ContadorInv);
+        Font f = new Font("sans-serif", Font.PLAIN, 20);
+
+jMenu1.setFont(new Font(jMenu1.getFont().getFontName(), jMenu1.getFont().getStyle(), 20));
+jMenu3.setFont(new Font(jMenu3.getFont().getFontName(), jMenu3.getFont().getStyle(), 20));
+jMenu2.setFont(new Font(jMenu2.getFont().getFontName(), jMenu2.getFont().getStyle(), 20));
+jMenu1.setFont(new Font(jMenu1.getFont().getFontName(), jMenu1.getFont().getStyle(), 20));
+jMenu1.setFont(new Font(jMenu1.getFont().getFontName(), jMenu1.getFont().getStyle(), 20));
+jMenu1.setFont(new Font(jMenu1.getFont().getFontName(), jMenu1.getFont().getStyle(), 20));
         if(COLA_INVENTARIO!=null){
             cola_inventario  = COLA_INVENTARIO;
         }
@@ -38,12 +51,6 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         NombreRecibido = Nombre_Administrador;
         JL_NombreAdmin.setText("Bienvenido: " + NombreRecibido);
         System.out.println("Nombre que se recibio" + NombreRecibido);
-
-             
-       
-
-       
-
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -61,33 +68,52 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu principal");
 
-        JL_NombreAdmin.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        JL_NombreAdmin.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        JL_NombreAdmin.setForeground(new java.awt.Color(255, 255, 255));
         JL_NombreAdmin.setText("Bienvenido: ");
 
+        JL_Hora.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        JL_Hora.setForeground(new java.awt.Color(255, 255, 255));
         JL_Hora.setText("Hora actual: ");
 
+        JL_TRegistrados.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        JL_TRegistrados.setForeground(new java.awt.Color(255, 255, 255));
         JL_TRegistrados.setText("Trabajadores registrados: ");
 
+        JL_PInventario.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        JL_PInventario.setForeground(new java.awt.Color(255, 255, 255));
         JL_PInventario.setText("Productos en el inventario: ");
 
+        jButton1.setBackground(new java.awt.Color(0, 99, 177));
+        jButton1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Salir");
+        jButton1.setFocusPainted(false);
+        jButton1.setRequestFocusEnabled(false);
+        jButton1.setRolloverEnabled(false);
 
+        jMenuBar1.setBackground(new java.awt.Color(0, 99, 177));
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenuBar1.setForeground(new java.awt.Color(204, 51, 0));
+
+        jMenu1.setBackground(new java.awt.Color(102, 102, 255));
+        jMenu1.setForeground(new java.awt.Color(255, 255, 255));
         jMenu1.setText("Empleados");
 
         JMI_REMPLEADOS.setText("Registrar Empleados");
@@ -122,40 +148,8 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Horarios");
-
-        jMenuItem3.setText("Registrar Horario");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem3);
-
-        jMenuItem4.setText("Gestión de horarios");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem4);
-
-        jMenuItem9.setText("Editar horario");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem9);
-
-        jMenuItem10.setText("Buscar horario");
-        jMenu2.add(jMenuItem10);
-
-        jMenuItem11.setText("Eliminar Horario");
-        jMenu2.add(jMenuItem11);
-
-        jMenuBar1.add(jMenu2);
-
+        jMenu3.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu3.setForeground(new java.awt.Color(255, 255, 255));
         jMenu3.setText("Inventario");
 
         jMenuItem5.setText("Registrar Inventario");
@@ -190,6 +184,41 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
 
         jMenuBar1.add(jMenu3);
 
+        jMenu2.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu2.setText("Horarios");
+
+        jMenuItem3.setText("Registrar Horario");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
+        jMenuItem4.setText("Gestión de horarios");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem9.setText("Editar horario");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem9);
+
+        jMenuItem10.setText("Buscar horario");
+        jMenu2.add(jMenuItem10);
+
+        jMenuItem11.setText("Eliminar Horario");
+        jMenu2.add(jMenuItem11);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -201,10 +230,13 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JL_TRegistrados)
                     .addComponent(JL_PInventario)
-                    .addComponent(jButton1)
                     .addComponent(JL_Hora)
                     .addComponent(JL_NombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(310, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,9 +249,9 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
                 .addComponent(JL_TRegistrados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JL_PInventario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         pack();

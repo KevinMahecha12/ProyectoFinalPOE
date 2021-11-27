@@ -14,7 +14,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private static EmpleadosInicioSesion e = new EmpleadosInicioSesion();
         boolean error = false;
     public InicioSesion() {
-          ImagenFondo imgf = new ImagenFondo("src/imagenes/inicio.jpg");
+        ImagenFondo imgf = new ImagenFondo("src/imagenes/inicio.jpg");
         this.setContentPane(imgf);
         initComponents();
     }
@@ -124,7 +124,7 @@ public class InicioSesion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(Error, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,7 +139,7 @@ public class InicioSesion extends javax.swing.JFrame {
                     .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BotonIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(783, 381));
