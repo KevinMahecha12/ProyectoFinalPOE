@@ -5,6 +5,8 @@
  */
 package proyectofinalsupermercado;
 
+import java.util.Vector;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -14,7 +16,9 @@ public class GestionHorarios extends javax.swing.JFrame {
     Cola cola = new Cola();
     Horario[] horario = new Horario[20];
     HorariosAsignados[] asignados = new HorariosAsignados[20];
-    
+    private int selectedRow;
+    DefaultTableModel modelo = new DefaultTableModel();
+       Object []  datos = new Object[6];
     public GestionHorarios(Cola c,Empleados[] emple, Horario[] h, HorariosAsignados[] a) {
         initComponents();
         horario=h;
@@ -23,10 +27,10 @@ public class GestionHorarios extends javax.swing.JFrame {
         asignados=a;
         String[] cabecera ={"Id trabajador","Nombre","Dias","Turno", "Hora Entrada", "Hora Salida"};
         
-        DefaultTableModel modelo = new DefaultTableModel();
+        
         modelo.setColumnIdentifiers(cabecera);
         
-        Object []  datos = new Object[6];
+     
 
             for( int i=0; i<asignados.length;i++){
                 if(asignados[i]==null){
@@ -38,7 +42,15 @@ public class GestionHorarios extends javax.swing.JFrame {
                     datos[3]=asignados[i].Turno;
                     datos[4]=asignados[i].Hora_Entrada;
                     datos[5]=asignados[i].Hora_Salida;
+                    System.out.println("ROW QUE SE RECIBIO: "+TablaHorarios.getSelectedRow() +"COLUMNA QUE SE RECIBIO: "+ TablaHorarios.getSelectedColumn());
+                    
+                    
+               
+if (selectedRow >= 0) {
 
+    //userModel.setValueAt(newValue, selectedRow, 0);
+    
+} 
                     modelo.addRow(datos);
                 }
         }
@@ -92,13 +104,23 @@ public class GestionHorarios extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        TablaHorarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaHorariosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TablaHorarios);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinalsupermercado/imagenes/fecha.png"))); // NOI18N
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinalsupermercado/imagenes/hora.png"))); // NOI18N
 
-        BotonEditar.setText("Editar");
+        BotonEditar.setText("Eliminar");
+        BotonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEditarActionPerformed(evt);
+            }
+        });
 
         CrearHorario.setText("Crear nuevo horario predefinido");
         CrearHorario.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +130,7 @@ public class GestionHorarios extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Sinhala MN", 2, 24)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Gestion de Horarios");
 
         txtRegresar.setText("Regresar");
@@ -130,55 +153,48 @@ public class GestionHorarios extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(BotonEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtRegresar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CrearHorario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AsignarHorario)
-                .addContainerGap(117, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(137, 137, 137))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(jLabel2)
-                .addGap(11, 11, 11))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(CrearHorario)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(AsignarHorario)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtRegresar)
+                            .addGap(69, 69, 69)
+                            .addComponent(BotonEditar))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CrearHorario)
-                            .addComponent(BotonEditar)
-                            .addComponent(AsignarHorario)
-                            .addComponent(txtRegresar)))
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CrearHorario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                            .addComponent(AsignarHorario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BotonEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(25, 25, 25))
         );
 
-        setSize(new java.awt.Dimension(690, 394));
+        setSize(new java.awt.Dimension(761, 398));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -199,6 +215,24 @@ public class GestionHorarios extends javax.swing.JFrame {
         menu.setVisible(true);
         this.setVisible(false);  
     }//GEN-LAST:event_txtRegresarActionPerformed
+
+    private void BotonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEditarActionPerformed
+
+    }//GEN-LAST:event_BotonEditarActionPerformed
+public void valueChanged(ListSelectionEvent event) {
+           
+         }
+
+    private void TablaHorariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaHorariosMouseClicked
+           int selectedRowIndex =  TablaHorarios.getSelectedRow();
+                   System.out.println("DATOS DE LO SELECCIONADO: "+modelo.getValueAt( selectedRowIndex, 0).toString());
+                   System.out.println("DATOS DE LO SELECCIONADO: "+modelo.getValueAt( selectedRowIndex, 1).toString());
+                   System.out.println("DATOS DE LO SELECCIONADO: "+modelo.getValueAt( selectedRowIndex, 2).toString());
+                    System.out.println("DATOS DE LO SELECCIONADO: "+modelo.getValueAt( selectedRowIndex, 3).toString());
+                     System.out.println("DATOS DE LO SELECCIONADO: "+modelo.getValueAt( selectedRowIndex, 4).toString());
+                      System.out.println("DATOS DEL SELECCIOANDO:" + modelo.getDataVector().elementAt(TablaHorarios.getSelectedRow()));
+                      
+    }//GEN-LAST:event_TablaHorariosMouseClicked
 
     /**
      * @param args the command line arguments

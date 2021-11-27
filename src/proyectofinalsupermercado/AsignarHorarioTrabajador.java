@@ -80,6 +80,12 @@ public class AsignarHorarioTrabajador extends javax.swing.JFrame {
             }
         });
 
+        cbbHorarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbHorariosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -181,6 +187,10 @@ public class AsignarHorarioTrabajador extends javax.swing.JFrame {
     private void cbbTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTrabajadorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbTrabajadorActionPerformed
+
+    private void cbbHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbHorariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbHorariosActionPerformed
 
     /**
      * @param args the command line arguments
