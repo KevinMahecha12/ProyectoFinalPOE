@@ -170,9 +170,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
             String area = JCB_AREATRABAJO.getSelectedItem().toString();
             int turno;
             if(RB_MATU.isSelected()){
-                turno=1;
-            }else{
                 turno=2;
+            }else{
+                turno=1;
             }
             
             Empleados obj = new Empleados(id, name, area, turno);

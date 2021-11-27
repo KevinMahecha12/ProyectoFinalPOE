@@ -34,8 +34,13 @@ public class GestionEmpleados extends javax.swing.JFrame {
                 datos[0]=empleados[i].getID_EMPLEADO();
                 datos[1]=empleados[i].getNombre_Empleado();
                 datos[2]=empleados[i].getArea_Trabajador();
-                datos[3]=empleados[i].getTurno();
-            
+          
+            if (empleados[i].getTurno() == 2){
+                datos[3]="Matutino";
+            } 
+           if (empleados[i].getTurno() == 1){
+                datos[3]="Vespertino";
+            } 
                 modelo.addRow(datos);
                 }
         }
