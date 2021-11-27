@@ -166,7 +166,7 @@ public class RegistrarInventario extends javax.swing.JFrame {
   
     private void BT_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VOLVERActionPerformed
       
-        MenuPrincipal menu  =  new MenuPrincipal(contador,0,empleados,c,null,null,horario,asignados); 
+        MenuPrincipal menu  =  new MenuPrincipal(contador,0,empleados,c,null,null,horario,asignados,null); 
         menu.setVisible(true);
         this.setVisible(false);         
 

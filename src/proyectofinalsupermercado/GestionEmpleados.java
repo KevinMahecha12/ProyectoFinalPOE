@@ -192,7 +192,7 @@ public class GestionEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbutton_VolverAlMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu1ActionPerformed
-       MenuPrincipal menu  =  new MenuPrincipal(0,contEmp,empleados,cola,null,null, horario, asignados); 
+       MenuPrincipal menu  =  new MenuPrincipal(0,contEmp,empleados,cola,null,null, horario, asignados,null); 
        menu.setVisible(true);
        this.setVisible(false);  
     }//GEN-LAST:event_jbutton_VolverAlMenu1ActionPerformed

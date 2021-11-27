@@ -186,7 +186,7 @@ public class RegistrarHorario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(0,0,empleados,cola,null,null, horario,asignados); 
+        MenuPrincipal menu  =  new MenuPrincipal(0,0,empleados,cola,null,null, horario,asignados,null); 
         menu.setVisible(true);
         this.setVisible(false);  
     }//GEN-LAST:event_btnVolverActionPerformed

@@ -10,14 +10,7 @@ Empleados empleado = new Empleados();
          empleados = emple;
         initComponents();
          contEmp = ContEmp;
-            String[] cabecera ={"ID_Empleado","Nombre","Area de Trabajo","Turno"};
 
-        
-       DefaultTableModel modelo = new DefaultTableModel();
-        
-        modelo.setColumnIdentifiers(cabecera);
-        
-        Object []  datos = new Object[4];
         System.out.println("empleados contados: "+contEmp);
         for (Empleados empleado : empleados) {
             if(empleado!=null){
@@ -174,12 +167,11 @@ Empleados empleado = new Empleados();
             }else{
                 break;
             }
-           
         }
     }//GEN-LAST:event_cbbTrabajadorItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       MenuPrincipal menu  =  new MenuPrincipal(0,contEmp,empleados,null,null,null, null,null); 
+       MenuPrincipal menu  =  new MenuPrincipal(0,contEmp,empleados,null,null,null, null,null,null); 
        menu.setVisible(true);
        this.setVisible(false);  
     }//GEN-LAST:event_jButton1ActionPerformed

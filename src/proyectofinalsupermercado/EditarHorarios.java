@@ -1,0 +1,228 @@
+package proyectofinalsupermercado;
+
+
+public class EditarHorarios extends javax.swing.JFrame {
+    
+    Horario[] horarios = new Horario[20];
+    Horario h = new Horario();
+     int contEmp;
+    public EditarHorarios(int ContEmp, Horario[] H) {
+        horarios = H;
+        contEmp = ContEmp;
+        initComponents();
+
+        for (Horario horario: horarios) {
+            if(horario!=null){
+                cbbHorarios.addItem(String.valueOf(horario.ID));
+            }else{
+                break;
+            }
+        }
+    
+    }
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel3 = new javax.swing.JLabel();
+        DIAS_T = new javax.swing.JTextField();
+        cbbHorarios = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        BTEDITAR = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        HORAE_T = new javax.swing.JTextField();
+        HORAS_T = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        ID_H = new javax.swing.JTextField();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel3.setText("Dias de trabajo");
+
+        cbbHorarios.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbHorariosItemStateChanged(evt);
+            }
+        });
+        cbbHorarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbbHorariosMouseClicked(evt);
+            }
+        });
+        cbbHorarios.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbbHorariosKeyPressed(evt);
+            }
+        });
+
+        jButton1.setText("Volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        BTEDITAR.setText("Editar datos");
+        BTEDITAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTEDITARActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Seleccione el ID del horario que quiere editar:");
+
+        jLabel6.setText("Hora de entrada");
+
+        jLabel7.setText("Hora de salida");
+
+        HORAS_T.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HORAS_TActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("ID Horario");
+
+        ID_H.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ID_HActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(DIAS_T, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                            .addComponent(HORAE_T)
+                            .addComponent(HORAS_T)
+                            .addComponent(ID_H)))
+                    .addComponent(cbbHorarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BTEDITAR)
+                .addGap(58, 58, 58))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbbHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(ID_H, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(DIAS_T, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(HORAE_T, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(HORAS_T, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BTEDITAR)
+                    .addComponent(jButton1))
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void cbbHorariosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbHorariosItemStateChanged
+         int seleccionHorario = Integer.parseInt(cbbHorarios.getSelectedItem().toString());
+        for(Horario horario: horarios){
+            if(horario!=null){
+                if(horario.ID == seleccionHorario){
+                    ID_H.setText(String.valueOf(horario.ID));
+                    DIAS_T.setText(horario.Dia);
+                    HORAE_T.setText(horario.Hora_Entrada);
+                    HORAS_T.setText(horario.Hora_Salida);
+                }
+            }else{
+                break;
+            }
+
+        }
+    }//GEN-LAST:event_cbbHorariosItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MenuPrincipal menu  =  new MenuPrincipal(0,contEmp,null,null,null,null, horarios,null,null);
+        menu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void BTEDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTEDITARActionPerformed
+        Horario obj = new Horario(DIAS_T.getText(),HORAE_T.getText(),HORAS_T.getText(),Integer.parseInt(ID_H.getText()));
+        int index = cbbHorarios.getSelectedIndex() ;
+        horarios[index] = obj;
+
+    }//GEN-LAST:event_BTEDITARActionPerformed
+
+    private void HORAS_TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HORAS_TActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HORAS_TActionPerformed
+
+    private void ID_HActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ID_HActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ID_HActionPerformed
+
+    private void cbbHorariosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbbHorariosKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbHorariosKeyPressed
+
+    private void cbbHorariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbHorariosMouseClicked
+       
+    }//GEN-LAST:event_cbbHorariosMouseClicked
+
+    public static void main(String args[]) {
+  
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new EditarHorarios(0,null).setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTEDITAR;
+    private javax.swing.JTextField DIAS_T;
+    private javax.swing.JTextField HORAE_T;
+    private javax.swing.JTextField HORAS_T;
+    private javax.swing.JTextField ID_H;
+    private javax.swing.JComboBox<String> cbbHorarios;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    // End of variables declaration//GEN-END:variables
+}

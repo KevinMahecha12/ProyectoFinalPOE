@@ -7,7 +7,8 @@ String NombreRecibido;
 Empleados[] empleados = new Empleados[20];
 Horario[] horario = new Horario[20];
 HorariosAsignados[] asignados = new HorariosAsignados[20];
-public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a) {
+Producto[] productoarray = new Producto[20];
+public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
         initComponents();
         if(COLA_INVENTARIO!=null){
             cola_inventario  = COLA_INVENTARIO;
@@ -19,6 +20,10 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         if(a!=null){
             asignados=a;
         }
+        if(arrayp!=null){
+            productoarray=arrayp;
+        }
+
         
         contInv = ContadorInv;
         contEmp = ContadorEmp;
@@ -55,9 +60,15 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu principal");
@@ -125,6 +136,20 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         });
         jMenu2.add(jMenuItem4);
 
+        jMenuItem9.setText("Editar horario");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem9);
+
+        jMenuItem10.setText("Buscar horario");
+        jMenu2.add(jMenuItem10);
+
+        jMenuItem11.setText("Eliminar Horario");
+        jMenu2.add(jMenuItem11);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Inventario");
@@ -144,6 +169,20 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
             }
         });
         jMenu3.add(jMenuItem6);
+
+        jMenuItem12.setText("Editar inventario");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem12);
+
+        jMenuItem13.setText("Buscar inventario");
+        jMenu3.add(jMenuItem13);
+
+        jMenuItem14.setText("Eliminar Inventario");
+        jMenu3.add(jMenuItem14);
 
         jMenuBar1.add(jMenu3);
 
@@ -196,7 +235,7 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-      GestionProductos GPROD =  new  GestionProductos(contInv,cola_inventario, empleados, horario,asignados); 
+      GestionProductos GPROD =  new  GestionProductos(contInv,cola_inventario, empleados, horario,asignados,null); 
       GPROD.setVisible(true);
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem6ActionPerformed
@@ -226,12 +265,24 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
      
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+     EditarHorarios EH = new EditarHorarios(contEmp,horario);
+     EH.setVisible(true);
+     this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+     EditarInventario EI = new EditarInventario(contEmp,cola_inventario);
+     EI.setVisible(true);
+     this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
 
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                 new MenuPrincipal(0,0,null,null,null,null,null,null).setVisible(true);
+                 new MenuPrincipal(0,0,null,null,null,null,null,null,null).setVisible(true);
             }
         });
     }
@@ -248,6 +299,11 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -255,6 +311,7 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }
 

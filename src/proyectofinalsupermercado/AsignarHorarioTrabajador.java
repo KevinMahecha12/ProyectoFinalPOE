@@ -169,7 +169,7 @@ public class AsignarHorarioTrabajador extends javax.swing.JFrame {
 
         }//for empleados
         
-        HorariosAsignados obj = new HorariosAsignados(id,seleccionadoEmpleado,dias,turno,entrada,salida);
+        HorariosAsignados obj = new HorariosAsignados(id,seleccionadoEmpleado,dias,entrada,salida);
         
         if(asignados.length==0){
                 asignados[0] = obj;

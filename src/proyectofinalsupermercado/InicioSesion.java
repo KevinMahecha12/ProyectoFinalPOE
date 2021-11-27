@@ -168,7 +168,7 @@ public class InicioSesion extends javax.swing.JFrame {
            
           System.out.println(e.empleados[i]);
           if (e.empleados[i].toString().equals(usr+cont + e.getTurno())) {
-          MenuPrincipal c = new MenuPrincipal(0,0,null,null,usr,null,null,null);
+          MenuPrincipal c = new MenuPrincipal(0,0,null,null,usr,null,null,null,null);
           c.setVisible(true);
           this.setVisible(false);
       } else {

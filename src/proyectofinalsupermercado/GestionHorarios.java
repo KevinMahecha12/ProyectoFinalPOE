@@ -18,14 +18,14 @@ public class GestionHorarios extends javax.swing.JFrame {
     HorariosAsignados[] asignados = new HorariosAsignados[20];
     private int selectedRow;
     DefaultTableModel modelo = new DefaultTableModel();
-       Object []  datos = new Object[6];
+       Object []  datos = new Object[5];
     public GestionHorarios(Cola c,Empleados[] emple, Horario[] h, HorariosAsignados[] a) {
         initComponents();
         horario=h;
         empleados = emple;
         cola=c;
         asignados=a;
-        String[] cabecera ={"Id trabajador","Nombre","Dias","Turno", "Hora Entrada", "Hora Salida"};
+        String[] cabecera ={"Id trabajador","Nombre","Dias", "Hora Entrada", "Hora Salida"};
         
         
         modelo.setColumnIdentifiers(cabecera);
@@ -39,9 +39,8 @@ public class GestionHorarios extends javax.swing.JFrame {
                     datos[0]=asignados[i].ID_Trabajador;
                     datos[1]=asignados[i].Nombre_Trabajador;
                     datos[2]=asignados[i].Dias_Horario;
-                    datos[3]=asignados[i].Turno;
-                    datos[4]=asignados[i].Hora_Entrada;
-                    datos[5]=asignados[i].Hora_Salida;
+                    datos[3]=asignados[i].Hora_Entrada;
+                    datos[4]=asignados[i].Hora_Salida;
                     System.out.println("ROW QUE SE RECIBIO: "+TablaHorarios.getSelectedRow() +"COLUMNA QUE SE RECIBIO: "+ TablaHorarios.getSelectedColumn());
                     
                     
@@ -81,23 +80,23 @@ if (selectedRow >= 0) {
 
         TablaHorarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id Trabajador", "Nombre", "Dias", "Turno", "Hora Entrada", "Hora Salida"
+                "Id Trabajador", "Nombre", "Dias", "Hora Entrada", "Hora Salida"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true, true
+                false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -211,7 +210,7 @@ if (selectedRow >= 0) {
     }//GEN-LAST:event_CrearHorarioActionPerformed
 
     private void txtRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegresarActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(0,0,empleados,cola,null,null, horario, asignados); 
+        MenuPrincipal menu  =  new MenuPrincipal(0,0,empleados,cola,null,null, horario, asignados,null); 
         menu.setVisible(true);
         this.setVisible(false);  
     }//GEN-LAST:event_txtRegresarActionPerformed
