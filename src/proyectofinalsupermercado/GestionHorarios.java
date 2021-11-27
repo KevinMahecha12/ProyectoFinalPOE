@@ -28,6 +28,8 @@ String NombreRecibido;
         if(ContadorInv!=0){
             contInv=ContadorInv;
         }
+        ImagenFondo imgf = new ImagenFondo("src/imagenes/fondoabc.jpg");
+        this.setContentPane(imgf);
         initComponents();
         
            if(COLA_INVENTARIO!=null){
@@ -101,6 +103,9 @@ if (selectedRow >= 0) {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        TablaHorarios.setBackground(new java.awt.Color(102, 153, 255));
+        TablaHorarios.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        TablaHorarios.setForeground(new java.awt.Color(255, 255, 255));
         TablaHorarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -133,6 +138,8 @@ if (selectedRow >= 0) {
         });
         jScrollPane1.setViewportView(TablaHorarios);
 
+        CrearHorario.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        CrearHorario.setForeground(new java.awt.Color(0, 0, 153));
         CrearHorario.setText("Crear nuevo horario predefinido");
         CrearHorario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,10 +147,13 @@ if (selectedRow >= 0) {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Sinhala MN", 2, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 153));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Gestion de Horarios");
 
+        txtRegresar.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        txtRegresar.setForeground(new java.awt.Color(0, 0, 153));
         txtRegresar.setText("Regresar");
         txtRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,6 +161,8 @@ if (selectedRow >= 0) {
             }
         });
 
+        AsignarHorario.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        AsignarHorario.setForeground(new java.awt.Color(0, 0, 153));
         AsignarHorario.setText("Asignar horarios predefinidos");
         AsignarHorario.setToolTipText("");
         AsignarHorario.addActionListener(new java.awt.event.ActionListener() {
@@ -165,18 +177,17 @@ if (selectedRow >= 0) {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(90, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addComponent(CrearHorario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AsignarHorario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtRegresar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 817, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(CrearHorario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(AsignarHorario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtRegresar)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,16 +195,16 @@ if (selectedRow >= 0) {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(AsignarHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                    .addComponent(AsignarHorario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(CrearHorario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(txtRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27))
         );
 
-        setSize(new java.awt.Dimension(761, 357));
+        setSize(new java.awt.Dimension(885, 415));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

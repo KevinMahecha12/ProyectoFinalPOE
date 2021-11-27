@@ -29,6 +29,8 @@ String NombreRecibido;
         if(ContadorInv!=0){
             contInv=ContadorInv;
         }
+        ImagenFondo imgf = new ImagenFondo("src/imagenes/fondoginvt.jpg");
+        this.setContentPane(imgf);
         initComponents();
         
            if(COLA_INVENTARIO!=null){
@@ -78,6 +80,9 @@ String NombreRecibido;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTable_MostrarProductos.setBackground(new java.awt.Color(102, 153, 255));
+        jTable_MostrarProductos.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        jTable_MostrarProductos.setForeground(new java.awt.Color(255, 255, 255));
         jTable_MostrarProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -92,10 +97,13 @@ String NombreRecibido;
             jTable_MostrarProductos.getColumnModel().getColumn(3).setPreferredWidth(200);
         }
 
-        jLabel_TotalProductos.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jLabel_TotalProductos.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel_TotalProductos.setForeground(new java.awt.Color(0, 0, 102));
         jLabel_TotalProductos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_TotalProductos.setToolTipText("ProductosRegistrados");
 
+        jbutton_VolverAlMenu2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        jbutton_VolverAlMenu2.setForeground(new java.awt.Color(0, 0, 102));
         jbutton_VolverAlMenu2.setText("Volver");
         jbutton_VolverAlMenu2.setToolTipText("RegresarMenu2");
         jbutton_VolverAlMenu2.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +112,8 @@ String NombreRecibido;
             }
         });
 
-        JL_ERROR.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        JL_ERROR.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        JL_ERROR.setForeground(new java.awt.Color(0, 0, 102));
         JL_ERROR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -30,6 +30,8 @@ String NombreRecibido;
         if(ContadorInv!=0){
             contInv=ContadorInv;
         }
+        ImagenFondo imgf = new ImagenFondo("src/imagenes/blob.jpg");
+        this.setContentPane(imgf);
         initComponents();
         
            if(COLA_INVENTARIO!=null){
@@ -86,31 +88,43 @@ String NombreRecibido;
         jCheckBox6.setText("Lun");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Horario Nuevo");
 
-        jLabel1.setFont(new java.awt.Font("Sinhala MN", 2, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Horario Nuevo");
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("Nombre ");
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 102));
         jLabel3.setText("Hora entrada:");
 
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 102));
         jLabel4.setText("Hora salida:");
 
+        txtHoraSalida.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        txtHoraSalida.setForeground(new java.awt.Color(0, 0, 102));
         txtHoraSalida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHoraSalidaActionPerformed(evt);
             }
         });
 
+        txtHoraEntrada.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        txtHoraEntrada.setForeground(new java.awt.Color(0, 0, 102));
         txtHoraEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHoraEntradaActionPerformed(evt);
             }
         });
 
+        txtRegresar1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        txtRegresar1.setForeground(new java.awt.Color(0, 0, 102));
         txtRegresar1.setText("Crear");
         txtRegresar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +132,8 @@ String NombreRecibido;
             }
         });
 
+        txtVolver.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        txtVolver.setForeground(new java.awt.Color(0, 0, 102));
         txtVolver.setText("Volver");
         txtVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,66 +141,78 @@ String NombreRecibido;
             }
         });
 
+        cbbLun.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        cbbLun.setForeground(new java.awt.Color(0, 0, 102));
         cbbLun.setText("Lun");
 
+        cbbMie.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        cbbMie.setForeground(new java.awt.Color(0, 0, 102));
         cbbMie.setText("Mie");
 
+        cbbMar.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        cbbMar.setForeground(new java.awt.Color(0, 0, 102));
         cbbMar.setText("Mar");
 
+        cbbJue.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        cbbJue.setForeground(new java.awt.Color(0, 0, 102));
         cbbJue.setText("Jue");
 
+        cbbVie.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        cbbVie.setForeground(new java.awt.Color(0, 0, 102));
         cbbVie.setText("Vie");
 
+        cbbSab.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        cbbSab.setForeground(new java.awt.Color(0, 0, 102));
         cbbSab.setText("Sab");
 
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 102));
         jLabel5.setText("Dias:");
+
+        txtNOM.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        txtNOM.setForeground(new java.awt.Color(0, 0, 102));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(txtVolver)
-                .addGap(40, 40, 40)
-                .addComponent(txtRegresar1)
-                .addGap(91, 91, 91))
             .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNOM, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cbbLun)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cbbMar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cbbMie)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cbbJue)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cbbVie)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cbbSab))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtHoraEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-                            .addComponent(txtHoraSalida)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbbLun)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(cbbMar)
+                                .addComponent(txtRegresar1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbbMie)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbbJue)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbbVie)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbbSab))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNOM, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                                .addComponent(txtVolver))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtHoraEntrada)
+                                .addComponent(txtHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,7 +232,7 @@ String NombreRecibido;
                     .addComponent(cbbVie)
                     .addComponent(cbbSab)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(txtHoraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -212,14 +240,14 @@ String NombreRecibido;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRegresar1)
                     .addComponent(txtVolver))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(389, 338));
+        setSize(new java.awt.Dimension(496, 349));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

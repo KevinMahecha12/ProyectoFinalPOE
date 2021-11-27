@@ -1,5 +1,6 @@
 package proyectofinalsupermercado;
 
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.UIManager;
 
@@ -25,6 +26,7 @@ jMenu2.setFont(new Font(jMenu2.getFont().getFontName(), jMenu2.getFont().getStyl
 jMenu1.setFont(new Font(jMenu1.getFont().getFontName(), jMenu1.getFont().getStyle(), 20));
 jMenu1.setFont(new Font(jMenu1.getFont().getFontName(), jMenu1.getFont().getStyle(), 20));
 jMenu1.setFont(new Font(jMenu1.getFont().getFontName(), jMenu1.getFont().getStyle(), 20));
+jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         if(COLA_INVENTARIO!=null){
             cola_inventario  = COLA_INVENTARIO;
         }

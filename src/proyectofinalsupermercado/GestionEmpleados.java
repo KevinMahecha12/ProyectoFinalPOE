@@ -9,7 +9,6 @@ import javax.swing.table.DefaultTableModel;
  * @author kevin
  */
 public class GestionEmpleados extends javax.swing.JFrame {
-
        Horario[] horarios = new Horario[20];
     Horario h = new Horario();
      int contEmp;
@@ -96,9 +95,9 @@ String NombreRecibido;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jtableEmpleadosRegistrados.setBackground(new java.awt.Color(153, 204, 255));
+        jtableEmpleadosRegistrados.setBackground(new java.awt.Color(102, 153, 255));
         jtableEmpleadosRegistrados.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
-        jtableEmpleadosRegistrados.setForeground(new java.awt.Color(0, 0, 255));
+        jtableEmpleadosRegistrados.setForeground(new java.awt.Color(255, 255, 255));
         jtableEmpleadosRegistrados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -144,7 +143,7 @@ String NombreRecibido;
                                 .addComponent(jbutton_VolverAlMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(JL_ERROR, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 6, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

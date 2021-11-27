@@ -23,6 +23,8 @@ String NombreRecibido;
         if(ContadorInv!=0){
             contInv=ContadorInv;
         }
+                ImagenFondo imgf = new ImagenFondo("src/imagenes/editar.jpg");
+        this.setContentPane(imgf);
         initComponents();
         
            if(COLA_INVENTARIO!=null){
@@ -81,36 +83,66 @@ String NombreRecibido;
         BT_EDITAR = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Editar inventario");
 
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Seleccione el nombre del producto que quiere editar");
 
+        CB_Inventario.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        CB_Inventario.setForeground(new java.awt.Color(0, 0, 102));
         CB_Inventario.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 CB_InventarioItemStateChanged(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("ID del inventario:");
 
+        ID_INV.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        ID_INV.setForeground(new java.awt.Color(0, 0, 102));
+
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 102));
         jLabel3.setText("Cantidad del producto: ");
 
+        CANT_INV.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        CANT_INV.setForeground(new java.awt.Color(0, 0, 102));
+
+        jLabel4.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 102));
         jLabel4.setText("Nombre del producto:");
 
+        NOM_INV.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        NOM_INV.setForeground(new java.awt.Color(0, 0, 102));
         NOM_INV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NOM_INVActionPerformed(evt);
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 102));
         jLabel5.setText("Descripción del producto:");
 
         DESC_INV.setColumns(20);
+        DESC_INV.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        DESC_INV.setForeground(new java.awt.Color(0, 0, 102));
         DESC_INV.setRows(5);
         jScrollPane1.setViewportView(DESC_INV);
 
+        jLabel6.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 102));
         jLabel6.setText("Precio del producto:");
 
+        PREC_INV.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        PREC_INV.setForeground(new java.awt.Color(0, 0, 102));
+
+        BT_VOLVER.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        BT_VOLVER.setForeground(new java.awt.Color(0, 0, 102));
         BT_VOLVER.setText("Volver");
         BT_VOLVER.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +150,8 @@ String NombreRecibido;
             }
         });
 
+        BT_EDITAR.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        BT_EDITAR.setForeground(new java.awt.Color(0, 0, 102));
         BT_EDITAR.setText("Editar");
         BT_EDITAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,20 +182,19 @@ String NombreRecibido;
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(CANT_INV, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(CB_Inventario, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(PREC_INV, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(BT_EDITAR)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(BT_VOLVER)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(PREC_INV, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45)
+                                .addComponent(BT_EDITAR)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BT_VOLVER))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(CB_Inventario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -187,18 +220,18 @@ String NombreRecibido;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(PREC_INV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BT_EDITAR)
-                    .addComponent(BT_VOLVER))
-                .addGap(8, 8, 8))
+                    .addComponent(PREC_INV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(BT_EDITAR)
+                        .addComponent(BT_VOLVER)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void NOM_INVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NOM_INVActionPerformed
