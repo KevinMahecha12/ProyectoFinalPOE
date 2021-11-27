@@ -1,5 +1,7 @@
 package proyectofinalsupermercado;
 
+import javax.swing.JOptionPane;
+
 
 public class EditarHorarios extends javax.swing.JFrame {
     
@@ -213,10 +215,14 @@ String NombreRecibido;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BTEDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTEDITARActionPerformed
-        Horario obj = new Horario(NOM_H.getText(),DIAS_T.getText(),HORAE_T.getText(),HORAS_T.getText());
+
+ if(NOM_H.getText().equals("") || DIAS_T.getText().equals("") || HORAE_T.getText().equals("")|| HORAS_T.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
+        }else{
+             Horario obj = new Horario(NOM_H.getText(),DIAS_T.getText(),HORAE_T.getText(),HORAS_T.getText());
         int index = cbbHorarios.getSelectedIndex() ;
         horarios[index] = obj;
-
+ }
     }//GEN-LAST:event_BTEDITARActionPerformed
 
     private void HORAS_TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HORAS_TActionPerformed

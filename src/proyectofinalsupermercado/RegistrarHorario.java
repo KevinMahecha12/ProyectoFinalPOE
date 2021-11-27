@@ -1,5 +1,7 @@
 package proyectofinalsupermercado;
 
+import javax.swing.JOptionPane;
+
 public class RegistrarHorario extends javax.swing.JFrame {
 
        int contEmp;
@@ -211,11 +213,10 @@ String NombreRecibido;
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        String seleccionadoEmpleado = cbbEmpleados.getSelectedItem().toString();
-        
-         int check=0;
+          int check=0;
         String dias="";
-        
+        String seleccionadoEmpleado = cbbEmpleados.getSelectedItem().toString();
+
         if(cbxLun.isSelected()){
             check++;
             dias+="Lu, ";
@@ -240,7 +241,10 @@ String NombreRecibido;
             check++;
             dias+="Sa, ";
         }
-         dias = dias.substring(0, dias.length()-2);
+        if(Nom_H.getText().equals("") || dias.equals("") || TF_HE.getText().equals("") || TF_HS.getText().equals("") ){
+            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
+        }else{
+            dias = dias.substring(0, dias.length()-2);
         String HoraEntrada = TF_HE.getText();
         String HoraSalida = TF_HS.getText();
          Object item = cbbEmpleados.getSelectedItem();
@@ -271,6 +275,8 @@ String NombreRecibido;
                 }
             }//else
         }
+        }
+         
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**

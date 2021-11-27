@@ -265,8 +265,10 @@ String NombreRecibido;
             check++;
             dias+="Sa, ";
         }
-        
-        dias = dias.substring(0, dias.length()-2);
+        if(txtNOM.getText().equals("") || dias.equals("") || txtHoraEntrada.getText().equals("") || txtHoraSalida.getText().equals("") ){
+            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
+        }else{
+            dias = dias.substring(0, dias.length()-2);
         
         if(check==0 || txtHoraEntrada.getText().equals("") || txtHoraSalida.getText().equals("") || txtNOM.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
@@ -286,6 +288,7 @@ String NombreRecibido;
                     }
                 }
             }//else
+        }
         }
     }//GEN-LAST:event_txtRegresar1ActionPerformed
 

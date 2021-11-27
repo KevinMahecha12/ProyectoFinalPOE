@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package proyectofinalsupermercado;
 
-/**
- *
- * @author angel
- */
+import javax.swing.JOptionPane;
+
 public class AsignarHorarioTrabajador extends javax.swing.JFrame {
 
     Horario[] horarios = new Horario[20];
@@ -150,7 +144,10 @@ String NombreRecibido;
     }//GEN-LAST:event_txtRegresarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int id=0;
+        if (cbbTrabajador.getItemCount() <1 || cb_hora.getItemCount() <1) {
+            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
+        } else {
+              int id=0;
         int turno=0;
         String seleccionadoEmpleado = cbbTrabajador.getSelectedItem().toString();
         String seleccionadoHorarios = cb_hora.getSelectedItem().toString();
@@ -158,9 +155,7 @@ String NombreRecibido;
         String entrada="";
         String salida="";
         String nom_horario = "";
-
-        
-        for(Empleados empleado: empleados){
+               for(Empleados empleado: empleados){
             if(empleado!=null){
                 if(empleado.Nombre_Empleado.equals(seleccionadoEmpleado)){
                 id = empleado.ID_EMPLEADO;
@@ -197,7 +192,7 @@ String NombreRecibido;
                     }
                 }
             }//else
-        
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbbTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTrabajadorActionPerformed

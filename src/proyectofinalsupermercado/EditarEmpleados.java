@@ -1,5 +1,6 @@
 package proyectofinalsupermercado;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class EditarEmpleados extends javax.swing.JFrame {
@@ -174,14 +175,18 @@ String NombreRecibido;
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTEDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTEDITARActionPerformed
-        Empleados obj = new Empleados(Integer.parseInt(ID_EMP.getText()),NOM_EMP.getText(), AREA_EMP.getText(), Integer.parseInt(TURNO_EMP.getText()));
+       
+          if(ID_EMP.getText().equals("") || NOM_EMP.getText().equals("") || AREA_EMP.getText().equals("")|| TURNO_EMP.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
+        }else{
+               Empleados obj = new Empleados(Integer.parseInt(ID_EMP.getText()),NOM_EMP.getText(), AREA_EMP.getText(), Integer.parseInt(TURNO_EMP.getText()));
          ID_EMP.setText(String.valueOf(empleado.ID_EMPLEADO));
                     NOM_EMP.setText(empleado.Nombre_Empleado);
                     AREA_EMP.setText(empleado.Area_Trabajador);
                     TURNO_EMP.setText(String.valueOf(empleado.Turno));
                     int index = cbbTrabajador.getSelectedIndex() ;           
         empleados[index] = obj;
-         
+          }
     }//GEN-LAST:event_BTEDITARActionPerformed
 
     private void cbbTrabajadorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbTrabajadorItemStateChanged

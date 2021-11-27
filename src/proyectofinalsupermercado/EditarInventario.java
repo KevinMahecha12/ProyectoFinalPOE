@@ -1,5 +1,7 @@
 package proyectofinalsupermercado;
 
+import javax.swing.JOptionPane;
+
 public class EditarInventario extends javax.swing.JFrame {
 
     Producto[] arrayproducto;
@@ -204,11 +206,15 @@ String NombreRecibido;
     }//GEN-LAST:event_NOM_INVActionPerformed
 
     private void BT_EDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_EDITARActionPerformed
+
+ if(ID_INV.getText().equals("") || CANT_INV.getText().equals("") || NOM_INV.getText().equals("")|| DESC_INV.getText().equals("") || PREC_INV.getText().equals("") ){
+            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
+        }else{
         Producto obj = new Producto(Integer.parseInt(ID_INV.getText()), Integer.parseInt(CANT_INV.getText()),NOM_INV.getText(),DESC_INV.getText(),Double.parseDouble(PREC_INV.getText()));
         int index = CB_Inventario.getSelectedIndex() ;
         arrayproducto[index] = obj;
         arrayproducto = cola_inventario.recorrer();
-
+ }
     }//GEN-LAST:event_BT_EDITARActionPerformed
 
     private void CB_InventarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_InventarioItemStateChanged
