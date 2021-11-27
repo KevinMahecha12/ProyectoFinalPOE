@@ -7,8 +7,14 @@ public class RegistrarInventario extends javax.swing.JFrame {
     static Cola c = new Cola();
     Inventario inv = new Inventario();
     static int contador;
-    public RegistrarInventario(int ContadorInv,Cola cola_inventario) {
+    Empleados[] empleados = new Empleados[20];
+    Horario[] horario = new Horario[20];
+    HorariosAsignados[] asignados = new HorariosAsignados[20];
+    
+    public RegistrarInventario(int ContadorInv,Cola cola_inventario, Empleados[] emp, Horario[] h,HorariosAsignados[]a) {
         initComponents();
+        horario=h;
+        empleados=emp;
         
         if(cola_inventario!=null){
             c=cola_inventario;
@@ -16,6 +22,8 @@ public class RegistrarInventario extends javax.swing.JFrame {
         if(ContadorInv!=0){
            contador = ContadorInv;
         }
+        
+        asignados =a;
     }
 
     @SuppressWarnings("unchecked")
@@ -158,7 +166,7 @@ public class RegistrarInventario extends javax.swing.JFrame {
   
     private void BT_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VOLVERActionPerformed
       
-        MenuPrincipal menu  =  new MenuPrincipal(contador,0,null,c,null,null); 
+        MenuPrincipal menu  =  new MenuPrincipal(contador,0,empleados,c,null,null,horario,asignados); 
         menu.setVisible(true);
         this.setVisible(false);         
 
@@ -184,7 +192,7 @@ public class RegistrarInventario extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarInventario(contador,c).setVisible(true);
+                new RegistrarInventario(contador,c, null, null,null).setVisible(true);
             }
         });
     }

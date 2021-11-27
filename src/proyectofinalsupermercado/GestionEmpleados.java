@@ -12,11 +12,18 @@ public class GestionEmpleados extends javax.swing.JFrame {
 
     Empleados[] empleados = new Empleados[20];
     int contEmp;
-    public GestionEmpleados(int ContEmp,Empleados[] emple) {
-              initComponents();
+    Cola cola = new Cola();
+    Horario[] horario = new Horario[20];
+    HorariosAsignados[] asignados = new HorariosAsignados[20];
+    
+    public GestionEmpleados(Cola c, int ContEmp,Empleados[] emple, Horario[] h,HorariosAsignados[] a) {
+        initComponents();
         contEmp = ContEmp;
         empleados = emple;
+        cola=c;
+        horario=h;
         String[] cabecera ={"ID_Empleado","Nombre","Area de Trabajo","Turno"};
+        asignados=a;
         
        DefaultTableModel modelo = new DefaultTableModel();
         
@@ -27,21 +34,16 @@ public class GestionEmpleados extends javax.swing.JFrame {
         if (contEmp<1) {
             JL_ERROR.setText("No hay ningun empleado registrado!");
         }
-                 for( int i=0; i<empleados.length;i++){
+            for( int i=0; i<empleados.length;i++){
                 if(empleados[i]==null){
-            i=empleados.length;
-        }else{    
-                datos[0]=empleados[i].getID_EMPLEADO();
-                datos[1]=empleados[i].getNombre_Empleado();
-                datos[2]=empleados[i].getArea_Trabajador();
-          
-            if (empleados[i].getTurno() == 2){
-                datos[3]="Matutino";
-            } 
-           if (empleados[i].getTurno() == 1){
-                datos[3]="Vespertino";
-            } 
-                modelo.addRow(datos);
+                    i=empleados.length;
+                }else{    
+                    datos[0]=empleados[i].getID_EMPLEADO();
+                    datos[1]=empleados[i].getNombre_Empleado();
+                    datos[2]=empleados[i].getArea_Trabajador();
+                    datos[3]=empleados[i].getTurno();
+
+                    modelo.addRow(datos);
                 }
         }
            jtableEmpleadosRegistrados.setModel(modelo);
@@ -190,7 +192,7 @@ public class GestionEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbutton_VolverAlMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu1ActionPerformed
-       MenuPrincipal menu  =  new MenuPrincipal(0,contEmp,empleados,null,null,null); 
+       MenuPrincipal menu  =  new MenuPrincipal(0,contEmp,empleados,cola,null,null, horario, asignados); 
        menu.setVisible(true);
        this.setVisible(false);  
     }//GEN-LAST:event_jbutton_VolverAlMenu1ActionPerformed
@@ -237,7 +239,7 @@ public class GestionEmpleados extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionEmpleados(0,null).setVisible(true);
+                new GestionEmpleados(null,0,null, null,null).setVisible(true);
             }
         });
     }

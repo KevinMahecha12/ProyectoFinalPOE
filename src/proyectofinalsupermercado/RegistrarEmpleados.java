@@ -6,17 +6,23 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     Empleados[] empleados = new Empleados[20];
     int ContadorEmpleados;
-    public RegistrarEmpleados(int contEmp,Empleados[] emple) {
+    Cola cola = new Cola();
+    Horario[] horario = new Horario[20];
+    HorariosAsignados[] asignados = new HorariosAsignados[20];
+    
+    public RegistrarEmpleados(Cola c,int contEmp,Empleados[] emple, Horario[] h, HorariosAsignados[] a) {
         initComponents();
         BGROUP.add(RB_MATU);
         BGROUP.add(RB_VESP);
-        
+        horario=h;
         if(emple!=null){
             empleados = emple;
         }
         if(contEmp!=0){
            ContadorEmpleados = contEmp;
         }
+        cola=c;
+        asignados=a;
     }
 
     @SuppressWarnings("unchecked")
@@ -155,7 +161,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BT_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VolverActionPerformed
-         MenuPrincipal menu  =  new MenuPrincipal(0,ContadorEmpleados,empleados,null,null,null); 
+         MenuPrincipal menu  =  new MenuPrincipal(0,ContadorEmpleados,empleados,cola,null,null, horario, asignados); 
          menu.setVisible(true);
           this.setVisible(false);        
     }//GEN-LAST:event_BT_VolverActionPerformed
@@ -177,7 +183,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
             
             Empleados obj = new Empleados(id, name, area, turno);
             if(empleados.length==0){
-            empleados[0] = obj;
+                empleados[0] = obj;
             }else{
                 for(int i=0;i<empleados.length;i++){
                     if(empleados[i] == null){
@@ -203,7 +209,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarEmpleados(0,null).setVisible(true);
+                new RegistrarEmpleados(null,0,null,null,null).setVisible(true);
             }
         });
     }
