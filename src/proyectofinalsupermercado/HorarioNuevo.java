@@ -4,17 +4,25 @@
  */
 package proyectofinalsupermercado;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author angel
  */
 public class HorarioNuevo extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GestionHorarios_2
-     */
-    public HorarioNuevo() {
+    Empleados[] empleados = new Empleados[20];
+    Cola cola = new Cola();
+    Horario[] horario = new Horario[20];
+    HorariosAsignados[] asignados = new HorariosAsignados[20];
+    
+    public HorarioNuevo(Cola c,Empleados[] emple, Horario[] h, HorariosAsignados[] a) {
         initComponents();
+        horario=h;
+        empleados = emple;
+        cola=c;
+        asignados=a;
     }
 
     /**
@@ -26,25 +34,36 @@ public class HorarioNuevo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox6 = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
-        ComboBoxDias = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtHoraSalida = new javax.swing.JTextField();
         txtHoraEntrada = new javax.swing.JTextField();
         txtRegresar1 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        txtVolver = new javax.swing.JButton();
+        cbbLun = new javax.swing.JCheckBox();
+        cbbMie = new javax.swing.JCheckBox();
+        cbbMar = new javax.swing.JCheckBox();
+        cbbJue = new javax.swing.JCheckBox();
+        cbbVie = new javax.swing.JCheckBox();
+        cbbSab = new javax.swing.JCheckBox();
+        jLabel5 = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+
+        jCheckBox4.setText("Lun");
+
+        jCheckBox6.setText("Lun");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Sinhala MN", 2, 24)); // NOI18N
         jLabel1.setText("Horario Nuevo");
 
-        ComboBoxDias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes" }));
-
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        jLabel2.setText("Dia:");
+        jLabel2.setText("ID:");
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel3.setText("Hora entrada:");
@@ -64,63 +83,123 @@ public class HorarioNuevo extends javax.swing.JFrame {
             }
         });
 
-        txtRegresar1.setText("Regresar");
+        txtRegresar1.setText("Crear");
+        txtRegresar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRegresar1ActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("jButton1");
+        txtVolver.setText("Volver");
+        txtVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVolverActionPerformed(evt);
+            }
+        });
+
+        cbbLun.setText("Lun");
+
+        cbbMie.setText("Mie");
+
+        cbbMar.setText("Mar");
+
+        cbbJue.setText("Jue");
+
+        cbbVie.setText("Vie");
+
+        cbbSab.setText("Sab");
+
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel5.setText("Dias:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(jLabel1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ComboBoxDias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtHoraSalida)
-                            .addComponent(txtHoraEntrada))))
-                .addContainerGap(134, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(txtVolver)
                 .addGap(40, 40, 40)
                 .addComponent(txtRegresar1)
                 .addGap(91, 91, 91))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtHoraEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                            .addComponent(txtHoraSalida)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(cbbLun)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cbbMar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cbbMie)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbbJue)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbbVie)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbbSab)))))))
+                .addContainerGap(50, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(47, 47, 47)
+                    .addComponent(jLabel5)
+                    .addContainerGap(292, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(24, 24, 24)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ComboBoxDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbbLun)
+                    .addComponent(cbbMie)
+                    .addComponent(cbbMar)
+                    .addComponent(cbbJue)
+                    .addComponent(cbbVie)
+                    .addComponent(cbbSab))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(txtHoraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRegresar1)
-                    .addComponent(jButton1))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .addComponent(txtVolver))
+                .addContainerGap(67, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(115, 115, 115)
+                    .addComponent(jLabel5)
+                    .addContainerGap(167, Short.MAX_VALUE)))
         );
 
-        setSize(new java.awt.Dimension(431, 338));
+        setSize(new java.awt.Dimension(389, 338));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -131,6 +210,64 @@ public class HorarioNuevo extends javax.swing.JFrame {
     private void txtHoraEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraEntradaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHoraEntradaActionPerformed
+
+    private void txtVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVolverActionPerformed
+        GestionHorarios nvo  =  new GestionHorarios(cola,empleados,horario, asignados); 
+        nvo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_txtVolverActionPerformed
+
+    private void txtRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegresar1ActionPerformed
+        int check=0;
+        String dias="";
+        
+        if(cbbLun.isSelected()){
+            check++;
+            dias+="Lu, ";
+        }
+        if(cbbMar.isSelected()){
+            check++;
+            dias+="Ma, ";
+        }
+        if(cbbMie.isSelected()){
+            check++;
+            dias+="Mi, ";
+        }
+        if(cbbJue.isSelected()){
+            check++;
+            dias+="Ju, ";
+        }
+        if(cbbVie.isSelected()){
+            check++;
+            dias+="Vi, ";
+        }
+        if(cbbSab.isSelected()){
+            check++;
+            dias+="Sa, ";
+        }
+        
+        dias = dias.substring(0, dias.length()-2);
+        
+        if(check==0 || txtHoraEntrada.getText().equals("") || txtHoraSalida.getText().equals("") || txtID.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
+        }else{
+            String entrada = txtHoraEntrada.getText();
+            String salida = txtHoraSalida.getText();
+            int ID = Integer.parseInt(txtID.getText());
+            Horario obj = new Horario(dias, entrada, salida,ID);
+            
+            if(horario.length==0){
+            horario[0] = obj;
+            }else{
+                for(int i=0;i<horario.length;i++){
+                    if(horario[i] == null){
+                        horario[i] = obj;
+                        i=horario.length;
+                    }
+                }
+            }//else
+        }
+    }//GEN-LAST:event_txtRegresar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,20 +300,29 @@ public class HorarioNuevo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HorarioNuevo().setVisible(true);
+                new HorarioNuevo(null,null,null,null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboBoxDias;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox cbbJue;
+    private javax.swing.JCheckBox cbbLun;
+    private javax.swing.JCheckBox cbbMar;
+    private javax.swing.JCheckBox cbbMie;
+    private javax.swing.JCheckBox cbbSab;
+    private javax.swing.JCheckBox cbbVie;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtHoraEntrada;
     private javax.swing.JTextField txtHoraSalida;
+    private javax.swing.JTextField txtID;
     private javax.swing.JButton txtRegresar1;
+    private javax.swing.JButton txtVolver;
     // End of variables declaration//GEN-END:variables
 }

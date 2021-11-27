@@ -11,15 +11,20 @@ public class GestionProductos extends javax.swing.JFrame {
        static Cola cola_inventario = new Cola();
        Object[] datosx = new Object[5];
        int ContadorProductos;
+       Empleados[] empleados = new Empleados[20];
+       Horario[] horario = new Horario[20];
+       HorariosAsignados[] asignados = new HorariosAsignados[20];
          
-    public GestionProductos(int Contador,Cola COLA_INVENTARIO) {
+    public GestionProductos(int Contador,Cola COLA_INVENTARIO, Empleados[] emp, Horario[] h, HorariosAsignados[] a) {
         cola_inventario  = COLA_INVENTARIO;
         cont = Contador;
-         
+         empleados=emp;
+         horario =h;
+         asignados=a;
         initComponents();
          DefaultTableModel modelo = (DefaultTableModel) jTable_MostrarProductos.getModel();
         System.out.println("Elementos en tabla:  "+ modelo.getColumnCount());
-         funcionamiento();
+        funcionamiento();
     }
 
     public GestionProductos() {
@@ -150,7 +155,7 @@ DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
           
 }
     private void jbutton_VolverAlMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu2ActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(cont,0,null,cola_inventario,null,null); 
+        MenuPrincipal menu  =  new MenuPrincipal(cont,0,empleados,cola_inventario,null,null, horario,asignados); 
          menu.setVisible(true);
           this.setVisible(false);        
     }//GEN-LAST:event_jbutton_VolverAlMenu2ActionPerformed
@@ -159,7 +164,7 @@ DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionProductos(cont,cola_inventario).setVisible(true);
+                new GestionProductos(cont,cola_inventario,null, null,null).setVisible(true);
             }
         });
     }
