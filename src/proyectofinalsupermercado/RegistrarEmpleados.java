@@ -6,23 +6,31 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     Empleados[] empleados = new Empleados[20];
     int ContadorEmpleados;
+    int contInv;
     Cola cola = new Cola();
     Horario[] horario = new Horario[20];
     HorariosAsignados[] asignados = new HorariosAsignados[20];
+    String NombreRecibido;
     
-    public RegistrarEmpleados(Cola c,int contEmp,Empleados[] emple, Horario[] h, HorariosAsignados[] a) {
+    public RegistrarEmpleados(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
         initComponents();
         BGROUP.add(RB_MATU);
         BGROUP.add(RB_VESP);
         horario=h;
-        if(emple!=null){
-            empleados = emple;
+        if(emp!=null){
+            empleados = emp;
         }
-        if(contEmp!=0){
-           ContadorEmpleados = contEmp;
+        if(ContadorEmp!=0){
+           ContadorEmpleados = ContadorEmp;
         }
-        cola=c;
+         if(ContadorInv!=0){
+            contInv=ContadorInv;
+        }
+        cola=COLA_INVENTARIO;
         asignados=a;
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -161,7 +169,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BT_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VolverActionPerformed
-         MenuPrincipal menu  =  new MenuPrincipal(0,ContadorEmpleados,empleados,cola,null,null, horario, asignados,null); 
+         MenuPrincipal menu  =  new MenuPrincipal(contInv,ContadorEmpleados,empleados,cola,NombreRecibido,null, horario, asignados,null); 
+         System.out.println("TRABAJADORES CONTADOSSS: "+getContadorEmpleados());
          menu.setVisible(true);
           this.setVisible(false);        
     }//GEN-LAST:event_BT_VolverActionPerformed
@@ -170,7 +179,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         if(TF_NOMEMPLEADO.getText().equals("") || TF_ID.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
         }else{
-            ContadorEmpleados++;
+             ContadorEmpleados = ContadorEmpleados + 1;
+           setContadorEmpleados(ContadorEmpleados);
             int id = Integer.parseInt(TF_ID.getText());
             String name = TF_NOMEMPLEADO.getText();
             String area = JCB_AREATRABAJO.getSelectedItem().toString();
@@ -185,6 +195,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
             if(empleados.length==0){
                 empleados[0] = obj;
             }else{
+                
                 for(int i=0;i<empleados.length;i++){
                     if(empleados[i] == null){
                         empleados[i] = obj;
@@ -209,9 +220,17 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarEmpleados(null,0,null,null,null).setVisible(true);
+                new RegistrarEmpleados(0,0,null,null,null,null,null,null,null).setVisible(true);
             }
         });
+    }
+
+    public int getContadorEmpleados() {
+        return ContadorEmpleados;
+    }
+
+    public void setContadorEmpleados(int ContadorEmpleados) {
+        this.ContadorEmpleados = ContadorEmpleados;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

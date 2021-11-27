@@ -4,13 +4,46 @@ import javax.swing.table.DefaultTableModel;
 
 public class EditarEmpleados extends javax.swing.JFrame {
     int contEmp;
+    int contInv;
 Empleados[] empleados = new Empleados[20];
 Empleados empleado = new Empleados();
-    public EditarEmpleados(int ContEmp,Empleados[] emple) {
-         empleados = emple;
+Cola cola_inventario = new Cola();
+Horario[] horario = new Horario[20];
+HorariosAsignados[] asignados = new HorariosAsignados[20];
+Producto[] productoarray = new Producto[20];
+String NombreRecibido;
+    public EditarEmpleados(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
+         empleados = emp;
+         contEmp = ContadorEmp;
+         System.out.println("TRABAJADORES CONTADOS: "+contEmp);
+        if(ContadorEmp!=0){
+            contEmp=ContadorEmp;
+        }
+        if(ContadorInv!=0){
+            contInv=ContadorInv;
+        }
         initComponents();
-         contEmp = ContEmp;
-
+        if(COLA_INVENTARIO!=null){
+            cola_inventario  = COLA_INVENTARIO;
+        }
+        if(h!=null){
+            horario=h;
+        }
+        
+        if(a!=null){
+            asignados=a;
+        }
+        if(arrayp!=null){
+            productoarray=arrayp;
+        }
+        if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+    if(emp!=null){
+            empleados = emp;
+        }
+         
+         
         System.out.println("empleados contados: "+contEmp);
         for (Empleados empleado : empleados) {
             if(empleado!=null){
@@ -37,7 +70,7 @@ Empleados empleado = new Empleados();
         jLabel4 = new javax.swing.JLabel();
         AREA_EMP = new javax.swing.JTextField();
         TURNO_EMP = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        B_VOLVER = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,10 +97,10 @@ Empleados empleado = new Empleados();
 
         jLabel4.setText("Turno");
 
-        jButton1.setText("Volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        B_VOLVER.setText("Volver");
+        B_VOLVER.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                B_VOLVERActionPerformed(evt);
             }
         });
 
@@ -96,7 +129,7 @@ Empleados empleado = new Empleados();
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton1)
+                                        .addComponent(B_VOLVER)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(BTEDITAR))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -132,7 +165,7 @@ Empleados empleado = new Empleados();
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTEDITAR)
-                    .addComponent(jButton1))
+                    .addComponent(B_VOLVER))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -170,17 +203,17 @@ Empleados empleado = new Empleados();
         }
     }//GEN-LAST:event_cbbTrabajadorItemStateChanged
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       MenuPrincipal menu  =  new MenuPrincipal(0,contEmp,empleados,null,null,null, null,null,null); 
+    private void B_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_VOLVERActionPerformed
+       MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horario, asignados,null); 
        menu.setVisible(true);
        this.setVisible(false);  
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_B_VOLVERActionPerformed
 
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditarEmpleados(0,null).setVisible(true);
+                new EditarEmpleados(0,0,null,null,null,null,null,null,null).setVisible(true);
             }
         });
     }
@@ -188,11 +221,11 @@ Empleados empleado = new Empleados();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AREA_EMP;
     private javax.swing.JButton BTEDITAR;
+    private javax.swing.JButton B_VOLVER;
     private javax.swing.JTextField ID_EMP;
     private javax.swing.JTextField NOM_EMP;
     private javax.swing.JTextField TURNO_EMP;
     private javax.swing.JComboBox<String> cbbTrabajador;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectofinalsupermercado;
 
 import java.util.Vector;
@@ -12,21 +7,49 @@ import javax.swing.table.DefaultTableModel;
 
 public class GestionHorarios extends javax.swing.JFrame {
 
-    Empleados[] empleados = new Empleados[20];
-    Cola cola = new Cola();
-    Horario[] horario = new Horario[20];
-    HorariosAsignados[] asignados = new HorariosAsignados[20];
+   Horario[] horarios = new Horario[20];
+    Horario h = new Horario();
+     int contEmp;
+     int contInv;
+     Empleados[] empleados = new Empleados[20];
+Empleados empleado = new Empleados();
+Cola cola_inventario = new Cola();
+HorariosAsignados[] asignados = new HorariosAsignados[20];
+Producto[] productoarray = new Producto[20];
+String NombreRecibido;
+
     private int selectedRow;
     DefaultTableModel modelo = new DefaultTableModel();
-       Object []  datos = new Object[5];
-    public GestionHorarios(Cola c,Empleados[] emple, Horario[] h, HorariosAsignados[] a) {
+       Object []  datos = new Object[6];
+    public GestionHorarios(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
+         if(ContadorEmp!=0){
+            contEmp=ContadorEmp;
+        }
+        if(ContadorInv!=0){
+            contInv=ContadorInv;
+        }
         initComponents();
-        horario=h;
-        empleados = emple;
-        cola=c;
-        asignados=a;
-        String[] cabecera ={"Id trabajador","Nombre","Dias", "Hora Entrada", "Hora Salida"};
         
+           if(COLA_INVENTARIO!=null){
+            cola_inventario  = COLA_INVENTARIO;
+        }
+        if(h!=null){
+            horarios=h;
+        }
+        
+        if(a!=null){
+            asignados=a;
+        }
+        if(arrayp!=null){
+            productoarray=arrayp;
+        }
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+            if(emp!=null){
+            empleados = emp;
+        }
+        String[] cabecera ={"Id trabajador","Nombre","Nombre Horario","Dias", "Hora Entrada", "Hora Salida"};
         
         modelo.setColumnIdentifiers(cabecera);
         
@@ -38,9 +61,10 @@ public class GestionHorarios extends javax.swing.JFrame {
                 }else{    
                     datos[0]=asignados[i].ID_Trabajador;
                     datos[1]=asignados[i].Nombre_Trabajador;
-                    datos[2]=asignados[i].Dias_Horario;
-                    datos[3]=asignados[i].Hora_Entrada;
-                    datos[4]=asignados[i].Hora_Salida;
+                    datos[2]=asignados[i].nom_hor;
+                    datos[3]=asignados[i].Dias_Horario;
+                    datos[4]=asignados[i].Hora_Entrada;
+                    datos[5]=asignados[i].Hora_Salida;
                     System.out.println("ROW QUE SE RECIBIO: "+TablaHorarios.getSelectedRow() +"COLUMNA QUE SE RECIBIO: "+ TablaHorarios.getSelectedColumn());
                     
                     
@@ -57,6 +81,8 @@ if (selectedRow >= 0) {
                     
     }
 
+  
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,7 +96,6 @@ if (selectedRow >= 0) {
         TablaHorarios = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        BotonEditar = new javax.swing.JButton();
         CrearHorario = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtRegresar = new javax.swing.JButton();
@@ -80,23 +105,23 @@ if (selectedRow >= 0) {
 
         TablaHorarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Id Trabajador", "Nombre", "Dias", "Hora Entrada", "Hora Salida"
+                "Id Trabajador", "Nombre", "Nombre Horario", "Dias", "Hora Entrada", "Hora Salida"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true
+                false, false, true, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -113,13 +138,6 @@ if (selectedRow >= 0) {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinalsupermercado/imagenes/fecha.png"))); // NOI18N
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinalsupermercado/imagenes/hora.png"))); // NOI18N
-
-        BotonEditar.setText("Eliminar");
-        BotonEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonEditarActionPerformed(evt);
-            }
-        });
 
         CrearHorario.setText("Crear nuevo horario predefinido");
         CrearHorario.addActionListener(new java.awt.event.ActionListener() {
@@ -157,19 +175,18 @@ if (selectedRow >= 0) {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(CrearHorario)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(AsignarHorario)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtRegresar)
-                            .addGap(69, 69, 69)
-                            .addComponent(BotonEditar))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(117, 117, 117)
+                .addComponent(CrearHorario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AsignarHorario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRegresar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,45 +196,40 @@ if (selectedRow >= 0) {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CrearHorario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                            .addComponent(AsignarHorario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BotonEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(25, 25, 25))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(AsignarHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                    .addComponent(CrearHorario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(761, 398));
+        setSize(new java.awt.Dimension(761, 357));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void AsignarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarHorarioActionPerformed
-        AsignarHorarioTrabajador nvo  =  new AsignarHorarioTrabajador(cola,empleados,horario, asignados); 
+        AsignarHorarioTrabajador nvo  =  new AsignarHorarioTrabajador(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
         nvo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_AsignarHorarioActionPerformed
 
     private void CrearHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearHorarioActionPerformed
-        HorarioNuevo nvo  =  new HorarioNuevo(cola,empleados,horario, asignados); 
+        HorarioNuevo nvo  =  new HorarioNuevo(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
         nvo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_CrearHorarioActionPerformed
 
     private void txtRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegresarActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(0,0,empleados,cola,null,null, horario, asignados,null); 
+        MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
         menu.setVisible(true);
         this.setVisible(false);  
     }//GEN-LAST:event_txtRegresarActionPerformed
-
-    private void BotonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEditarActionPerformed
-
-    }//GEN-LAST:event_BotonEditarActionPerformed
 public void valueChanged(ListSelectionEvent event) {
            
          }
@@ -263,14 +275,13 @@ public void valueChanged(ListSelectionEvent event) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionHorarios(null,null,null,null).setVisible(true);
+                new GestionHorarios(0,0,null,null,null,null,null,null,null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AsignarHorario;
-    private javax.swing.JButton BotonEditar;
     private javax.swing.JButton CrearHorario;
     private javax.swing.JTable TablaHorarios;
     private javax.swing.JLabel jLabel1;

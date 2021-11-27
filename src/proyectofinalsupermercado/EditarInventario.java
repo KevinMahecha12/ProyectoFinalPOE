@@ -1,17 +1,47 @@
 package proyectofinalsupermercado;
 
-import static proyectofinalsupermercado.GestionProductos.cola_inventario;
-
-
 public class EditarInventario extends javax.swing.JFrame {
 
-    static Cola cola_inventario = new Cola(); 
-    int contEmp;
     Producto[] arrayproducto;
-    public EditarInventario(int ContEmp, Cola COLA_INVENTARIO) {
-        cola_inventario = COLA_INVENTARIO;
-        contEmp = ContEmp;
+       Horario[] horarios = new Horario[20];
+    Horario h = new Horario();
+     int contEmp;
+     int contInv;
+     Empleados[] empleados = new Empleados[20];
+Empleados empleado = new Empleados();
+Cola cola_inventario = new Cola();
+HorariosAsignados[] asignados = new HorariosAsignados[20];
+Producto[] productoarray = new Producto[20];
+String NombreRecibido;
+    public EditarInventario(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
+        
+        if(ContadorEmp!=0){
+            contEmp=ContadorEmp;
+        }
+        if(ContadorInv!=0){
+            contInv=ContadorInv;
+        }
         initComponents();
+        
+           if(COLA_INVENTARIO!=null){
+            cola_inventario  = COLA_INVENTARIO;
+        }
+        if(h!=null){
+            horarios=h;
+        }
+        
+        if(a!=null){
+            asignados=a;
+        }
+        if(arrayp!=null){
+            productoarray=arrayp;
+        }
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+            if(emp!=null){
+            empleados = emp;
+        }
         
          arrayproducto = new Producto[cola_inventario.tamaño];
           System.out.println(arrayproducto.length);
@@ -199,7 +229,7 @@ public class EditarInventario extends javax.swing.JFrame {
     }//GEN-LAST:event_CB_InventarioItemStateChanged
 
     private void BT_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VOLVERActionPerformed
-     MenuPrincipal menu  =  new MenuPrincipal(0,contEmp,null,cola_inventario,null,null, null,null,arrayproducto);
+     MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null);
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BT_VOLVERActionPerformed
@@ -234,7 +264,7 @@ public class EditarInventario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditarInventario(0,null).setVisible(true);
+                new EditarInventario(0,0,null,null,null,null,null,null,null).setVisible(true);
             }
         });
     }

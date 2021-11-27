@@ -12,17 +12,45 @@ import javax.swing.JOptionPane;
  */
 public class HorarioNuevo extends javax.swing.JFrame {
 
-    Empleados[] empleados = new Empleados[20];
-    Cola cola = new Cola();
-    Horario[] horario = new Horario[20];
-    HorariosAsignados[] asignados = new HorariosAsignados[20];
+       Horario[] horarios = new Horario[20];
+    Horario h = new Horario();
+     int contEmp;
+     int contInv;
+     Empleados[] empleados = new Empleados[20];
+Empleados empleado = new Empleados();
+Cola cola_inventario = new Cola();
+HorariosAsignados[] asignados = new HorariosAsignados[20];
+Producto[] productoarray = new Producto[20];
+String NombreRecibido;
     
-    public HorarioNuevo(Cola c,Empleados[] emple, Horario[] h, HorariosAsignados[] a) {
+    public HorarioNuevo(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
+          if(ContadorEmp!=0){
+            contEmp=ContadorEmp;
+        }
+        if(ContadorInv!=0){
+            contInv=ContadorInv;
+        }
         initComponents();
-        horario=h;
-        empleados = emple;
-        cola=c;
-        asignados=a;
+        
+           if(COLA_INVENTARIO!=null){
+            cola_inventario  = COLA_INVENTARIO;
+        }
+        if(h!=null){
+            horarios=h;
+        }
+        
+        if(a!=null){
+            asignados=a;
+        }
+        if(arrayp!=null){
+            productoarray=arrayp;
+        }
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+            if(emp!=null){
+            empleados = emp;
+        }
     }
 
     /**
@@ -51,7 +79,7 @@ public class HorarioNuevo extends javax.swing.JFrame {
         cbbVie = new javax.swing.JCheckBox();
         cbbSab = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
+        txtNOM = new javax.swing.JTextField();
 
         jCheckBox4.setText("Lun");
 
@@ -63,7 +91,7 @@ public class HorarioNuevo extends javax.swing.JFrame {
         jLabel1.setText("Horario Nuevo");
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        jLabel2.setText("ID:");
+        jLabel2.setText("Nombre ");
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel3.setText("Hora entrada:");
@@ -134,7 +162,9 @@ public class HorarioNuevo extends javax.swing.JFrame {
                             .addComponent(txtHoraEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
                             .addComponent(txtHoraSalida)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbbLun)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,43 +172,38 @@ public class HorarioNuevo extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cbbMar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cbbMie)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbbJue)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbbVie)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbbSab)))))))
-                .addContainerGap(50, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(47, 47, 47)
-                    .addComponent(jLabel5)
-                    .addContainerGap(292, Short.MAX_VALUE)))
+                                .addComponent(cbbMie)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbbJue)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbbVie)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbbSab))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNOM, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNOM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbbLun)
                     .addComponent(cbbMie)
                     .addComponent(cbbMar)
                     .addComponent(cbbJue)
                     .addComponent(cbbVie)
-                    .addComponent(cbbSab))
+                    .addComponent(cbbSab)
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
@@ -191,12 +216,7 @@ public class HorarioNuevo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRegresar1)
                     .addComponent(txtVolver))
-                .addContainerGap(67, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(115, 115, 115)
-                    .addComponent(jLabel5)
-                    .addContainerGap(167, Short.MAX_VALUE)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(389, 338));
@@ -212,7 +232,7 @@ public class HorarioNuevo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtHoraEntradaActionPerformed
 
     private void txtVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVolverActionPerformed
-        GestionHorarios nvo  =  new GestionHorarios(cola,empleados,horario, asignados); 
+        GestionHorarios nvo  =  new GestionHorarios(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
         nvo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_txtVolverActionPerformed
@@ -248,21 +268,21 @@ public class HorarioNuevo extends javax.swing.JFrame {
         
         dias = dias.substring(0, dias.length()-2);
         
-        if(check==0 || txtHoraEntrada.getText().equals("") || txtHoraSalida.getText().equals("") || txtID.getText().equals("")){
+        if(check==0 || txtHoraEntrada.getText().equals("") || txtHoraSalida.getText().equals("") || txtNOM.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
         }else{
             String entrada = txtHoraEntrada.getText();
             String salida = txtHoraSalida.getText();
-            int ID = Integer.parseInt(txtID.getText());
-            Horario obj = new Horario(dias, entrada, salida,ID);
+            String NombreHorario = txtNOM.getText();
+            Horario obj = new Horario(NombreHorario,dias, entrada, salida);
             
-            if(horario.length==0){
-            horario[0] = obj;
+            if(horarios.length==0){
+            horarios[0] = obj;
             }else{
-                for(int i=0;i<horario.length;i++){
-                    if(horario[i] == null){
-                        horario[i] = obj;
-                        i=horario.length;
+                for(int i=0;i<horarios.length;i++){
+                    if(horarios[i] == null){
+                        horarios[i] = obj;
+                        i=horarios.length;
                     }
                 }
             }//else
@@ -300,7 +320,7 @@ public class HorarioNuevo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HorarioNuevo(null,null,null,null).setVisible(true);
+                new HorarioNuevo(0,0,null,null,null,null,null,null,null).setVisible(true);
             }
         });
     }
@@ -321,7 +341,7 @@ public class HorarioNuevo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtHoraEntrada;
     private javax.swing.JTextField txtHoraSalida;
-    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtNOM;
     private javax.swing.JButton txtRegresar1;
     private javax.swing.JButton txtVolver;
     // End of variables declaration//GEN-END:variables

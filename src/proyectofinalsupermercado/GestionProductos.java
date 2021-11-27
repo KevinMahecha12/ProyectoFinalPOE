@@ -6,23 +6,50 @@ import javax.swing.table.DefaultTableModel;
 
 public class GestionProductos extends javax.swing.JFrame {
     
-       Producto[] array;
-       private static int cont;
-       static Cola cola_inventario = new Cola();
-       Object[] datosx = new Object[5];
-       int ContadorProductos;
-       Empleados[] empleados = new Empleados[20];
-       Horario[] horario = new Horario[20];
-       HorariosAsignados[] asignados = new HorariosAsignados[20];
+     Horario[] horarios = new Horario[20];
+    Horario h = new Horario();
+     int contEmp;
+     int contInv;
+     Empleados[] empleados = new Empleados[20];
+Empleados empleado = new Empleados();
+  Producto[] array;
+   Object[] datosx = new Object[5];
+Cola cola_inventario = new Cola();
+HorariosAsignados[] asignados = new HorariosAsignados[20];
+Producto[] productoarray = new Producto[20];
+String NombreRecibido;
+    DefaultTableModel modelo = new DefaultTableModel();
+       Object []  datos = new Object[5];
          
-    public GestionProductos(int Contador,Cola COLA_INVENTARIO, Empleados[] emp, Horario[] h, HorariosAsignados[] a,Producto[] ac) {
-        cola_inventario  = COLA_INVENTARIO;
-        cont = Contador;
-         empleados=emp;
-         horario =h;
-         asignados=a;
-         array = ac;
+    public GestionProductos(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
+          if(ContadorEmp!=0){
+            contEmp=ContadorEmp;
+        }
+          System.out.println("INVENTARIOS CONTADOS EN LA CLASE: "+ContadorInv);
+        if(ContadorInv!=0){
+            contInv=ContadorInv;
+        }
         initComponents();
+        
+           if(COLA_INVENTARIO!=null){
+            cola_inventario  = COLA_INVENTARIO;
+        }
+        if(h!=null){
+            horarios=h;
+        }
+        
+        if(a!=null){
+            asignados=a;
+        }
+        if(arrayp!=null){
+            productoarray=arrayp;
+        }
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+            if(emp!=null){
+            empleados = emp;
+        }
          DefaultTableModel modelo = (DefaultTableModel) jTable_MostrarProductos.getModel();
         System.out.println("Elementos en tabla:  "+ modelo.getColumnCount());
         funcionamiento();
@@ -32,11 +59,11 @@ public class GestionProductos extends javax.swing.JFrame {
     }
 
     public int getContadorProductos() {
-        return ContadorProductos;
+        return contInv;
     }
 
     public void setContadorProductos(int ContadorProductos) {
-        this.ContadorProductos = ContadorProductos;
+        this.contInv = ContadorProductos;
     }
 
     @SuppressWarnings("unchecked")
@@ -45,9 +72,7 @@ public class GestionProductos extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_MostrarProductos = new javax.swing.JTable();
-        jbutton_EditarProducto = new javax.swing.JButton();
         jLabel_TotalProductos = new javax.swing.JLabel();
-        jbutton_EliminarProducto = new javax.swing.JButton();
         jbutton_VolverAlMenu2 = new javax.swing.JButton();
         JL_ERROR = new javax.swing.JLabel();
 
@@ -67,15 +92,9 @@ public class GestionProductos extends javax.swing.JFrame {
             jTable_MostrarProductos.getColumnModel().getColumn(3).setPreferredWidth(200);
         }
 
-        jbutton_EditarProducto.setText("Editar");
-        jbutton_EditarProducto.setToolTipText("EditarProducto");
-
         jLabel_TotalProductos.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel_TotalProductos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_TotalProductos.setToolTipText("ProductosRegistrados");
-
-        jbutton_EliminarProducto.setText("Eliminar");
-        jbutton_EliminarProducto.setToolTipText("EliminarProducto");
 
         jbutton_VolverAlMenu2.setText("Volver");
         jbutton_VolverAlMenu2.setToolTipText("RegresarMenu2");
@@ -97,16 +116,12 @@ public class GestionProductos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
                     .addComponent(JL_ERROR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jbutton_VolverAlMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbutton_EliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbutton_EditarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(125, 125, 125))
                     .addComponent(jLabel_TotalProductos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(293, 293, 293)
+                .addComponent(jbutton_VolverAlMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,16 +129,12 @@ public class GestionProductos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbutton_VolverAlMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JL_ERROR, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel_TotalProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jbutton_EliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jbutton_VolverAlMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jbutton_EditarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -131,10 +142,8 @@ public class GestionProductos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 public void funcionamiento() {
        DefaultTableModel modelo = (DefaultTableModel) jTable_MostrarProductos.getModel();
-DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-
-
-         if (cont<1) {
+         System.out.println("SE RECIBIO : "+contInv+" INVENTARIOS!");
+         if (contInv<1) {
             JL_ERROR.setText("No hay datos registrados!");
          } 
           array = new Producto[cola_inventario.tamaño];
@@ -142,8 +151,7 @@ DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
           array = cola_inventario.recorrer();
 
          for (int i=0; i<array.length; i++){
-           ContadorProductos = ContadorProductos+1;
-            setContadorProductos(ContadorProductos);
+           
             datosx[0] = array[i].ID_Producto;
             datosx[1] = array[i].Nombre_producto;
             datosx[2] = array[i].Cant_prod;
@@ -156,7 +164,7 @@ DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
           
 }
     private void jbutton_VolverAlMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu2ActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(cont,0,empleados,cola_inventario,null,null, horario,asignados,null); 
+        MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
          menu.setVisible(true);
           this.setVisible(false);        
     }//GEN-LAST:event_jbutton_VolverAlMenu2ActionPerformed
@@ -165,7 +173,7 @@ DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionProductos(cont,cola_inventario,null, null,null,null).setVisible(true);
+                new GestionProductos(0,0,null,null,null,null,null,null,null).setVisible(true);
             }
         });
     }
@@ -175,8 +183,6 @@ DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
     private javax.swing.JLabel jLabel_TotalProductos;
     private javax.swing.JScrollPane jScrollPane1;
     private static javax.swing.JTable jTable_MostrarProductos;
-    private javax.swing.JButton jbutton_EditarProducto;
-    private javax.swing.JButton jbutton_EliminarProducto;
     private javax.swing.JButton jbutton_VolverAlMenu2;
     // End of variables declaration//GEN-END:variables
 }

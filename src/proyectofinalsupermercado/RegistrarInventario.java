@@ -5,27 +5,46 @@ import javax.swing.JOptionPane;
 
 public class RegistrarInventario extends javax.swing.JFrame {
     static Cola c = new Cola();
-    Inventario inv = new Inventario();
-    static int contador;
-    Empleados[] empleados = new Empleados[20];
-    Horario[] horario = new Horario[20];
-    HorariosAsignados[] asignados = new HorariosAsignados[20];
+   Horario[] horarios = new Horario[20];
+    Horario h = new Horario();
+     int contEmp;
+     int contInv;
+     Empleados[] empleados = new Empleados[20];
+Empleados empleado = new Empleados();
+HorariosAsignados[] asignados = new HorariosAsignados[20];
+Producto[] productoarray = new Producto[20];
+Inventario inv = new Inventario();
+String NombreRecibido;
     
-    public RegistrarInventario(int ContadorInv,Cola cola_inventario, Empleados[] emp, Horario[] h,HorariosAsignados[]a) {
-        initComponents();
-        horario=h;
-        empleados=emp;
-        
-        if(cola_inventario!=null){
-            c=cola_inventario;
+    public RegistrarInventario(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
+       if(ContadorEmp!=0){
+            contEmp=ContadorEmp;
         }
         if(ContadorInv!=0){
-           contador = ContadorInv;
+            contInv=ContadorInv;
+        }
+     
+          initComponents();
+           if(COLA_INVENTARIO!=null){
+            c  = COLA_INVENTARIO;
+        }
+        if(h!=null){
+            horarios=h;
         }
         
-        asignados =a;
+        if(a!=null){
+            asignados=a;
+        }
+        if(arrayp!=null){
+            productoarray=arrayp;
+        }
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+            if(emp!=null){
+            empleados = emp;
+        }
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -163,10 +182,16 @@ public class RegistrarInventario extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-  
+  public int getContadorProductos() {
+        return contInv;
+    }
+
+    public void setContadorProductos(int ContadorProductos) {
+        this.contInv = ContadorProductos;
+    }
     private void BT_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VOLVERActionPerformed
       
-        MenuPrincipal menu  =  new MenuPrincipal(contador,0,empleados,c,null,null,horario,asignados,null); 
+        MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,c,NombreRecibido,null, horarios, asignados,null); 
         menu.setVisible(true);
         this.setVisible(false);         
 
@@ -176,12 +201,13 @@ public class RegistrarInventario extends javax.swing.JFrame {
        if(TF_IDPROD.getText().equals("") || TF_CANTPROD.getText().equals("") || TF_NOMPROD.getText().equals("") || TXA_DESPROD.getText().equals("") || TF_PRECIOPROD.getText().equals("")){
            JOptionPane.showMessageDialog(this, "Porfavor, ingrese los campos vacios!","Campos vacíos", JOptionPane.WARNING_MESSAGE);
        } else {
+            contInv = contInv+1;
+            setContadorProductos(contInv);
             inv.setID_Producto(Integer.parseInt(TF_IDPROD.getText()));
             inv.setCant_prod(Integer.parseInt(TF_CANTPROD.getText()));
             inv.setNombre_producto(TF_NOMPROD.getText());
             inv.setDesc_prod(TXA_DESPROD.getText());
             inv.setPrecio_Producto(Double.parseDouble(TF_PRECIOPROD.getText()));
-            contador++;
             Producto obj = new Producto(inv.getID_Producto(),inv.getCant_prod(),inv.getNombre_producto(),inv.getDesc_prod(),inv.getPrecio_Producto());
             c.push(obj);
        }
@@ -192,7 +218,7 @@ public class RegistrarInventario extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarInventario(contador,c, null, null,null).setVisible(true);
+                new RegistrarInventario(0,0,null,null,null,null,null,null,null).setVisible(true);
             }
         });
     }

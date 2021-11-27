@@ -2,17 +2,46 @@ package proyectofinalsupermercado;
 
 public class RegistrarHorario extends javax.swing.JFrame {
 
-    Empleados[] empleados = new Empleados[20];
-    Cola cola = new Cola();
-    Horario[] horario = new Horario[20];
-    HorariosAsignados[] asignados = new HorariosAsignados[20];
+       int contEmp;
+    int contInv;
+Empleados[] empleados = new Empleados[20];
+Empleados empleado = new Empleados();
+Cola cola_inventario = new Cola();
+Horario[] horario = new Horario[20];
+HorariosAsignados[] asignados = new HorariosAsignados[20];
+Producto[] productoarray = new Producto[20];
+String NombreRecibido;
     
-    public RegistrarHorario(Cola c,Empleados[] emple, Horario[] h, HorariosAsignados[] a) {
+    public RegistrarHorario(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
+         empleados = emp;
+         contEmp = ContadorEmp;
+         System.out.println("TRABAJADORES CONTADOS: "+contEmp);
+        if(ContadorEmp!=0){
+            contEmp=ContadorEmp;
+        }
+        if(ContadorInv!=0){
+            contInv=ContadorInv;
+        }
         initComponents();
-        horario=h;
-        empleados = emple;
-        cola=c;
-        asignados=a;
+        if(COLA_INVENTARIO!=null){
+            cola_inventario  = COLA_INVENTARIO;
+        }
+        if(h!=null){
+            horario=h;
+        }
+        
+        if(a!=null){
+            asignados=a;
+        }
+        if(arrayp!=null){
+            productoarray=arrayp;
+        }
+        if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+    if(emp!=null){
+            empleados = emp;
+        }
         
          for (Empleados empleado : empleados) {
             if(empleado!=null){
@@ -46,6 +75,8 @@ public class RegistrarHorario extends javax.swing.JFrame {
         TF_HS = new javax.swing.JTextField();
         btnVolver = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        Nom_H = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +113,8 @@ public class RegistrarHorario extends javax.swing.JFrame {
                 btnRegistrarActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("Nombre Horario:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,17 +160,25 @@ public class RegistrarHorario extends javax.swing.JFrame {
                                     .addComponent(cbxVie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(TF_HS))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbxSab)))
+                        .addComponent(cbxSab))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Nom_H)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cbbEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(Nom_H, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(cbxLun)
@@ -164,7 +205,7 @@ public class RegistrarHorario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(0,0,empleados,cola,null,null, horario,asignados,null); 
+        MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horario, asignados,null); 
         menu.setVisible(true);
         this.setVisible(false);  
     }//GEN-LAST:event_btnVolverActionPerformed
@@ -217,8 +258,8 @@ public class RegistrarHorario extends javax.swing.JFrame {
                 break;
             }
             
-               
-        HorariosAsignados obj = new HorariosAsignados(ID_EMPLEADO,seleccionadoEmpleado,dias,HoraEntrada,HoraSalida);
+              String Nombre_Horario =  Nom_H.getText();
+        HorariosAsignados obj = new HorariosAsignados(ID_EMPLEADO,seleccionadoEmpleado,Nombre_Horario,dias,HoraEntrada,HoraSalida);
         if(asignados.length==0){
                 asignados[0] = obj;
             }else{
@@ -262,12 +303,13 @@ public class RegistrarHorario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarHorario(null,null,null,null).setVisible(true);
+                new RegistrarHorario(0,0,null,null,null,null,null,null,null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Nom_H;
     private javax.swing.JTextField TF_HE;
     private javax.swing.JTextField TF_HS;
     private javax.swing.JButton btnRegistrar;
@@ -280,6 +322,7 @@ public class RegistrarHorario extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbxSab;
     private javax.swing.JCheckBox cbxVie;
     private javax.swing.ButtonGroup grupoRegistrarHorario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

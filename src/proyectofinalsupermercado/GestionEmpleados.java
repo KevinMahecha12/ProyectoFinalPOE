@@ -10,20 +10,50 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GestionEmpleados extends javax.swing.JFrame {
 
-    Empleados[] empleados = new Empleados[20];
-    int contEmp;
-    Cola cola = new Cola();
-    Horario[] horario = new Horario[20];
-    HorariosAsignados[] asignados = new HorariosAsignados[20];
+       Horario[] horarios = new Horario[20];
+    Horario h = new Horario();
+     int contEmp;
+     int contInv;
+     Empleados[] empleados = new Empleados[20];
+Empleados empleado = new Empleados();
+Cola cola_inventario = new Cola();
+HorariosAsignados[] asignados = new HorariosAsignados[20];
+Producto[] productoarray = new Producto[20];
+String NombreRecibido;
+    DefaultTableModel modelo = new DefaultTableModel();
+       Object []  datos = new Object[5];
     
-    public GestionEmpleados(Cola c, int ContEmp,Empleados[] emple, Horario[] h,HorariosAsignados[] a) {
+    public GestionEmpleados(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
+        if(ContadorEmp!=0){
+            contEmp=ContadorEmp;
+        }
+      
+        if(ContadorInv!=0){
+            contInv=ContadorInv;
+        }
         initComponents();
-        contEmp = ContEmp;
-        empleados = emple;
-        cola=c;
-        horario=h;
+          
+           if(COLA_INVENTARIO!=null){
+            cola_inventario  = COLA_INVENTARIO;
+        }
+        if(h!=null){
+            horarios=h;
+        }
+        
+        if(a!=null){
+            asignados=a;
+        }
+        if(arrayp!=null){
+            productoarray=arrayp;
+        }
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+            if(emp!=null){
+            empleados = emp;
+        }
         String[] cabecera ={"ID_Empleado","Nombre","Area de Trabajo","Turno"};
-        asignados=a;
+   
         
        DefaultTableModel modelo = new DefaultTableModel();
         
@@ -31,6 +61,7 @@ public class GestionEmpleados extends javax.swing.JFrame {
         
         Object []  datos = new Object[4];
         System.out.println("empleados contados: "+contEmp);
+       
         if (contEmp<1) {
             JL_ERROR.setText("No hay ningun empleado registrado!");
         }
@@ -63,9 +94,6 @@ public class GestionEmpleados extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jtableEmpleadosRegistrados = new javax.swing.JTable();
-        jbutton_Editar = new javax.swing.JButton();
-        jbutton_ConfirmarAsistencia = new javax.swing.JButton();
-        jbutton_EliminarEmpleado = new javax.swing.JButton();
         jbutton_VolverAlMenu1 = new javax.swing.JButton();
         jlabelEmpleadosRegistrados = new javax.swing.JLabel();
         JL_ERROR = new javax.swing.JLabel();
@@ -109,30 +137,6 @@ public class GestionEmpleados extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtableEmpleadosRegistrados);
 
-        jbutton_Editar.setText("Editar");
-        jbutton_Editar.setToolTipText("EditarEmpleado");
-        jbutton_Editar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbutton_EditarActionPerformed(evt);
-            }
-        });
-
-        jbutton_ConfirmarAsistencia.setText("Confirmar Asistencia");
-        jbutton_ConfirmarAsistencia.setToolTipText("Asistencia ");
-        jbutton_ConfirmarAsistencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbutton_ConfirmarAsistenciaActionPerformed(evt);
-            }
-        });
-
-        jbutton_EliminarEmpleado.setText("Eliminar");
-        jbutton_EliminarEmpleado.setToolTipText("EliminarEmpleado");
-        jbutton_EliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbutton_EliminarEmpleadoActionPerformed(evt);
-            }
-        });
-
         jbutton_VolverAlMenu1.setText("Volver");
         jbutton_VolverAlMenu1.setToolTipText("RegresarMenu1");
         jbutton_VolverAlMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -153,20 +157,14 @@ public class GestionEmpleados extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JL_ERROR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlabelEmpleadosRegistrados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addComponent(jlabelEmpleadosRegistrados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(JL_ERROR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jbutton_Editar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbutton_ConfirmarAsistencia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbutton_EliminarEmpleado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbutton_VolverAlMenu1)
+                .addGap(274, 274, 274)
+                .addComponent(jbutton_VolverAlMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -174,40 +172,25 @@ public class GestionEmpleados extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbutton_VolverAlMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(JL_ERROR, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlabelEmpleadosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbutton_Editar)
-                    .addComponent(jbutton_ConfirmarAsistencia)
-                    .addComponent(jbutton_EliminarEmpleado)
-                    .addComponent(jbutton_VolverAlMenu1))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
-        setSize(new java.awt.Dimension(648, 341));
+        setSize(new java.awt.Dimension(700, 365));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbutton_VolverAlMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu1ActionPerformed
-       MenuPrincipal menu  =  new MenuPrincipal(0,contEmp,empleados,cola,null,null, horario, asignados,null); 
+       MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
+        System.out.println("PRODUCTOS RECIBIO: "+contEmp+" TRABAJADORES!");
        menu.setVisible(true);
        this.setVisible(false);  
     }//GEN-LAST:event_jbutton_VolverAlMenu1ActionPerformed
-
-    private void jbutton_EliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_EliminarEmpleadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbutton_EliminarEmpleadoActionPerformed
-
-    private void jbutton_ConfirmarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_ConfirmarAsistenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbutton_ConfirmarAsistenciaActionPerformed
-
-    private void jbutton_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_EditarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbutton_EditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,7 +222,7 @@ public class GestionEmpleados extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionEmpleados(null,0,null, null,null).setVisible(true);
+                new GestionEmpleados(0,0,null,null,null,null,null,null,null).setVisible(true);
             }
         });
     }
@@ -247,9 +230,6 @@ public class GestionEmpleados extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JL_ERROR;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbutton_ConfirmarAsistencia;
-    private javax.swing.JButton jbutton_Editar;
-    private javax.swing.JButton jbutton_EliminarEmpleado;
     private javax.swing.JButton jbutton_VolverAlMenu1;
     private javax.swing.JLabel jlabelEmpleadosRegistrados;
     private javax.swing.JTable jtableEmpleadosRegistrados;

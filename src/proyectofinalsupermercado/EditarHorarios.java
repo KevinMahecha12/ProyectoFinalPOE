@@ -6,14 +6,47 @@ public class EditarHorarios extends javax.swing.JFrame {
     Horario[] horarios = new Horario[20];
     Horario h = new Horario();
      int contEmp;
-    public EditarHorarios(int ContEmp, Horario[] H) {
-        horarios = H;
-        contEmp = ContEmp;
-        initComponents();
+     int contInv;
+     Empleados[] empleados = new Empleados[20];
+Empleados empleado = new Empleados();
+Cola cola_inventario = new Cola();
+HorariosAsignados[] asignados = new HorariosAsignados[20];
+Producto[] productoarray = new Producto[20];
+String NombreRecibido;
+     
+    public EditarHorarios(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
 
+        if(ContadorEmp!=0){
+            contEmp=ContadorEmp;
+        }
+        if(ContadorInv!=0){
+            contInv=ContadorInv;
+        }
+        initComponents();
+        
+           if(COLA_INVENTARIO!=null){
+            cola_inventario  = COLA_INVENTARIO;
+        }
+        if(h!=null){
+            horarios=h;
+        }
+        
+        if(a!=null){
+            asignados=a;
+        }
+        if(arrayp!=null){
+            productoarray=arrayp;
+        }
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+            if(emp!=null){
+            empleados = emp;
+        }
+            
         for (Horario horario: horarios) {
             if(horario!=null){
-                cbbHorarios.addItem(String.valueOf(horario.ID));
+                cbbHorarios.addItem(horario.Nombre_Horario);
             }else{
                 break;
             }
@@ -35,7 +68,7 @@ public class EditarHorarios extends javax.swing.JFrame {
         HORAE_T = new javax.swing.JTextField();
         HORAS_T = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        ID_H = new javax.swing.JTextField();
+        NOM_H = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,11 +117,11 @@ public class EditarHorarios extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("ID Horario");
+        jLabel8.setText("Nombre");
 
-        ID_H.addActionListener(new java.awt.event.ActionListener() {
+        NOM_H.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ID_HActionPerformed(evt);
+                NOM_HActionPerformed(evt);
             }
         });
 
@@ -112,7 +145,7 @@ public class EditarHorarios extends javax.swing.JFrame {
                             .addComponent(DIAS_T, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                             .addComponent(HORAE_T)
                             .addComponent(HORAS_T)
-                            .addComponent(ID_H)))
+                            .addComponent(NOM_H)))
                     .addComponent(cbbHorarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE))
                 .addContainerGap(21, Short.MAX_VALUE))
@@ -133,7 +166,7 @@ public class EditarHorarios extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(ID_H, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NOM_H, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -157,11 +190,11 @@ public class EditarHorarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbbHorariosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbHorariosItemStateChanged
-         int seleccionHorario = Integer.parseInt(cbbHorarios.getSelectedItem().toString());
+        String seleccionHorario = cbbHorarios.getSelectedItem().toString();
         for(Horario horario: horarios){
             if(horario!=null){
-                if(horario.ID == seleccionHorario){
-                    ID_H.setText(String.valueOf(horario.ID));
+                if(horario.Nombre_Horario.equals(seleccionHorario)){
+                    NOM_H.setText(horario.Nombre_Horario);
                     DIAS_T.setText(horario.Dia);
                     HORAE_T.setText(horario.Hora_Entrada);
                     HORAS_T.setText(horario.Hora_Salida);
@@ -174,13 +207,13 @@ public class EditarHorarios extends javax.swing.JFrame {
     }//GEN-LAST:event_cbbHorariosItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(0,contEmp,null,null,null,null, horarios,null,null);
-        menu.setVisible(true);
-        this.setVisible(false);
+       MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
+       menu.setVisible(true);
+       this.setVisible(false);  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BTEDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTEDITARActionPerformed
-        Horario obj = new Horario(DIAS_T.getText(),HORAE_T.getText(),HORAS_T.getText(),Integer.parseInt(ID_H.getText()));
+        Horario obj = new Horario(NOM_H.getText(),DIAS_T.getText(),HORAE_T.getText(),HORAS_T.getText());
         int index = cbbHorarios.getSelectedIndex() ;
         horarios[index] = obj;
 
@@ -190,9 +223,9 @@ public class EditarHorarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_HORAS_TActionPerformed
 
-    private void ID_HActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ID_HActionPerformed
+    private void NOM_HActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NOM_HActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ID_HActionPerformed
+    }//GEN-LAST:event_NOM_HActionPerformed
 
     private void cbbHorariosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbbHorariosKeyPressed
         // TODO add your handling code here:
@@ -206,7 +239,7 @@ public class EditarHorarios extends javax.swing.JFrame {
   
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditarHorarios(0,null).setVisible(true);
+                new EditarHorarios(0,0,null,null,null,null,null,null,null).setVisible(true);
             }
         });
     }
@@ -216,7 +249,7 @@ public class EditarHorarios extends javax.swing.JFrame {
     private javax.swing.JTextField DIAS_T;
     private javax.swing.JTextField HORAE_T;
     private javax.swing.JTextField HORAS_T;
-    private javax.swing.JTextField ID_H;
+    private javax.swing.JTextField NOM_H;
     private javax.swing.JComboBox<String> cbbHorarios;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel3;

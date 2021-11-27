@@ -41,7 +41,7 @@
                           <Component id="DIAS_T" alignment="0" pref="235" max="32767" attributes="0"/>
                           <Component id="HORAE_T" alignment="0" max="32767" attributes="0"/>
                           <Component id="HORAS_T" alignment="0" max="32767" attributes="0"/>
-                          <Component id="ID_H" alignment="0" max="32767" attributes="0"/>
+                          <Component id="NOM_H" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="cbbHorarios" alignment="0" max="32767" attributes="0"/>
@@ -68,7 +68,7 @@
               <EmptySpace pref="20" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ID_H" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="NOM_H" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -159,12 +159,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ID Horario"/>
+        <Property name="text" type="java.lang.String" value="Nombre"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="ID_H">
+    <Component class="javax.swing.JTextField" name="NOM_H">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ID_HActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NOM_HActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
