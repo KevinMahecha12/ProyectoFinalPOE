@@ -68,8 +68,6 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         JL_TRegistrados = new javax.swing.JLabel();
         JL_PInventario = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        rSLabelHora1 = new rojeru_san.RSLabelHora();
-        rSLabelFecha1 = new rojeru_san.RSLabelFecha();
         Fecha = new javax.swing.JLabel();
         PRODUCTOS = new javax.swing.JLabel();
         INVENTARIO = new javax.swing.JLabel();
@@ -123,13 +121,6 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jButton1.setText("Salir");
         jButton1.setFocusPainted(false);
         jButton1.setRequestFocusEnabled(false);
-        jButton1.setRolloverEnabled(false);
-
-        rSLabelHora1.setForeground(new java.awt.Color(255, 255, 255));
-        rSLabelHora1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
-
-        rSLabelFecha1.setForeground(new java.awt.Color(255, 255, 255));
-        rSLabelFecha1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
 
         Fecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fecha_1.png"))); // NOI18N
 
@@ -343,12 +334,8 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(JL_Hora)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
-                                .addComponent(Fecha)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rSLabelFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(178, 178, 178)
+                                .addComponent(Fecha))
                             .addComponent(JL_NombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(JL_PInventario)
@@ -358,16 +345,14 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
                                 .addComponent(JL_TRegistrados)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(PRODUCTOS, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(163, Short.MAX_VALUE))))
+                        .addContainerGap(262, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(rSLabelFecha1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(JL_Hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(rSLabelHora1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Fecha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JL_NombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -498,8 +483,6 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private rojeru_san.RSLabelFecha rSLabelFecha1;
-    private rojeru_san.RSLabelHora rSLabelHora1;
     // End of variables declaration//GEN-END:variables
 }
 
