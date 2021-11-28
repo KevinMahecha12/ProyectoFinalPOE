@@ -40,6 +40,7 @@ public class InicioSesion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar sesion");
+        setIconImage(getIconImage());
 
         jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 153));
@@ -203,7 +204,11 @@ public class InicioSesion extends javax.swing.JFrame {
     }
      
     }//GEN-LAST:event_BotonIngresarActionPerformed
-
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
     private void ComboBoxTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxTurnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxTurnoActionPerformed

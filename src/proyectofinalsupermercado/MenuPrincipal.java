@@ -254,6 +254,11 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem11.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Eliminar_Horario.png"))); // NOI18N
         jMenuItem11.setText("Eliminar Horario");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem11);
 
         jMenuBar1.add(jMenu2);
@@ -450,10 +455,16 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
-        EliminarEmpleados REGINV  =  new  EliminarEmpleados (contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
-       REGINV.setVisible(true);
+        EliminarEmpleados EEm  =  new  EliminarEmpleados(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
+        EEm.setVisible(true);
         this.setVisible(false);   
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+      EliminarHorarios EH = new EliminarHorarios(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
+       EH.setVisible(true);
+        this.setVisible(false);   
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
 
 
     public static void main(String args[]) {
