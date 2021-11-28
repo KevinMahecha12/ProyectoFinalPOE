@@ -1,5 +1,7 @@
 package proyectofinalsupermercado;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 public class BuscarInventario extends javax.swing.JFrame {
@@ -13,6 +15,7 @@ Horario[] horario = new Horario[20];
 HorariosAsignados[] asignados = new HorariosAsignados[20];
 String NombreRecibido;
 String HoraCaptada;
+Producto[] productoarray = new Producto[20];
     public BuscarInventario(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
         ImagenFondo imgf = new ImagenFondo("src/imagenes/bi.jpg");
         this.setContentPane(imgf);
@@ -41,6 +44,9 @@ String HoraCaptada;
           if(Nombre_Administrador!=null){
             NombreRecibido=Nombre_Administrador;
         }
+            if(arrayp!=null){
+            productoarray=arrayp;
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -62,6 +68,7 @@ String HoraCaptada;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Buscar Inventario");
+        setIconImage(getIconImage());
 
         jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
@@ -80,7 +87,7 @@ String HoraCaptada;
         labelID1.setText("ID:");
 
         labelID2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
-        labelID2.setForeground(new java.awt.Color(0, 0, 102));
+        labelID2.setForeground(new java.awt.Color(255, 255, 255));
         labelID2.setText("0");
 
         labelPre1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -88,7 +95,7 @@ String HoraCaptada;
         labelPre1.setText("Precio:");
 
         labelPrecio2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
-        labelPrecio2.setForeground(new java.awt.Color(0, 0, 102));
+        labelPrecio2.setForeground(new java.awt.Color(255, 255, 255));
         labelPrecio2.setText("0");
 
         labelStock1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -96,7 +103,7 @@ String HoraCaptada;
         labelStock1.setText("Cantidad (Stock): ");
 
         labelStock2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
-        labelStock2.setForeground(new java.awt.Color(0, 0, 102));
+        labelStock2.setForeground(new java.awt.Color(255, 255, 255));
         labelStock2.setText("0");
 
         labelDesc1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -104,7 +111,7 @@ String HoraCaptada;
         labelDesc1.setText("Descripcion:");
 
         labelDesc2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
-        labelDesc2.setForeground(new java.awt.Color(0, 0, 102));
+        labelDesc2.setForeground(new java.awt.Color(255, 255, 255));
         labelDesc2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0, 5, 5));
@@ -136,16 +143,17 @@ String HoraCaptada;
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelID1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(labelID2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelPre1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -157,11 +165,9 @@ String HoraCaptada;
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelDesc1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelDesc2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(94, Short.MAX_VALUE))
+                                .addComponent(labelDesc2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +176,7 @@ String HoraCaptada;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelID1)
                     .addComponent(labelID2))
@@ -186,7 +192,7 @@ String HoraCaptada;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelDesc1)
                     .addComponent(labelDesc2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
@@ -200,11 +206,15 @@ String HoraCaptada;
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(contInv,ContadorEmpleados,empleados,cola,NombreRecibido,HoraCaptada,horario,asignados,null); 
+        MenuPrincipal menu  =  new MenuPrincipal(contInv,ContadorEmpleados,empleados,cola,NombreRecibido,HoraCaptada,horario,asignados,productoarray); 
          menu.setVisible(true);
           this.setVisible(false);
     }//GEN-LAST:event_btnVolverActionPerformed
-
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String name = txtName.getText();
         Producto obj = cola.buscar(name);
