@@ -227,7 +227,7 @@ String HoraCaptada;
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String name = txtName.getText();
         Producto obj = cola_inventario.buscar(name);
-        if(name.equals("")){
+        if(txtName.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
         }else{
             if(obj!=null){
