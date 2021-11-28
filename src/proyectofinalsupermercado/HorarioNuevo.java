@@ -4,6 +4,11 @@
  */
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +28,11 @@ HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 String NombreRecibido;
 String HoraCaptada;
+     ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+    Cursor c,c2;
+        Toolkit tk = Toolkit.getDefaultToolkit();
+
     public HorarioNuevo(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
           if(ContadorEmp!=0){
             contEmp=ContadorEmp;
@@ -39,7 +49,17 @@ String HoraCaptada;
         ImagenFondo imgf = new ImagenFondo("src/imagenes/blob.jpg");
         this.setContentPane(imgf);
         initComponents();
-        
+       c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        setCursor(c);
+        cbbLun.setCursor(c2);
+        cbbMar.setCursor(c2);
+        cbbMie.setCursor(c2);
+        cbbJue.setCursor(c2);
+        cbbVie.setCursor(c2);
+        cbbSab.setCursor(c2);
+        txtCrear.setCursor(c2);  
+        txtVolver.setCursor(c2);
            if(COLA_INVENTARIO!=null){
             cola_inventario  = COLA_INVENTARIO;
         }
@@ -78,7 +98,7 @@ String HoraCaptada;
         jLabel4 = new javax.swing.JLabel();
         txtHoraSalida = new javax.swing.JTextField();
         txtHoraEntrada = new javax.swing.JTextField();
-        txtRegresar1 = new javax.swing.JButton();
+        txtCrear = new javax.swing.JButton();
         txtVolver = new javax.swing.JButton();
         cbbLun = new javax.swing.JCheckBox();
         cbbMie = new javax.swing.JCheckBox();
@@ -95,6 +115,7 @@ String HoraCaptada;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Horario Nuevo");
+        setIconImage(getIconImage());
 
         jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
@@ -129,13 +150,13 @@ String HoraCaptada;
             }
         });
 
-        txtRegresar1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
-        txtRegresar1.setForeground(new java.awt.Color(0, 0, 102));
-        txtRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/horariopred.png"))); // NOI18N
-        txtRegresar1.setText("Crear");
-        txtRegresar1.addActionListener(new java.awt.event.ActionListener() {
+        txtCrear.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        txtCrear.setForeground(new java.awt.Color(0, 0, 102));
+        txtCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/horariopred.png"))); // NOI18N
+        txtCrear.setText("Crear");
+        txtCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRegresar1ActionPerformed(evt);
+                txtCrearActionPerformed(evt);
             }
         });
 
@@ -218,7 +239,7 @@ String HoraCaptada;
                 .addContainerGap(48, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtRegresar1)
+                .addComponent(txtCrear)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtVolver)
                 .addGap(78, 78, 78))
@@ -251,7 +272,7 @@ String HoraCaptada;
                     .addComponent(txtHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtRegresar1)
+                    .addComponent(txtCrear)
                     .addComponent(txtVolver))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -259,7 +280,11 @@ String HoraCaptada;
         setSize(new java.awt.Dimension(496, 358));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
     private void txtHoraSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraSalidaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHoraSalidaActionPerformed
@@ -274,7 +299,7 @@ String HoraCaptada;
         this.setVisible(false);
     }//GEN-LAST:event_txtVolverActionPerformed
 
-    private void txtRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegresar1ActionPerformed
+    private void txtCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCrearActionPerformed
         int check=0;
         String dias="";
         
@@ -323,7 +348,7 @@ String HoraCaptada;
                 }
             }//else
         }
-    }//GEN-LAST:event_txtRegresar1ActionPerformed
+    }//GEN-LAST:event_txtCrearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -375,10 +400,10 @@ String HoraCaptada;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton txtCrear;
     private javax.swing.JTextField txtHoraEntrada;
     private javax.swing.JTextField txtHoraSalida;
     private javax.swing.JTextField txtNOM;
-    private javax.swing.JButton txtRegresar1;
     private javax.swing.JButton txtVolver;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,11 @@
 //CAMBIO
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,6 +18,11 @@ public class GestionEmpleados extends javax.swing.JFrame {
     Horario h = new Horario();
     int contEmp;
     int contInv;
+    ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+       ImageIcon cursoreditar = new ImageIcon("src/imagenes/cursor3.png");
+    Cursor c,c2,c3;
+        Toolkit tk = Toolkit.getDefaultToolkit();
     Empleados[] empleados = new Empleados[20];
     Empleados empleado = new Empleados();
     Cola cola_inventario = new Cola();
@@ -58,6 +68,11 @@ public class GestionEmpleados extends javax.swing.JFrame {
         if(emp!=null){
             empleados = emp;
         }
+             c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        c3 = tk.createCustomCursor(cursoreditar.getImage(),new Point(1,1),null);
+        setCursor(c);
+               jbutton_VolverAlMenu1.setCursor(c2);
          String[] cabecera ={"ID_Empleado","Nombre","Area de Trabajo","Turno"};
         Object []  datos = new Object[4];
          modelo.setColumnIdentifiers(cabecera);
@@ -87,7 +102,12 @@ public class GestionEmpleados extends javax.swing.JFrame {
              jtableEmpleadosRegistrados.setModel(modelo);
 
     }
-
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -100,6 +120,7 @@ public class GestionEmpleados extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mostrar empleados");
+        setIconImage(getIconImage());
 
         jtableEmpleadosRegistrados.setBackground(new java.awt.Color(102, 153, 255));
         jtableEmpleadosRegistrados.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
@@ -119,6 +140,11 @@ public class GestionEmpleados extends javax.swing.JFrame {
         jbutton_VolverAlMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver.png"))); // NOI18N
         jbutton_VolverAlMenu1.setText("Volver");
         jbutton_VolverAlMenu1.setToolTipText("RegresarMenu1");
+        jbutton_VolverAlMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jbutton_VolverAlMenu1MousePressed(evt);
+            }
+        });
         jbutton_VolverAlMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbutton_VolverAlMenu1ActionPerformed(evt);
@@ -176,6 +202,10 @@ public class GestionEmpleados extends javax.swing.JFrame {
        menu.setVisible(true);
        this.setVisible(false);  
     }//GEN-LAST:event_jbutton_VolverAlMenu1ActionPerformed
+
+    private void jbutton_VolverAlMenu1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu1MousePressed
+        setCursor(c2);
+    }//GEN-LAST:event_jbutton_VolverAlMenu1MousePressed
 
     /**
      * @param args the command line arguments

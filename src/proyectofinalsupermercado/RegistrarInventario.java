@@ -1,5 +1,10 @@
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 
@@ -16,6 +21,11 @@ Producto[] productoarray = new Producto[20];
 Inventario inv = new Inventario();
 String NombreRecibido;
 String HoraCaptada;
+     ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+    Cursor c1,c2;
+        Toolkit tk = Toolkit.getDefaultToolkit();
+
     public RegistrarInventario(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
        if(ContadorEmp!=0){
             contEmp=ContadorEmp;
@@ -32,6 +42,12 @@ String HoraCaptada;
               ImagenFondo imgf = new ImagenFondo("src/imagenes/invent.jpg");
         this.setContentPane(imgf); 
           initComponents();
+          
+        c1 = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        setCursor(c1);
+        BT_VOLVER.setCursor(c2);
+        BT_AGREGARPROD.setCursor(c2);
            if(COLA_INVENTARIO!=null){
             c  = COLA_INVENTARIO;
         }
@@ -74,6 +90,7 @@ String HoraCaptada;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registrar productos");
+        setIconImage(getIconImage());
 
         jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
@@ -224,7 +241,11 @@ String HoraCaptada;
         this.setVisible(false);         
 
     }//GEN-LAST:event_BT_VOLVERActionPerformed
-
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
     private void BT_AGREGARPRODActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AGREGARPRODActionPerformed
        if(TF_IDPROD.getText().equals("") || TF_CANTPROD.getText().equals("") || TF_NOMPROD.getText().equals("") || TXA_DESPROD.getText().equals("") || TF_PRECIOPROD.getText().equals("")){
              JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);

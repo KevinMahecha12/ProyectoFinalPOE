@@ -1,5 +1,10 @@
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,6 +19,11 @@ HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 String NombreRecibido;
 String HoraCaptada;
+  ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+       ImageIcon cursoreditar = new ImageIcon("src/imagenes/cursor3.png");
+    Cursor c,c2,c3;
+        Toolkit tk = Toolkit.getDefaultToolkit();
     public EditarEmpleados(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
          ImagenFondo imgf = new ImagenFondo("src/imagenes/imagen90.jpg");
         this.setContentPane(imgf); 
@@ -52,8 +62,12 @@ String HoraCaptada;
     if(emp!=null){
             empleados = emp;
         }
-         
-         
+              c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        c3 = tk.createCustomCursor(cursoreditar.getImage(),new Point(1,1),null);
+        setCursor(c);
+        BTEDITAR.setCursor(c2);
+         B_VOLVER.setCursor(c2);
         System.out.println("empleados contados: "+contEmp);
         for (Empleados empleado : empleados) {
             if(empleado!=null){
@@ -62,9 +76,11 @@ String HoraCaptada;
                 break;
             }
         }
-      
-                    
-         
+    }
+    @Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -73,8 +89,8 @@ String HoraCaptada;
         cbbTrabajador = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         GESTORDIST = new javax.swing.JPanel();
-        B_VOLVER = new javax.swing.JButton();
         BTEDITAR = new javax.swing.JButton();
+        B_VOLVER = new javax.swing.JButton();
         GESTOR2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         ID_EMP = new javax.swing.JTextField();
@@ -87,12 +103,18 @@ String HoraCaptada;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Editar un empleado");
+        setIconImage(getIconImage());
 
         cbbTrabajador.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         cbbTrabajador.setForeground(new java.awt.Color(0, 99, 177));
         cbbTrabajador.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbbTrabajadorItemStateChanged(evt);
+            }
+        });
+        cbbTrabajador.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+                cbbTrabajadorComponentMoved(evt);
             }
         });
 
@@ -102,17 +124,6 @@ String HoraCaptada;
         jLabel5.setText("Seleccione el trabajador que quiere editar:");
 
         GESTORDIST.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
-
-        B_VOLVER.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
-        B_VOLVER.setForeground(new java.awt.Color(0, 99, 177));
-        B_VOLVER.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver.png"))); // NOI18N
-        B_VOLVER.setText("Volver");
-        B_VOLVER.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_VOLVERActionPerformed(evt);
-            }
-        });
-        GESTORDIST.add(B_VOLVER);
 
         BTEDITAR.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         BTEDITAR.setForeground(new java.awt.Color(0, 99, 177));
@@ -124,6 +135,17 @@ String HoraCaptada;
             }
         });
         GESTORDIST.add(BTEDITAR);
+
+        B_VOLVER.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        B_VOLVER.setForeground(new java.awt.Color(0, 99, 177));
+        B_VOLVER.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver.png"))); // NOI18N
+        B_VOLVER.setText("Volver");
+        B_VOLVER.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_VOLVERActionPerformed(evt);
+            }
+        });
+        GESTORDIST.add(B_VOLVER);
 
         GESTOR2.setBackground(new java.awt.Color(236, 252, 255));
         GESTOR2.setLayout(new java.awt.GridLayout(4, 1, 15, 30));
@@ -242,6 +264,10 @@ String HoraCaptada;
        menu.setVisible(true);
        this.setVisible(false);  
     }//GEN-LAST:event_B_VOLVERActionPerformed
+
+    private void cbbTrabajadorComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_cbbTrabajadorComponentMoved
+             setCursor(c);
+    }//GEN-LAST:event_cbbTrabajadorComponentMoved
 
     public static void main(String args[]) {
         

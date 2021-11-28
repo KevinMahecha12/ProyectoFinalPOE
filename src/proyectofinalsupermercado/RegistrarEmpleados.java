@@ -1,10 +1,19 @@
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class RegistrarEmpleados extends javax.swing.JFrame {
-
+ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+       ImageIcon cursoreditar = new ImageIcon("src/imagenes/cursor3.png");
+    Cursor c,c2,c3;
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        
     Empleados[] empleados = new Empleados[20];
     int ContadorEmpleados;
     int contInv;
@@ -41,8 +50,16 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
           if(Nombre_Administrador!=null){
             NombreRecibido=Nombre_Administrador;
         }
+               c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        c3 = tk.createCustomCursor(cursoreditar.getImage(),new Point(1,1),null);
+        setCursor(c);
     }
-
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -63,6 +80,12 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registrar empleado");
+        setIconImage(getIconImage());
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -77,12 +100,37 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         jLabel3.setText("Nombre del empleado:");
 
         TF_NOMEMPLEADO.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        TF_NOMEMPLEADO.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                TF_NOMEMPLEADOMouseMoved(evt);
+            }
+        });
+        TF_NOMEMPLEADO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TF_NOMEMPLEADOMouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jLabel4.setText("Seleccione la área de trabajo:");
 
         JCB_AREATRABAJO.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         JCB_AREATRABAJO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Limpieza ( Intendencia )", "Cajero", "Mascotas", "Ropa para bébes", "Comida", "Electrónicos", "Vigilancia ( seguridad ) ", "Bodegas ( manejo mercancía )", "Gerencia ", "Control de inventarios" }));
+        JCB_AREATRABAJO.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                JCB_AREATRABAJOItemStateChanged(evt);
+            }
+        });
+        JCB_AREATRABAJO.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                JCB_AREATRABAJOMouseMoved(evt);
+            }
+        });
+        JCB_AREATRABAJO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JCB_AREATRABAJOActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jLabel5.setText("Seleccione el turno del empleado: ");
@@ -90,13 +138,28 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         RB_MATU.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         RB_MATU.setSelected(true);
         RB_MATU.setText("Matutino");
+        RB_MATU.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                RB_MATUMouseMoved(evt);
+            }
+        });
 
         RB_VESP.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         RB_VESP.setText("Vespertino");
+        RB_VESP.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                RB_VESPMouseMoved(evt);
+            }
+        });
 
         BT_REG.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         BT_REG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reg_emp.png"))); // NOI18N
         BT_REG.setText("Registrar");
+        BT_REG.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BT_REGMouseMoved(evt);
+            }
+        });
         BT_REG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BT_REGActionPerformed(evt);
@@ -106,6 +169,11 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         BT_Volver.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         BT_Volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver.png"))); // NOI18N
         BT_Volver.setText("Volver");
+        BT_Volver.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BT_VolverMouseMoved(evt);
+            }
+        });
         BT_Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BT_VolverActionPerformed(evt);
@@ -231,6 +299,46 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
             
         }// else     
     }//GEN-LAST:event_BT_REGActionPerformed
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+        setCursor(c);
+    }//GEN-LAST:event_formMouseMoved
+
+    private void TF_NOMEMPLEADOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TF_NOMEMPLEADOMouseClicked
+          setCursor(c3);
+    }//GEN-LAST:event_TF_NOMEMPLEADOMouseClicked
+
+    private void TF_NOMEMPLEADOMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TF_NOMEMPLEADOMouseMoved
+              setCursor(c3);
+    }//GEN-LAST:event_TF_NOMEMPLEADOMouseMoved
+
+    private void BT_REGMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_REGMouseMoved
+                setCursor(c2);
+    }//GEN-LAST:event_BT_REGMouseMoved
+
+    private void BT_VolverMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_VolverMouseMoved
+        setCursor(c2);
+    }//GEN-LAST:event_BT_VolverMouseMoved
+
+    private void RB_VESPMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RB_VESPMouseMoved
+           setCursor(c2);
+    }//GEN-LAST:event_RB_VESPMouseMoved
+
+    private void RB_MATUMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RB_MATUMouseMoved
+             setCursor(c2);
+    }//GEN-LAST:event_RB_MATUMouseMoved
+
+    private void JCB_AREATRABAJOMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JCB_AREATRABAJOMouseMoved
+             setCursor(c2);
+    }//GEN-LAST:event_JCB_AREATRABAJOMouseMoved
+
+    private void JCB_AREATRABAJOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCB_AREATRABAJOActionPerformed
+                setCursor(c2);
+    }//GEN-LAST:event_JCB_AREATRABAJOActionPerformed
+
+    private void JCB_AREATRABAJOItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JCB_AREATRABAJOItemStateChanged
+                    setCursor(c2);
+    }//GEN-LAST:event_JCB_AREATRABAJOItemStateChanged
 
 
     public static void main(String args[]) {
