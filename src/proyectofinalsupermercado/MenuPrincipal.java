@@ -200,6 +200,11 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem8.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Eliminar_emp.png"))); // NOI18N
         jMenuItem8.setText("Eliminar Empleados");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem8);
 
         jMenuBar1.add(jMenu1);
@@ -455,6 +460,12 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
      this.setVisible(false);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        EliminarEmpleados REGINV  =  new  EliminarEmpleados (contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
+       REGINV.setVisible(true);
+        this.setVisible(false);   
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         BuscarEmpleado BE = new BuscarEmpleado(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray);
         BE.setVisible(true);

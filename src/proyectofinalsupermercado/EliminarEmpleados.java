@@ -176,7 +176,7 @@ public class EliminarEmpleados extends javax.swing.JFrame {
 
         }else{
 
-            String buscador = listaE.getSelectedValue().toString();
+            String buscador = listaE.getSelectedValue();
 
             for (int i = 0; i < empleados.length-1; i++) {
                 if(buscador.equals(empleados[i].getNombre_Empleado())){
