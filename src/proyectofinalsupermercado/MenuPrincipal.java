@@ -197,6 +197,11 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem7.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar_emp.png"))); // NOI18N
         jMenuItem7.setText("Buscar Empleados");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem7);
 
         jMenuItem8.setBackground(new java.awt.Color(0, 99, 177));
@@ -253,6 +258,11 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem10.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/B_Horario.png"))); // NOI18N
         jMenuItem10.setText("Buscar horario");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem10);
 
         jMenuItem11.setBackground(new java.awt.Color(0, 99, 177));
@@ -459,6 +469,18 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         eli.setVisible(true);
      this.setVisible(false);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        BuscarEmpleado BE = new BuscarEmpleado(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray);
+        BE.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        BuscarHorarios BH = new BuscarHorarios(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray);
+        BH.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
 
 
     public static void main(String args[]) {

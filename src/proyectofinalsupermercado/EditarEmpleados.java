@@ -73,8 +73,8 @@ String HoraCaptada;
         cbbTrabajador = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         GESTORDIST = new javax.swing.JPanel();
-        B_VOLVER = new javax.swing.JButton();
         BTEDITAR = new javax.swing.JButton();
+        B_VOLVER = new javax.swing.JButton();
         GESTOR2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         ID_EMP = new javax.swing.JTextField();
@@ -103,17 +103,6 @@ String HoraCaptada;
 
         GESTORDIST.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
 
-        B_VOLVER.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
-        B_VOLVER.setForeground(new java.awt.Color(0, 99, 177));
-        B_VOLVER.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver.png"))); // NOI18N
-        B_VOLVER.setText("Volver");
-        B_VOLVER.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_VOLVERActionPerformed(evt);
-            }
-        });
-        GESTORDIST.add(B_VOLVER);
-
         BTEDITAR.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         BTEDITAR.setForeground(new java.awt.Color(0, 99, 177));
         BTEDITAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar_emp.png"))); // NOI18N
@@ -124,6 +113,17 @@ String HoraCaptada;
             }
         });
         GESTORDIST.add(BTEDITAR);
+
+        B_VOLVER.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        B_VOLVER.setForeground(new java.awt.Color(0, 99, 177));
+        B_VOLVER.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver.png"))); // NOI18N
+        B_VOLVER.setText("Volver");
+        B_VOLVER.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_VOLVERActionPerformed(evt);
+            }
+        });
+        GESTORDIST.add(B_VOLVER);
 
         GESTOR2.setBackground(new java.awt.Color(236, 252, 255));
         GESTOR2.setLayout(new java.awt.GridLayout(4, 1, 15, 30));
