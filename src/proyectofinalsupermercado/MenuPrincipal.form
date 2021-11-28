@@ -389,12 +389,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="JL_Hora" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="rSLabelHora1" min="-2" pref="148" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
                               <Component id="Fecha" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="rSLabelFecha1" min="-2" pref="170" max="-2" attributes="0"/>
                           </Group>
                           <Component id="JL_NombreAdmin" min="-2" pref="349" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -408,7 +404,7 @@
                               <Component id="PRODUCTOS" min="-2" pref="95" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="163" max="32767" attributes="0"/>
+                      <EmptySpace pref="262" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -419,9 +415,7 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="rSLabelFecha1" max="32767" attributes="0"/>
                   <Component id="JL_Hora" max="32767" attributes="0"/>
-                  <Component id="rSLabelHora1" max="32767" attributes="0"/>
                   <Component id="Fecha" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -523,27 +517,6 @@
         <Property name="text" type="java.lang.String" value="Salir"/>
         <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="requestFocusEnabled" type="boolean" value="false"/>
-        <Property name="rolloverEnabled" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="rojeru_san.RSLabelHora" name="rSLabelHora1">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Microsoft JhengHei UI" size="24" style="1"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="rojeru_san.RSLabelFecha" name="rSLabelFecha1">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Microsoft JhengHei UI" size="24" style="1"/>
-        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="Fecha">
