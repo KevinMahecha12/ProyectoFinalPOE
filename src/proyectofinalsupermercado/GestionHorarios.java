@@ -1,22 +1,95 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectofinalsupermercado;
 
-/**
- *
- * @author kevin
- */
+import java.util.Vector;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.table.DefaultTableModel;
+
+
 public class GestionHorarios extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GestionHorarios
-     */
-    public GestionHorarios() {
+   Horario[] horarios = new Horario[20];
+    Horario h = new Horario();
+     int contEmp;
+     int contInv;
+     Empleados[] empleados = new Empleados[20];
+Empleados empleado = new Empleados();
+Cola cola_inventario = new Cola();
+HorariosAsignados[] asignados = new HorariosAsignados[20];
+Producto[] productoarray = new Producto[20];
+String NombreRecibido;
+String HoraCaptada;
+    private int selectedRow;
+    DefaultTableModel modelo = new DefaultTableModel();
+       Object []  datos = new Object[6];
+    public GestionHorarios(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
+         if(ContadorEmp!=0){
+            contEmp=ContadorEmp;
+        }
+        if(ContadorInv!=0){
+            contInv=ContadorInv;
+        }
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+         if(Hora!=null){
+            HoraCaptada = Hora;
+        }
+        ImagenFondo imgf = new ImagenFondo("src/imagenes/fondoabc.jpg");
+        this.setContentPane(imgf);
         initComponents();
+        
+           if(COLA_INVENTARIO!=null){
+            cola_inventario  = COLA_INVENTARIO;
+        }
+        if(h!=null){
+            horarios=h;
+        }
+        
+        if(a!=null){
+            asignados=a;
+        }
+        if(arrayp!=null){
+            productoarray=arrayp;
+        }
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+            if(emp!=null){
+            empleados = emp;
+        }
+        String[] cabecera ={"Id trabajador","Nombre","Nombre Horario","Dias", "Hora Entrada", "Hora Salida"};
+        
+        modelo.setColumnIdentifiers(cabecera);
+        
+     
+
+            for( int i=0; i<asignados.length;i++){
+                if(asignados[i]==null){
+                    i=asignados.length;
+                }else{    
+                    datos[0]=asignados[i].ID_Trabajador;
+                    datos[1]=asignados[i].Nombre_Trabajador;
+                    datos[2]=asignados[i].nom_hor;
+                    datos[3]=asignados[i].Dias_Horario;
+                    datos[4]=asignados[i].Hora_Entrada;
+                    datos[5]=asignados[i].Hora_Salida;
+                    System.out.println("ROW QUE SE RECIBIO: "+TablaHorarios.getSelectedRow() +"COLUMNA QUE SE RECIBIO: "+ TablaHorarios.getSelectedColumn());
+                    
+                    
+               
+if (selectedRow >= 0) {
+
+    //userModel.setValueAt(newValue, selectedRow, 0);
+    
+} 
+                    modelo.addRow(datos);
+                }
+        }
+           TablaHorarios.setModel(modelo);
+                    
     }
+
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,21 +100,153 @@ public class GestionHorarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaHorarios = new javax.swing.JTable();
+        CrearHorario = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtRegresar = new javax.swing.JButton();
+        AsignarHorario = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        TablaHorarios.setBackground(new java.awt.Color(102, 153, 255));
+        TablaHorarios.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        TablaHorarios.setForeground(new java.awt.Color(255, 255, 255));
+        TablaHorarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Id Trabajador", "Nombre", "Nombre Horario", "Dias", "Hora Entrada", "Hora Salida"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaHorarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaHorariosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TablaHorarios);
+
+        CrearHorario.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        CrearHorario.setForeground(new java.awt.Color(0, 0, 153));
+        CrearHorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/horariopred.png"))); // NOI18N
+        CrearHorario.setText("Crear nuevo horario predefinido");
+        CrearHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearHorarioActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Gestion de Horarios");
+
+        txtRegresar.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        txtRegresar.setForeground(new java.awt.Color(0, 0, 153));
+        txtRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver.png"))); // NOI18N
+        txtRegresar.setText("Regresar");
+        txtRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRegresarActionPerformed(evt);
+            }
+        });
+
+        AsignarHorario.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        AsignarHorario.setForeground(new java.awt.Color(0, 0, 153));
+        AsignarHorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Asign_Horarios.png"))); // NOI18N
+        AsignarHorario.setText("Asignar horarios predefinidos");
+        AsignarHorario.setToolTipText("");
+        AsignarHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AsignarHorarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(CrearHorario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(AsignarHorario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(AsignarHorario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CrearHorario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(942, 415));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AsignarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarHorarioActionPerformed
+        AsignarHorarioTrabajador nvo  =  new AsignarHorarioTrabajador(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
+        nvo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_AsignarHorarioActionPerformed
+
+    private void CrearHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearHorarioActionPerformed
+        HorarioNuevo nvo  =  new HorarioNuevo(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horarios,asignados,productoarray); 
+        nvo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_CrearHorarioActionPerformed
+
+    private void txtRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegresarActionPerformed
+        MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horarios,asignados,productoarray); 
+        menu.setVisible(true);
+        this.setVisible(false);  
+    }//GEN-LAST:event_txtRegresarActionPerformed
+public void valueChanged(ListSelectionEvent event) {
+           
+         }
+
+    private void TablaHorariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaHorariosMouseClicked
+           int selectedRowIndex =  TablaHorarios.getSelectedRow();
+                   System.out.println("DATOS DE LO SELECCIONADO: "+modelo.getValueAt( selectedRowIndex, 0).toString());
+                   System.out.println("DATOS DE LO SELECCIONADO: "+modelo.getValueAt( selectedRowIndex, 1).toString());
+                   System.out.println("DATOS DE LO SELECCIONADO: "+modelo.getValueAt( selectedRowIndex, 2).toString());
+                    System.out.println("DATOS DE LO SELECCIONADO: "+modelo.getValueAt( selectedRowIndex, 3).toString());
+                     System.out.println("DATOS DE LO SELECCIONADO: "+modelo.getValueAt( selectedRowIndex, 4).toString());
+                      System.out.println("DATOS DEL SELECCIOANDO:" + modelo.getDataVector().elementAt(TablaHorarios.getSelectedRow()));
+                      
+    }//GEN-LAST:event_TablaHorariosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -73,11 +278,17 @@ public class GestionHorarios extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionHorarios().setVisible(true);
+                new GestionHorarios(0,0,null,null,null,null,null,null,null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AsignarHorario;
+    private javax.swing.JButton CrearHorario;
+    private javax.swing.JTable TablaHorarios;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton txtRegresar;
     // End of variables declaration//GEN-END:variables
 }
