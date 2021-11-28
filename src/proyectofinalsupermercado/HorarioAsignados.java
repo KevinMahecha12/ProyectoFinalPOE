@@ -11,11 +11,10 @@ public class HorarioAsignados {
     public HorarioAsignados() {
     }
 
-    public HorarioAsignados(int ID_Trabajador, String Nombre_Trabajador, String Dias_Horario, int Turno, String Hora_Entrada, String Hora_Salida) {
+    public HorarioAsignados(int ID_Trabajador, String Nombre_Trabajador, String Dias_Horario, String Hora_Entrada, String Hora_Salida) {
         this.ID_Trabajador = ID_Trabajador;
         this.Nombre_Trabajador = Nombre_Trabajador;
         this.Dias_Horario = Dias_Horario;
-        this.Turno = Turno;
         this.Hora_Entrada = Hora_Entrada;
         this.Hora_Salida = Hora_Salida;
     }
@@ -42,14 +41,6 @@ public class HorarioAsignados {
 
     public void setDias_Horario(String Dias_Horario) {
         this.Dias_Horario = Dias_Horario;
-    }
-
-    public int getTurno() {
-        return Turno;
-    }
-
-    public void setTurno(int Turno) {
-        this.Turno = Turno;
     }
 
     public String getHora_Entrada() {

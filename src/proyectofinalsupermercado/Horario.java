@@ -2,16 +2,22 @@ package proyectofinalsupermercado;
 
 
 public class Horario {
-    int ID;
+    String Nombre_Horario;
     String Dia;
     String Hora_Entrada;
     String Hora_Salida;
 
-    public Horario(String Dia, String Hora_Entrada, String Hora_Salida, int id) {
+    public Horario(String Nombre_Horario, String Dia, String Hora_Entrada, String Hora_Salida) {
+        this.Nombre_Horario = Nombre_Horario;
         this.Dia = Dia;
         this.Hora_Entrada = Hora_Entrada;
         this.Hora_Salida = Hora_Salida;
-        this.ID = id;
+    }
+
+    public Horario(String Dia, String Hora_Entrada, String Hora_Salida) {
+        this.Dia = Dia;
+        this.Hora_Entrada = Hora_Entrada;
+        this.Hora_Salida = Hora_Salida;
     }
 
     public Horario() {
@@ -41,13 +47,12 @@ public class Horario {
         this.Hora_Salida = Hora_Salida;
     }
 
-    public int getID() {
-        return ID;
+    public String getNombre_Horario() {
+        return Nombre_Horario;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setNombre_Horario(String Nombre_Horario) {
+        this.Nombre_Horario = Nombre_Horario;
     }
-    
     
 }
