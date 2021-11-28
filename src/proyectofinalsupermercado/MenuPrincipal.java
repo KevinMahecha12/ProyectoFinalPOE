@@ -261,6 +261,11 @@ jMenu1.setFont(new Font(jMenu1.getFont().getFontName(), jMenu1.getFont().getStyl
         jMenuItem14.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jMenuItem14.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItem14.setText("Eliminar Inventario");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem14);
 
         jMenuBar1.add(jMenu3);
@@ -359,6 +364,12 @@ jMenu1.setFont(new Font(jMenu1.getFont().getFontName(), jMenu1.getFont().getStyl
      EI.setVisible(true);
      this.setVisible(false);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        EliminarProducto eli = new EliminarProducto(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null);
+        eli.setVisible(true);
+     this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
 
 
     public static void main(String args[]) {
