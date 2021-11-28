@@ -1,7 +1,10 @@
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 
@@ -18,6 +21,10 @@ HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 String NombreRecibido;
 String HoraCaptada;
+     ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+    Cursor c,c2;
+        Toolkit tk = Toolkit.getDefaultToolkit();
     public EditarHorarios(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
 
         if(ContadorEmp!=0){
@@ -36,6 +43,11 @@ String HoraCaptada;
         this.setContentPane(imgf);
         initComponents();
         
+c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        setCursor(c);
+        BTEDITAR.setCursor(c2);
+        jButton1.setCursor(c2);
            if(COLA_INVENTARIO!=null){
             cola_inventario  = COLA_INVENTARIO;
         }
@@ -85,6 +97,11 @@ String HoraCaptada;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Editar horario");
         setIconImage(getIconImage());
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 102));
@@ -98,6 +115,13 @@ String HoraCaptada;
         cbbHorarios.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbbHorariosItemStateChanged(evt);
+            }
+        });
+        cbbHorarios.addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
+            public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
+                cbbHorariosAncestorMoved(evt);
+            }
+            public void ancestorResized(java.awt.event.HierarchyEvent evt) {
             }
         });
         cbbHorarios.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -284,6 +308,14 @@ String HoraCaptada;
     private void cbbHorariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbHorariosMouseClicked
        
     }//GEN-LAST:event_cbbHorariosMouseClicked
+
+    private void cbbHorariosAncestorMoved(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_cbbHorariosAncestorMoved
+        setCursor(c2);
+    }//GEN-LAST:event_cbbHorariosAncestorMoved
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+        setCursor(c);
+    }//GEN-LAST:event_formMouseMoved
 
     public static void main(String args[]) {
   

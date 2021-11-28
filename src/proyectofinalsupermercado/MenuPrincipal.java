@@ -1,14 +1,17 @@
 package proyectofinalsupermercado;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.MenuItem;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.Painter;
 import javax.swing.UIManager;
@@ -26,11 +29,18 @@ Horario[] horario = new Horario[20];
 HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 String HoraCaptada;
+  ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+    Cursor c,c2;
+        Toolkit tk = Toolkit.getDefaultToolkit();
 public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
         ImagenFondo imgf = new ImagenFondo("src/imagenes/menu3.jpg");
         this.setContentPane(imgf);
         initComponents();
         PintarMenu();
+         
+
+        
         System.out.println("TRABAJADORES CONTADOS: "+ContadorEmp);
         System.out.println("INVENTARIOS CONTADOS: "+ContadorInv);
         Font f = new Font("sans-serif", Font.PLAIN, 20);
@@ -112,6 +122,16 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu principal");
         setIconImage(getIconImage());
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
+            }
+        });
 
         JL_NombreAdmin.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         JL_NombreAdmin.setForeground(new java.awt.Color(255, 255, 255));
@@ -175,6 +195,11 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         jMenu1.setForeground(new java.awt.Color(255, 255, 255));
         jMenu1.setText("Empleados");
         jMenu1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        jMenu1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jMenu1MouseMoved(evt);
+            }
+        });
 
         JMI_REMPLEADOS.setBackground(new java.awt.Color(0, 99, 177));
         JMI_REMPLEADOS.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -223,6 +248,11 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         jMenuItem1.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar_emp.png"))); // NOI18N
         jMenuItem1.setText("Editar empleados");
+        jMenuItem1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jMenu1MouseMoved(evt);
+            }
+        });
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -235,6 +265,11 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         jMenuItem7.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar_emp.png"))); // NOI18N
         jMenuItem7.setText("Buscar Empleados");
+        jMenuItem7.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jMenu1MouseMoved(evt);
+            }
+        });
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
@@ -247,6 +282,11 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         jMenuItem8.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Eliminar_emp.png"))); // NOI18N
         jMenuItem8.setText("Eliminar Empleados");
+        jMenuItem8.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jMenu1MouseMoved(evt);
+            }
+        });
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem8ActionPerformed(evt);
@@ -578,7 +618,38 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2MouseMoved
 
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+             setCursor(c);
+    }//GEN-LAST:event_formMouseMoved
+
+    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseExited
+
+    private void jMenu1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu1MouseMoved
+
 public void PintarMenu()  {
+            c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+         jMenuBar1.setCursor(c2);
+         jMenuItem1.setCursor(c2);
+         jMenuItem2.setCursor(c2);
+         jMenuItem3.setCursor(c2);
+         jMenuItem4.setCursor(c2);
+         jMenuItem5.setCursor(c2);
+         jMenuItem6.setCursor(c2);
+         jMenuItem7.setCursor(c2);
+         jMenuItem8.setCursor(c2);
+         jMenuItem9.setCursor(c2);
+         jMenuItem10.setCursor(c2);
+         jMenuItem11.setCursor(c2);
+         jMenuItem12.setCursor(c2);
+         jMenuItem13.setCursor(c2);
+         jMenuItem14.setCursor(c2);
+          JMI_REMPLEADOS.setCursor(c2);
+        c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        setCursor(c);
       jMenuItem1.setForeground(Color.white);
       jMenuItem1.setBackground(new java.awt.Color(0,99,177));
       jMenuItem1.setOpaque(true);

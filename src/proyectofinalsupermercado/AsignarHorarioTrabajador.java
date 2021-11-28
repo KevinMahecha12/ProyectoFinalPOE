@@ -1,7 +1,10 @@
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class AsignarHorarioTrabajador extends javax.swing.JFrame {
@@ -17,6 +20,10 @@ HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 String NombreRecibido;
    String HoraCaptada;
+        ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+    Cursor c,c2;
+        Toolkit tk = Toolkit.getDefaultToolkit();
     public AsignarHorarioTrabajador(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
            if(ContadorEmp!=0){
             contEmp=ContadorEmp;
@@ -33,7 +40,11 @@ String NombreRecibido;
         ImagenFondo imgf = new ImagenFondo("src/imagenes/blob.jpg");
         this.setContentPane(imgf);
         initComponents();
-        
+        c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        setCursor(c);
+        jButton1.setCursor(c2);
+        txtRegresar.setCursor(c2);
            if(COLA_INVENTARIO!=null){
             cola_inventario  = COLA_INVENTARIO;
         }
@@ -85,6 +96,11 @@ String NombreRecibido;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Asignar Horario Predefinido");
         setIconImage(getIconImage());
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 102));
@@ -93,6 +109,11 @@ String NombreRecibido;
 
         cbbTrabajador.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         cbbTrabajador.setForeground(new java.awt.Color(0, 0, 102));
+        cbbTrabajador.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                cbbTrabajadorMouseMoved(evt);
+            }
+        });
         cbbTrabajador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbTrabajadorActionPerformed(evt);
@@ -101,6 +122,11 @@ String NombreRecibido;
 
         cb_hora.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         cb_hora.setForeground(new java.awt.Color(0, 0, 102));
+        cb_hora.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                cb_horaMouseMoved(evt);
+            }
+        });
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -233,6 +259,18 @@ String NombreRecibido;
     private void cbbTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTrabajadorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbTrabajadorActionPerformed
+
+    private void cbbTrabajadorMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbTrabajadorMouseMoved
+      setCursor(c2);
+    }//GEN-LAST:event_cbbTrabajadorMouseMoved
+
+    private void cb_horaMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_horaMouseMoved
+       setCursor(c2);
+    }//GEN-LAST:event_cb_horaMouseMoved
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+     setCursor(c);
+    }//GEN-LAST:event_formMouseMoved
 
     /**
      * @param args the command line arguments

@@ -1,7 +1,10 @@
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class BuscarEmpleado extends javax.swing.JFrame {
@@ -16,7 +19,10 @@ HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 String NombreRecibido;
 String HoraCaptada;
-    
+      ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+    Cursor c,c2;
+        Toolkit tk = Toolkit.getDefaultToolkit();
     public BuscarEmpleado(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
        ImagenFondo imgf = new ImagenFondo("src/imagenes/imagen90.jpg");
         this.setContentPane(imgf); 
@@ -55,6 +61,12 @@ String HoraCaptada;
     if(emp!=null){
             empleados = emp;
         }
+       c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        setCursor(c);
+        buscarEmpleado.setCursor(c2);
+        jbutton_VolverAlMenu1.setCursor(c2);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -75,6 +87,8 @@ String HoraCaptada;
         setTitle("Buscar Empleados");
         setIconImage(getIconImage());
 
+        jbutton_VolverAlMenu1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jbutton_VolverAlMenu1.setForeground(new java.awt.Color(0, 0, 102));
         jbutton_VolverAlMenu1.setText("Volver");
         jbutton_VolverAlMenu1.setToolTipText("RegresarMenu1");
         jbutton_VolverAlMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -84,14 +98,19 @@ String HoraCaptada;
         });
 
         jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Buscar Empleado");
 
         jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("ID:");
 
         buscador.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        buscador.setForeground(new java.awt.Color(0, 0, 102));
 
+        buscarEmpleado.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        buscarEmpleado.setForeground(new java.awt.Color(0, 0, 102));
         buscarEmpleado.setText("Buscar");
         buscarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

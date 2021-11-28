@@ -1,7 +1,10 @@
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,6 +19,11 @@ HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 String NombreRecibido;
 String HoraCaptada;
+  ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+       ImageIcon cursoreditar = new ImageIcon("src/imagenes/cursor3.png");
+    Cursor c,c2,c3;
+        Toolkit tk = Toolkit.getDefaultToolkit();
     public EditarEmpleados(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
          ImagenFondo imgf = new ImagenFondo("src/imagenes/imagen90.jpg");
         this.setContentPane(imgf); 
@@ -54,8 +62,12 @@ String HoraCaptada;
     if(emp!=null){
             empleados = emp;
         }
-         
-         
+              c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        c3 = tk.createCustomCursor(cursoreditar.getImage(),new Point(1,1),null);
+        setCursor(c);
+        BTEDITAR.setCursor(c2);
+         B_VOLVER.setCursor(c2);
         System.out.println("empleados contados: "+contEmp);
         for (Empleados empleado : empleados) {
             if(empleado!=null){
@@ -98,6 +110,11 @@ String HoraCaptada;
         cbbTrabajador.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbbTrabajadorItemStateChanged(evt);
+            }
+        });
+        cbbTrabajador.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+                cbbTrabajadorComponentMoved(evt);
             }
         });
 
@@ -247,6 +264,10 @@ String HoraCaptada;
        menu.setVisible(true);
        this.setVisible(false);  
     }//GEN-LAST:event_B_VOLVERActionPerformed
+
+    private void cbbTrabajadorComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_cbbTrabajadorComponentMoved
+             setCursor(c);
+    }//GEN-LAST:event_cbbTrabajadorComponentMoved
 
     public static void main(String args[]) {
         

@@ -1,9 +1,12 @@
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.util.Arrays;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,11 +24,19 @@ public class EliminarEmpleados extends javax.swing.JFrame {
     String NombreRecibido;
     DefaultTableModel modelo = new DefaultTableModel();
     Object []  datos = new Object[5];
-    
+          ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+    Cursor c,c2;
+        Toolkit tk = Toolkit.getDefaultToolkit();
     public EliminarEmpleados(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
         ImagenFondo imgf = new ImagenFondo("src/imagenes/gestione_1.jpg");
         this.setContentPane(imgf);
         initComponents();
+           c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        setCursor(c);
+        jButton1.setCursor(c2);
+        jbutton_VolverAlMenu1.setCursor(c2);
             if(ContadorEmp!=0){
             contEmp=ContadorEmp;
         }
@@ -62,6 +73,7 @@ public class EliminarEmpleados extends javax.swing.JFrame {
             }
         }
         listaE.setModel(modelo);
+        
     }
     @Override
     public Image getIconImage(){

@@ -1,7 +1,10 @@
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class RegistrarHorario extends javax.swing.JFrame {
@@ -16,6 +19,10 @@ HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 String NombreRecibido;
 String HoraCaptada;
+     ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+    Cursor c,c2;
+        Toolkit tk = Toolkit.getDefaultToolkit();
     public RegistrarHorario(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
          empleados = emp;
          contEmp = ContadorEmp;
@@ -35,6 +42,17 @@ String HoraCaptada;
         ImagenFondo imgf = new ImagenFondo("src/imagenes/RHO.jpg");
         this.setContentPane(imgf);
         initComponents();
+        c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        setCursor(c);
+        cbxLun.setCursor(c2);
+        cbxMar.setCursor(c2);
+        cbxMie.setCursor(c2);
+        cbxJue.setCursor(c2);
+        cbxVie.setCursor(c2);
+        cbxSab.setCursor(c2);
+        btnRegistrar.setCursor(c2);  
+        btnVolver.setCursor(c2);
         if(COLA_INVENTARIO!=null){
             cola_inventario  = COLA_INVENTARIO;
         }
@@ -98,11 +116,21 @@ String HoraCaptada;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registrar Horarios");
         setIconImage(getIconImage());
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel2.setText("Nombre:");
 
         cbbEmpleados.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        cbbEmpleados.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                cbbEmpleadosMouseMoved(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel4.setText("Dias:");
@@ -326,6 +354,14 @@ String HoraCaptada;
         }
             
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void cbbEmpleadosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbEmpleadosMouseMoved
+      setCursor(c2);
+    }//GEN-LAST:event_cbbEmpleadosMouseMoved
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+           setCursor(c);
+    }//GEN-LAST:event_formMouseMoved
 
     /**
      * @param args the command line arguments
