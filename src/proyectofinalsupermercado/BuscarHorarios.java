@@ -20,8 +20,6 @@ String HoraCaptada;
     public BuscarHorarios(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
            ImagenFondo imgf = new ImagenFondo("src/imagenes/imagen90.jpg");
         this.setContentPane(imgf); 
-        empleados = emp;
-         contEmp = ContadorEmp;
          System.out.println("TRABAJADORES CONTADOS: "+contEmp);
           if(Nombre_Administrador!=null){
             NombreRecibido=Nombre_Administrador;

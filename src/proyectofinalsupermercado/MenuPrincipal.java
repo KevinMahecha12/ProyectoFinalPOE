@@ -530,19 +530,19 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
-        EliminarEmpleados EEm  =  new  EliminarEmpleados(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
+        EliminarEmpleados EEm  =  new  EliminarEmpleados(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray); 
         EEm.setVisible(true);
         this.setVisible(false);   
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-        BuscarInventario b = new BuscarInventario(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
+        BuscarInventario b = new BuscarInventario(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray); 
         b.setVisible(true);
         this.setVisible(false); 
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-      EliminarHorarios EH = new EliminarHorarios(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
+      EliminarHorarios EH = new EliminarHorarios(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray); 
        EH.setVisible(true);
         this.setVisible(false);   
     }//GEN-LAST:event_jMenuItem11ActionPerformed

@@ -4,14 +4,16 @@ import javax.swing.JOptionPane;
 
 public class BuscarInventario extends javax.swing.JFrame {
 
-    Empleados[] empleados = new Empleados[20];
-    int ContadorEmpleados;
+        int contEmp;
     int contInv;
-    Cola cola = new Cola();
-    Horario[] horario = new Horario[20];
-    HorariosAsignados[] asignados = new HorariosAsignados[20];
-    String NombreRecibido;
-    
+Empleados[] empleados = new Empleados[20];
+Empleados empleado = new Empleados();
+Cola cola_inventario = new Cola();
+Horario[] horario = new Horario[20];
+HorariosAsignados[] asignados = new HorariosAsignados[20];
+Producto[] productoarray = new Producto[20];
+String NombreRecibido;
+String HoraCaptada;
     public BuscarInventario(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
         ImagenFondo imgf = new ImagenFondo("src/imagenes/bi.jpg");
         this.setContentPane(imgf);
@@ -25,20 +27,37 @@ public class BuscarInventario extends javax.swing.JFrame {
         labelStock1.setVisible(false);
         labelStock2.setVisible(false);
         
-        horario=h;
-        if(emp!=null){
-            empleados = emp;
-        }
-        if(ContadorEmp!=0){
-           ContadorEmpleados = ContadorEmp;
-        }
-         if(ContadorInv!=0){
-            contInv=ContadorInv;
-        }
-        cola=COLA_INVENTARIO;
-        asignados=a;
           if(Nombre_Administrador!=null){
             NombreRecibido=Nombre_Administrador;
+        }
+         if(Hora!=null){
+            HoraCaptada = Hora;
+        }
+        if(ContadorEmp!=0){
+            contEmp=ContadorEmp;
+        }
+        if(ContadorInv!=0){
+            contInv=ContadorInv;
+        }
+        initComponents();
+        if(COLA_INVENTARIO!=null){
+            cola_inventario  = COLA_INVENTARIO;
+        }
+        if(h!=null){
+            horario=h;
+        }
+        
+        if(a!=null){
+            asignados=a;
+        }
+        if(arrayp!=null){
+            productoarray=arrayp;
+        }
+        if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+    if(emp!=null){
+            empleados = emp;
         }
     }
 
@@ -57,8 +76,8 @@ public class BuscarInventario extends javax.swing.JFrame {
         labelDesc1 = new javax.swing.JLabel();
         labelDesc2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        btnVolver = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Buscar Inventario");
@@ -109,15 +128,6 @@ public class BuscarInventario extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0, 5, 5));
 
-        btnVolver.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
-        btnVolver.setForeground(new java.awt.Color(0, 0, 102));
-        btnVolver.setText("Volver");
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
-            }
-        });
-
         btnBuscar.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(0, 0, 102));
         btnBuscar.setText("Buscar");
@@ -126,6 +136,17 @@ public class BuscarInventario extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnBuscar);
+
+        btnVolver.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(0, 0, 102));
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVolver);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,13 +178,8 @@ public class BuscarInventario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(labelDesc2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(btnBuscar)))
+                        .addGap(134, 134, 134)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -190,12 +206,8 @@ public class BuscarInventario extends javax.swing.JFrame {
                     .addComponent(labelDesc1)
                     .addComponent(labelDesc2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVolver)
-                    .addComponent(btnBuscar))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -207,14 +219,14 @@ public class BuscarInventario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(contInv,ContadorEmpleados,empleados,cola,NombreRecibido,null, horario, asignados,null); 
+        MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray); 
          menu.setVisible(true);
           this.setVisible(false);
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String name = txtName.getText();
-        Producto obj = cola.buscar(name);
+        Producto obj = cola_inventario.buscar(name);
         if(name.equals("")){
             JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
         }else{
