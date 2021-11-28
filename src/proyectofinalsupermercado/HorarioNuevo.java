@@ -22,10 +22,16 @@ Cola cola_inventario = new Cola();
 HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 String NombreRecibido;
-    
+String HoraCaptada;
     public HorarioNuevo(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
           if(ContadorEmp!=0){
             contEmp=ContadorEmp;
+        }
+            if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+         if(Hora!=null){
+            HoraCaptada = Hora;
         }
         if(ContadorInv!=0){
             contInv=ContadorInv;
@@ -263,7 +269,7 @@ String NombreRecibido;
     }//GEN-LAST:event_txtHoraEntradaActionPerformed
 
     private void txtVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVolverActionPerformed
-        GestionHorarios nvo  =  new GestionHorarios(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
+        GestionHorarios nvo  =  new GestionHorarios(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horarios,asignados,productoarray); 
         nvo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_txtVolverActionPerformed

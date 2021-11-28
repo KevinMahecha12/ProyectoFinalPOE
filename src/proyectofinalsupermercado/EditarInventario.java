@@ -15,8 +15,14 @@ Cola cola_inventario = new Cola();
 HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 String NombreRecibido;
+String HoraCaptada;
     public EditarInventario(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
-        
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+         if(Hora!=null){
+            HoraCaptada = Hora;
+        }
         if(ContadorEmp!=0){
             contEmp=ContadorEmp;
         }
@@ -281,7 +287,7 @@ String NombreRecibido;
     }//GEN-LAST:event_CB_InventarioItemStateChanged
 
     private void BT_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VOLVERActionPerformed
-     MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null);
+     MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horarios,asignados,productoarray);
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BT_VOLVERActionPerformed

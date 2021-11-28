@@ -17,7 +17,7 @@ Cola cola_inventario = new Cola();
 HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 String NombreRecibido;
-
+String HoraCaptada;
     private int selectedRow;
     DefaultTableModel modelo = new DefaultTableModel();
        Object []  datos = new Object[6];
@@ -27,6 +27,12 @@ String NombreRecibido;
         }
         if(ContadorInv!=0){
             contInv=ContadorInv;
+        }
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+         if(Hora!=null){
+            HoraCaptada = Hora;
         }
         ImagenFondo imgf = new ImagenFondo("src/imagenes/fondoabc.jpg");
         this.setContentPane(imgf);
@@ -217,13 +223,13 @@ if (selectedRow >= 0) {
     }//GEN-LAST:event_AsignarHorarioActionPerformed
 
     private void CrearHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearHorarioActionPerformed
-        HorarioNuevo nvo  =  new HorarioNuevo(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
+        HorarioNuevo nvo  =  new HorarioNuevo(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horarios,asignados,productoarray); 
         nvo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_CrearHorarioActionPerformed
 
     private void txtRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegresarActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
+        MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horarios,asignados,productoarray); 
         menu.setVisible(true);
         this.setVisible(false);  
     }//GEN-LAST:event_txtRegresarActionPerformed

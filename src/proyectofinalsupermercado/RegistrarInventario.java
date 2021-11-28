@@ -15,14 +15,19 @@ HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 Inventario inv = new Inventario();
 String NombreRecibido;
-
-    
+String HoraCaptada;
     public RegistrarInventario(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
        if(ContadorEmp!=0){
             contEmp=ContadorEmp;
         }
         if(ContadorInv!=0){
             contInv=ContadorInv;
+        }
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+         if(Hora!=null){
+            HoraCaptada = Hora;
         }
               ImagenFondo imgf = new ImagenFondo("src/imagenes/invent.jpg");
         this.setContentPane(imgf); 
@@ -214,7 +219,7 @@ String NombreRecibido;
     }
     private void BT_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VOLVERActionPerformed
       
-        MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,c,NombreRecibido,null, horarios, asignados,null); 
+        MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,c,NombreRecibido,HoraCaptada,horarios,asignados,productoarray); 
         menu.setVisible(true);
         this.setVisible(false);         
 

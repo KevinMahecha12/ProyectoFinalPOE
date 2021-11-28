@@ -14,13 +14,19 @@ Cola cola_inventario = new Cola();
 HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 String NombreRecibido;
-    
+   String HoraCaptada;
     public AsignarHorarioTrabajador(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
            if(ContadorEmp!=0){
             contEmp=ContadorEmp;
         }
         if(ContadorInv!=0){
             contInv=ContadorInv;
+        }
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+         if(Hora!=null){
+            HoraCaptada = Hora;
         }
         ImagenFondo imgf = new ImagenFondo("src/imagenes/blob.jpg");
         this.setContentPane(imgf);
@@ -158,7 +164,7 @@ String NombreRecibido;
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegresarActionPerformed
-        GestionHorarios nvo  =  new GestionHorarios(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
+        GestionHorarios nvo  =  new GestionHorarios(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horarios,asignados,productoarray); 
         nvo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_txtRegresarActionPerformed
@@ -167,7 +173,7 @@ String NombreRecibido;
         if (cbbTrabajador.getItemCount() <1 || cb_hora.getItemCount() <1) {
             JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this,"Se ha asignado el horario correctamente!", "Horario asignado",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Se ha asignado el horario correctamente!", "Horario asignado",JOptionPane.INFORMATION_MESSAGE);
         int id=0;
         int turno=0;
         String seleccionadoEmpleado = cbbTrabajador.getSelectedItem().toString();

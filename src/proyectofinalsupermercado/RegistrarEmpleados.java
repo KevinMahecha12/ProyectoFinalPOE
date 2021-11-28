@@ -12,7 +12,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     Horario[] horario = new Horario[20];
     HorariosAsignados[] asignados = new HorariosAsignados[20];
     String NombreRecibido;
-    
+    String HoraCaptada;
+    Producto[] productoarray = new Producto[20];
     public RegistrarEmpleados(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
         ImagenFondo imgf = new ImagenFondo("src/imagenes/Rempleados.jpg");
         this.setContentPane(imgf);
@@ -20,6 +21,12 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         BGROUP.add(RB_MATU);
         BGROUP.add(RB_VESP);
         horario=h;
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+         if(Hora!=null){
+            HoraCaptada = Hora;
+        }
         if(emp!=null){
             empleados = emp;
         }
@@ -176,7 +183,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BT_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VolverActionPerformed
-         MenuPrincipal menu  =  new MenuPrincipal(contInv,ContadorEmpleados,empleados,cola,NombreRecibido,null, horario, asignados,null); 
+         MenuPrincipal menu  =  new MenuPrincipal(contInv,ContadorEmpleados,empleados,cola,NombreRecibido,HoraCaptada,horario,asignados,productoarray); 
          System.out.println("TRABAJADORES CONTADOSSS: "+getContadorEmpleados());
          menu.setVisible(true);
           this.setVisible(false);        
@@ -186,9 +193,6 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         if(TF_NOMEMPLEADO.getText().equals("") || TF_ID.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
         }else{
-             if(!TF_NOMEMPLEADO.getText().matches("^[a-zA-Z]+$")) {
-                  JOptionPane.showMessageDialog(this, "Porfavor, ingresa solo letras!","Ingresar solo carácteres", JOptionPane.ERROR_MESSAGE);
-           }  else {
                  JOptionPane.showMessageDialog(this,"Se registro el empleado correctamente!","Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
              ContadorEmpleados = ContadorEmpleados + 1;
            setContadorEmpleados(ContadorEmpleados);
@@ -214,7 +218,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                     }
                 }
             }
-             }
+            
            //else
             
             //for(int i=0;i<empleados.length;i++){ Esto nomas pá checarf que si jala

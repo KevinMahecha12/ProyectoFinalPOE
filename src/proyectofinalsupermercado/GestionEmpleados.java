@@ -21,12 +21,17 @@ public class GestionEmpleados extends javax.swing.JFrame {
     String NombreRecibido;
     DefaultTableModel modelo = new DefaultTableModel();
     Object []  datos = new Object[5];
-    
+    String HoraCaptada;
     public GestionEmpleados(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
         if(ContadorEmp!=0){
             contEmp=ContadorEmp;
         }
-      
+        if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+         if(Hora!=null){
+            HoraCaptada = Hora;
+        }
         if(ContadorInv!=0){
             contInv=ContadorInv;
         }
@@ -166,7 +171,7 @@ public class GestionEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbutton_VolverAlMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu1ActionPerformed
-       MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
+       MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horarios,asignados,productoarray); 
         System.out.println("PRODUCTOS RECIBIO: "+contEmp+" TRABAJADORES!");
        menu.setVisible(true);
        this.setVisible(false);  

@@ -20,10 +20,16 @@ Producto[] productoarray = new Producto[20];
 String NombreRecibido;
     DefaultTableModel modelo = new DefaultTableModel();
        Object []  datos = new Object[5];
-         
+   String HoraCaptada;
     public GestionProductos(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
           if(ContadorEmp!=0){
             contEmp=ContadorEmp;
+        }
+            if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+         if(Hora!=null){
+            HoraCaptada = Hora;
         }
           System.out.println("INVENTARIOS CONTADOS EN LA CLASE: "+ContadorInv);
         if(ContadorInv!=0){
@@ -175,7 +181,7 @@ public void funcionamiento() {
           
 }
     private void jbutton_VolverAlMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu2ActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
+        MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horarios,asignados,productoarray); 
          menu.setVisible(true);
           this.setVisible(false);        
     }//GEN-LAST:event_jbutton_VolverAlMenu2ActionPerformed

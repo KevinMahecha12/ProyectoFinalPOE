@@ -40,12 +40,15 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         if(arrayp!=null){
             productoarray=arrayp;
         }
-     if(emp!=null){
-            empleados = emp;
+        if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
         }
          if(Hora!=null){
             HoraCaptada = Hora;
             HORA_INGRESO.setText(HoraCaptada);
+        }
+     if(emp!=null){
+            empleados = emp;
         }
          if(ContadorEmp!=0){
             contEmp=ContadorEmp;
@@ -53,7 +56,6 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         if(ContadorInv!=0){
             contInv=ContadorInv;
         }
-        NombreRecibido = Nombre_Administrador;
         JL_NombreAdmin.setText("Bienvenido: " + NombreRecibido);
         System.out.println("Nombre que se recibio" + NombreRecibido);
         PRODUCTOS.setText(String.valueOf(contEmp));
@@ -397,63 +399,63 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMI_REMPLEADOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMI_REMPLEADOSActionPerformed
-        RegistrarEmpleados REGM  =  new  RegistrarEmpleados(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
+        RegistrarEmpleados REGM  =  new  RegistrarEmpleados(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray); 
         REGM.setVisible(true);
          this.setVisible(false);     
     }//GEN-LAST:event_JMI_REMPLEADOSActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       GestionEmpleados REGINV  =  new  GestionEmpleados(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
+       GestionEmpleados REGINV  =  new  GestionEmpleados(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray); 
        REGINV.setVisible(true);
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-      GestionProductos GPROD =  new  GestionProductos(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
+      GestionProductos GPROD =  new  GestionProductos(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray); 
       GPROD.setVisible(true);
       System.out.println("SE ENVIO A PRODUCTOS: "+contEmp);
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-       RegistrarInventario REGINV  =  new  RegistrarInventario(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
+       RegistrarInventario REGINV  =  new  RegistrarInventario(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray); 
         REGINV.setVisible(true);
         this.setVisible(false);     
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        RegistrarHorario REGHOR  =  new  RegistrarHorario(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
+        RegistrarHorario REGHOR  =  new  RegistrarHorario(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray); 
         REGHOR.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        GestionHorarios REGHOR  =  new GestionHorarios(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
+        GestionHorarios REGHOR  =  new GestionHorarios(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray); 
         REGHOR.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-     EditarEmpleados EE = new EditarEmpleados(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null);
+     EditarEmpleados EE = new EditarEmpleados(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray);
      EE.setVisible(true);
      this.setVisible(false);
      
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-     EditarHorarios EH = new EditarHorarios(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null);
+     EditarHorarios EH = new EditarHorarios(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray);
      EH.setVisible(true);
      this.setVisible(false);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-     EditarInventario EI = new EditarInventario(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null);
+     EditarInventario EI = new EditarInventario(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray);
      EI.setVisible(true);
      this.setVisible(false);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        EliminarProducto eli = new EliminarProducto(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null);
+        EliminarProducto eli = new EliminarProducto(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray);
         eli.setVisible(true);
      this.setVisible(false);
     }//GEN-LAST:event_jMenuItem14ActionPerformed

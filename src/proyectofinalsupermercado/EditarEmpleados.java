@@ -13,13 +13,19 @@ Horario[] horario = new Horario[20];
 HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 String NombreRecibido;
+String HoraCaptada;
     public EditarEmpleados(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
          ImagenFondo imgf = new ImagenFondo("src/imagenes/imagen90.jpg");
         this.setContentPane(imgf); 
         empleados = emp;
          contEmp = ContadorEmp;
          System.out.println("TRABAJADORES CONTADOS: "+contEmp);
-         
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
+         if(Hora!=null){
+            HoraCaptada = Hora;
+        }
         if(ContadorEmp!=0){
             contEmp=ContadorEmp;
         }
@@ -232,7 +238,7 @@ String NombreRecibido;
     }//GEN-LAST:event_cbbTrabajadorItemStateChanged
 
     private void B_VOLVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_VOLVERActionPerformed
-       MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horario, asignados,null); 
+       MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray); 
        menu.setVisible(true);
        this.setVisible(false);  
     }//GEN-LAST:event_B_VOLVERActionPerformed
