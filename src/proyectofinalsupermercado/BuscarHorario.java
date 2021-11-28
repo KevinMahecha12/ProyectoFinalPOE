@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  *
  * @author angel
  */
-public class BuscarEmpleado extends javax.swing.JFrame {
+public class BuscarHorario extends javax.swing.JFrame {
 
     Empleados[] empleados = new Empleados[20];
     int contEmp;
@@ -18,7 +18,7 @@ public class BuscarEmpleado extends javax.swing.JFrame {
     Horario[] horario = new Horario[20];
     HorariosAsignados[] asignados = new HorariosAsignados[20];
     
-    public BuscarEmpleado(Cola c, int ContEmp,Empleados[] emple, Horario[] h,HorariosAsignados[] a) {
+    public BuscarHorario(Cola c, int ContEmp,Empleados[] emple, Horario[] h,HorariosAsignados[] a) {
         initComponents();
         contEmp = ContEmp;
         empleados = emple;
@@ -56,7 +56,7 @@ public class BuscarEmpleado extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
-        jLabel1.setText("Buscar Empleado");
+        jLabel1.setText("Buscar Horario");
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel2.setText("ID:");
@@ -84,12 +84,11 @@ public class BuscarEmpleado extends javax.swing.JFrame {
                         .addComponent(jbutton_VolverAlMenu1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 75, Short.MAX_VALUE)
+                        .addGap(0, 81, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(area)
                             .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(turno))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -134,8 +133,8 @@ public class BuscarEmpleado extends javax.swing.JFrame {
 
     private void buscarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleadoActionPerformed
         // TODO add your handling code here:
-        if (empleados[0] == null) {
-            JOptionPane.showMessageDialog(null, "No hay empleados registrados");
+        if (horario[0] == null) {
+            JOptionPane.showMessageDialog(null, "No hay Horarios registrados");
                             
         }else{
             
@@ -147,21 +146,17 @@ public class BuscarEmpleado extends javax.swing.JFrame {
         int buscador = Integer.parseInt(r);
 
                           
-                          for (int i = 0; i < empleados.length; i++) {
-                            if(empleados[i]!=null){
-                                    if (buscador == empleados[i].getID_EMPLEADO()) {
+                          for (int i = 0; i < horario.length; i++) {
+                            if(horario[i]!=null){
+                                    if (buscador == horario[i].getID()) {
                               
-                                nombre.setText("Nombre: "+empleados[i].getNombre_Empleado());
-                                area.setText("Area de Trabajo: "+empleados[i].getArea_Trabajador());
-                                if(empleados[i].getTurno()==1){
-                                    
-                                turno.setText("Turno: Verpertino");
-                                }else{
-                                    turno.setText("Turno: Matutino");
-                                }break;
+                                nombre.setText("Dia: "+horario[i].getDia());
+                                area.setText("Hora enntrada: "+horario[i].getHora_Entrada());
+                                turno.setText("Hora salida: "+horario[i].getHora_Salida());
+                                
                             }
                             }else {
-                                JOptionPane.showMessageDialog(null, "No se encontro el empleado");
+                                JOptionPane.showMessageDialog(null, "No se encontro el horario");
                                 break;
                             }
                             } 
@@ -185,20 +180,21 @@ public class BuscarEmpleado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BuscarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarHorario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BuscarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarHorario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BuscarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarHorario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BuscarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarHorario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BuscarEmpleado(null,0,null, null,null).setVisible(true);
+                new BuscarHorario(null,0,null, null,null).setVisible(true);
             }
         });
     }

@@ -4,6 +4,9 @@
  */
 package proyectofinalsupermercado;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author angel
@@ -23,6 +26,23 @@ public class EliminarEmpleados extends javax.swing.JFrame {
         cola=c;
         horario=h;
         asignados=a;
+        
+        String name="";
+        
+        DefaultListModel modelo = new DefaultListModel();
+        
+        for(int i=0; i<empleados.length; i++){
+            if(empleados[i]==null){
+                    i=empleados.length;
+                }else{ 
+            name=empleados[i].getNombre_Empleado();
+           modelo.addElement(name);
+            }
+        }
+        listaE.setModel(modelo);
+        
+          
+        
     }
 
     /**
@@ -35,6 +55,12 @@ public class EliminarEmpleados extends javax.swing.JFrame {
     private void initComponents() {
 
         jbutton_VolverAlMenu1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaE = new javax.swing.JList<>();
+        jButton1 = new javax.swing.JButton();
+        txt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,24 +72,75 @@ public class EliminarEmpleados extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
+        jLabel1.setText("Eliminar Empleado");
+
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel2.setText("Seleccione el empleado:");
+
+        jScrollPane1.setViewportView(listaE);
+
+        jButton1.setText("Eliminar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        txt.setText("txt");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jbutton_VolverAlMenu1)
-                .addContainerGap(311, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbutton_VolverAlMenu1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1)
+                                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(97, 97, 97)
+                                .addComponent(txt)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 86, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(109, 109, 109))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(79, 79, 79))))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(265, Short.MAX_VALUE)
-                .addComponent(jbutton_VolverAlMenu1)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbutton_VolverAlMenu1)
+                        .addComponent(txt))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(27, 27, 27))))
         );
 
-        setSize(new java.awt.Dimension(400, 328));
+        setSize(new java.awt.Dimension(416, 347));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -72,6 +149,42 @@ public class EliminarEmpleados extends javax.swing.JFrame {
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jbutton_VolverAlMenu1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+         if (empleados[0] == null) {
+            JOptionPane.showMessageDialog(null, "No hay empleados registrados");
+                            
+        }else{
+            
+        String buscador = listaE.getSelectedValue().toString();
+
+                        txt.setText(" "+buscador);
+                          
+                        for (int i = 0; i < empleados.length; i++) {
+                              
+                                if(empleados[i]!=null){
+                                        if (buscador.equals(empleados[i].getNombre_Empleado())) {
+                                       
+                                                for(int j=i; j==empleados.length; j++){
+                                                    if(empleados[j]==null){
+                                                        break; 
+                                                    }else{
+                                                         empleados[j]=empleados[j+1];
+                                                         System.out.println(j);
+                                                     }
+                                                }
+                              
+                                        }
+                                }else{
+                                break;
+                                }
+                        } 
+                          
+              }
+         
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,6 +223,17 @@ public class EliminarEmpleados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbutton_VolverAlMenu1;
+    private javax.swing.JList<String> listaE;
+    private javax.swing.JLabel txt;
     // End of variables declaration//GEN-END:variables
+
+    
 }
+
+
+

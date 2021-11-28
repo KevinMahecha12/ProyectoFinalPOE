@@ -54,6 +54,7 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        BuscarHorario = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -125,6 +126,14 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
             }
         });
         jMenu2.add(jMenuItem4);
+
+        BuscarHorario.setText("Buscar Horario");
+        BuscarHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarHorarioActionPerformed(evt);
+            }
+        });
+        jMenu2.add(BuscarHorario);
 
         jMenuBar1.add(jMenu2);
 
@@ -234,6 +243,13 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         this.setVisible(false); 
     }//GEN-LAST:event_EliminarEmpleadoActionPerformed
 
+    private void BuscarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarHorarioActionPerformed
+        // TODO add your handling code here:
+        BuscarHorario REGINV  =  new  BuscarHorario(cola_inventario,contEmp,empleados, horario,asignados); 
+       REGINV.setVisible(true);
+        this.setVisible(false); 
+    }//GEN-LAST:event_BuscarHorarioActionPerformed
+
 
     public static void main(String args[]) {
 
@@ -246,6 +262,7 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem BuscarEmpleado;
+    private javax.swing.JMenuItem BuscarHorario;
     private javax.swing.JMenuItem EliminarEmpleado;
     private javax.swing.JLabel JL_Hora;
     private javax.swing.JLabel JL_NombreAdmin;
