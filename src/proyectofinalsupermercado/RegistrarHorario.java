@@ -1,5 +1,7 @@
 package proyectofinalsupermercado;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 public class RegistrarHorario extends javax.swing.JFrame {
@@ -64,7 +66,11 @@ String HoraCaptada;
         
          
         
-    
+    @Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -90,6 +96,8 @@ String HoraCaptada;
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registrar Horarios");
+        setIconImage(getIconImage());
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel2.setText("Nombre:");

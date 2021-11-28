@@ -1,6 +1,8 @@
 //CAMBIO
 package proyectofinalsupermercado;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -87,7 +89,12 @@ public class GestionEmpleados extends javax.swing.JFrame {
              jtableEmpleadosRegistrados.setModel(modelo);
 
     }
-
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -100,6 +107,7 @@ public class GestionEmpleados extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mostrar empleados");
+        setIconImage(getIconImage());
 
         jtableEmpleadosRegistrados.setBackground(new java.awt.Color(102, 153, 255));
         jtableEmpleadosRegistrados.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N

@@ -1,5 +1,7 @@
 package proyectofinalsupermercado;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 public class AsignarHorarioTrabajador extends javax.swing.JFrame {
@@ -81,6 +83,8 @@ String NombreRecibido;
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Asignar Horario Predefinido");
+        setIconImage(getIconImage());
 
         jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 102));
@@ -168,7 +172,11 @@ String NombreRecibido;
         nvo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_txtRegresarActionPerformed
-
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (cbbTrabajador.getItemCount() <1 || cb_hora.getItemCount() <1) {
             JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);

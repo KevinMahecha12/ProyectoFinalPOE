@@ -1,5 +1,7 @@
 package proyectofinalsupermercado;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -73,7 +75,11 @@ String NombreRecibido;
     public void setContadorProductos(int ContadorProductos) {
         this.contInv = ContadorProductos;
     }
-
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -86,6 +92,7 @@ String NombreRecibido;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mostrar inventario");
+        setIconImage(getIconImage());
 
         jTable_MostrarProductos.setBackground(new java.awt.Color(102, 153, 255));
         jTable_MostrarProductos.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N

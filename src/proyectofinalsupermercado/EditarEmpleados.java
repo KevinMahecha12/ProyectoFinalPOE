@@ -1,5 +1,7 @@
 package proyectofinalsupermercado;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -62,9 +64,11 @@ String HoraCaptada;
                 break;
             }
         }
-      
-                    
-         
+    }
+    @Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -87,6 +91,7 @@ String HoraCaptada;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Editar un empleado");
+        setIconImage(getIconImage());
 
         cbbTrabajador.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         cbbTrabajador.setForeground(new java.awt.Color(0, 99, 177));

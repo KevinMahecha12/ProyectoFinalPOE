@@ -1,5 +1,7 @@
 package proyectofinalsupermercado;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 public class EditarInventario extends javax.swing.JFrame {
@@ -90,6 +92,7 @@ String HoraCaptada;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Editar inventario");
+        setIconImage(getIconImage());
 
         jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 51));
@@ -246,7 +249,11 @@ String HoraCaptada;
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
     private void NOM_INVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NOM_INVActionPerformed
        
     }//GEN-LAST:event_NOM_INVActionPerformed

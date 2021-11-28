@@ -1,5 +1,7 @@
 package proyectofinalsupermercado;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 
@@ -74,6 +76,7 @@ String HoraCaptada;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registrar productos");
+        setIconImage(getIconImage());
 
         jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
@@ -224,7 +227,11 @@ String HoraCaptada;
         this.setVisible(false);         
 
     }//GEN-LAST:event_BT_VOLVERActionPerformed
-
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
     private void BT_AGREGARPRODActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AGREGARPRODActionPerformed
        if(TF_IDPROD.getText().equals("") || TF_CANTPROD.getText().equals("") || TF_NOMPROD.getText().equals("") || TXA_DESPROD.getText().equals("") || TF_PRECIOPROD.getText().equals("")){
              JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
