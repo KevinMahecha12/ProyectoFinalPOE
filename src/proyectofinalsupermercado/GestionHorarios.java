@@ -238,7 +238,7 @@ if (selectedRow >= 0) {
         return ValorRetorno;
     }
     private void AsignarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarHorarioActionPerformed
-        AsignarHorarioTrabajador nvo  =  new AsignarHorarioTrabajador(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
+        AsignarHorarioTrabajador nvo  =  new AsignarHorarioTrabajador(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horarios,asignados,productoarray); 
         nvo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_AsignarHorarioActionPerformed

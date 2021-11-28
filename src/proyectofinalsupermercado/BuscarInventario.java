@@ -1,7 +1,10 @@
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class BuscarInventario extends javax.swing.JFrame {
@@ -16,6 +19,10 @@ HorariosAsignados[] asignados = new HorariosAsignados[20];
 String NombreRecibido;
 String HoraCaptada;
 Producto[] productoarray = new Producto[20];
+     ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+    Cursor c,c2;
+        Toolkit tk = Toolkit.getDefaultToolkit();
     public BuscarInventario(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
         ImagenFondo imgf = new ImagenFondo("src/imagenes/bi.jpg");
         this.setContentPane(imgf);
@@ -28,7 +35,11 @@ Producto[] productoarray = new Producto[20];
         labelDesc2.setVisible(false);
         labelStock1.setVisible(false);
         labelStock2.setVisible(false);
-        
+        c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        setCursor(c);
+        btnBuscar.setCursor(c2);
+        btnVolver.setCursor(c2);
         horario=h;
         if(emp!=null){
             empleados = emp;
@@ -46,6 +57,9 @@ Producto[] productoarray = new Producto[20];
         }
             if(arrayp!=null){
             productoarray=arrayp;
+        }
+             if(Hora!=null){
+            HoraCaptada=Hora;
         }
     }
     @SuppressWarnings("unchecked")

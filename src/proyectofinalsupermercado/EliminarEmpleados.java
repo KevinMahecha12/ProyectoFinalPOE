@@ -28,6 +28,7 @@ public class EliminarEmpleados extends javax.swing.JFrame {
       ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
     Cursor c,c2;
         Toolkit tk = Toolkit.getDefaultToolkit();
+        String HoraCaptada;
     public EliminarEmpleados(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
         ImagenFondo imgf = new ImagenFondo("src/imagenes/gestione_1.jpg");
         this.setContentPane(imgf);
@@ -42,6 +43,9 @@ public class EliminarEmpleados extends javax.swing.JFrame {
         }
         if(ContadorInv!=0){
             contInv=ContadorInv;
+        }
+           if(Hora!=null){
+            HoraCaptada=Hora;
         }
            if(COLA_INVENTARIO!=null){
             cola_inventario  = COLA_INVENTARIO;
@@ -211,7 +215,7 @@ public class EliminarEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jbutton_VolverAlMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu1ActionPerformed
-       MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
+       MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horarios,asignados,productoarray); 
         System.out.println("PRODUCTOS RECIBIO: "+contEmp+" TRABAJADORES!");
        menu.setVisible(true);
        this.setVisible(false); 

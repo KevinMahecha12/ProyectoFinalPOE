@@ -1,7 +1,10 @@
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class BuscarHorarios extends javax.swing.JFrame {
@@ -16,7 +19,11 @@ HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 String NombreRecibido;
 String HoraCaptada;
-    
+         ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+    Cursor c,c2;
+        Toolkit tk = Toolkit.getDefaultToolkit();
+
     public BuscarHorarios(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
            ImagenFondo imgf = new ImagenFondo("src/imagenes/imagen90.jpg");
         this.setContentPane(imgf); 
@@ -34,6 +41,11 @@ String HoraCaptada;
             contInv=ContadorInv;
         }
         initComponents();
+        c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        setCursor(c);
+        buscarEmpleado.setCursor(c2);
+        jbutton_VolverAlMenu1.setCursor(c2);
         if(COLA_INVENTARIO!=null){
             cola_inventario  = COLA_INVENTARIO;
         }

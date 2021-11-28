@@ -1,7 +1,10 @@
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class EditarInventario extends javax.swing.JFrame {
@@ -18,6 +21,10 @@ HorariosAsignados[] asignados = new HorariosAsignados[20];
 Producto[] productoarray = new Producto[20];
 String NombreRecibido;
 String HoraCaptada;
+     ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+    Cursor c,c2;
+        Toolkit tk = Toolkit.getDefaultToolkit();
     public EditarInventario(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
           if(Nombre_Administrador!=null){
             NombreRecibido=Nombre_Administrador;
@@ -34,7 +41,11 @@ String HoraCaptada;
                 ImagenFondo imgf = new ImagenFondo("src/imagenes/editar.jpg");
         this.setContentPane(imgf);
         initComponents();
-        
+        c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        setCursor(c);
+        BT_EDITAR.setCursor(c2);
+        BT_VOLVER.setCursor(c2);
            if(COLA_INVENTARIO!=null){
             cola_inventario  = COLA_INVENTARIO;
         }
@@ -93,6 +104,11 @@ String HoraCaptada;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Editar inventario");
         setIconImage(getIconImage());
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 51));
@@ -104,6 +120,11 @@ String HoraCaptada;
         CB_Inventario.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 CB_InventarioItemStateChanged(evt);
+            }
+        });
+        CB_Inventario.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+                CB_InventarioComponentMoved(evt);
             }
         });
         CB_Inventario.addActionListener(new java.awt.event.ActionListener() {
@@ -302,6 +323,14 @@ String HoraCaptada;
     private void CB_InventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_InventarioActionPerformed
         
     }//GEN-LAST:event_CB_InventarioActionPerformed
+
+    private void CB_InventarioComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_CB_InventarioComponentMoved
+         setCursor(c2);
+    }//GEN-LAST:event_CB_InventarioComponentMoved
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+        setCursor(c);
+    }//GEN-LAST:event_formMouseMoved
 
     /**
      * @param args the command line arguments

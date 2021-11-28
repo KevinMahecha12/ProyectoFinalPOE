@@ -1,7 +1,10 @@
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 
@@ -18,6 +21,11 @@ Producto[] productoarray = new Producto[20];
 Inventario inv = new Inventario();
 String NombreRecibido;
 String HoraCaptada;
+     ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+    Cursor c1,c2;
+        Toolkit tk = Toolkit.getDefaultToolkit();
+
     public RegistrarInventario(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
        if(ContadorEmp!=0){
             contEmp=ContadorEmp;
@@ -34,6 +42,12 @@ String HoraCaptada;
               ImagenFondo imgf = new ImagenFondo("src/imagenes/invent.jpg");
         this.setContentPane(imgf); 
           initComponents();
+          
+        c1 = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        setCursor(c1);
+        BT_VOLVER.setCursor(c2);
+        BT_AGREGARPROD.setCursor(c2);
            if(COLA_INVENTARIO!=null){
             c  = COLA_INVENTARIO;
         }

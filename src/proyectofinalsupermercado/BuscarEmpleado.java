@@ -190,7 +190,7 @@ String HoraCaptada;
          if (buscador.getText().equals("")) {
             JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
         }   else {
-             if (horario[0] == null) {
+             if (empleados[0] == null) {
             JOptionPane.showMessageDialog(this, "No hay horarios registrados o que coincidan","No se encontraron horarios", JOptionPane.ERROR_MESSAGE);
                             
         } else {
@@ -200,8 +200,6 @@ String HoraCaptada;
         Integer.parseInt(r);
         
         int buscador = Integer.parseInt(r);
-
-                          
                           for (int i = 0; i < empleados.length; i++) {
                             if(empleados[i]!=null){
                                     if (buscador == empleados[i].getID_EMPLEADO()) {

@@ -1,9 +1,12 @@
 package proyectofinalsupermercado;
 
+import java.awt.Cursor;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.util.Arrays;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,11 +24,20 @@ public class EliminarHorarios extends javax.swing.JFrame {
     String NombreRecibido;
     DefaultTableModel modelo = new DefaultTableModel();
     Object []  datos = new Object[5];
-    
+         ImageIcon img = new ImageIcon("src/imagenes/cursor.png");
+      ImageIcon cursorseleccion = new ImageIcon("src/imagenes/cursor2.png");
+    Cursor c,c2;
+        Toolkit tk = Toolkit.getDefaultToolkit();
+String HoraCaptada;
     public EliminarHorarios(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
          ImagenFondo imgf = new ImagenFondo("src/imagenes/gestione_1.jpg");
         this.setContentPane(imgf);
         initComponents();
+        c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
+        c2 = tk.createCustomCursor(cursorseleccion.getImage(),new Point(1,1),null);
+        setCursor(c);
+        BT_E.setCursor(c2);
+        BT_V.setCursor(c2);
             if(ContadorEmp!=0){
             contEmp=ContadorEmp;
         }
@@ -38,7 +50,9 @@ public class EliminarHorarios extends javax.swing.JFrame {
         if(h!=null){
             horarios=h;
         }
-        
+         if(Hora!=null){
+            HoraCaptada=Hora;
+        }
         if(a!=null){
             asignados=a;
         }
@@ -199,7 +213,7 @@ public class EliminarHorarios extends javax.swing.JFrame {
     }//GEN-LAST:event_BT_EActionPerformed
 
     private void BT_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_VActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null);
+        MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horarios,asignados,productoarray);
         System.out.println("PRODUCTOS RECIBIO: "+contEmp+" TRABAJADORES!");
         menu.setVisible(true);
         this.setVisible(false);
