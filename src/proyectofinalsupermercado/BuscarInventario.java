@@ -4,21 +4,20 @@ import javax.swing.JOptionPane;
 
 public class BuscarInventario extends javax.swing.JFrame {
 
-        int contEmp;
+        int ContadorEmpleados;
     int contInv;
 Empleados[] empleados = new Empleados[20];
 Empleados empleado = new Empleados();
-Cola cola_inventario = new Cola();
+Cola cola = new Cola();
 Horario[] horario = new Horario[20];
 HorariosAsignados[] asignados = new HorariosAsignados[20];
-Producto[] productoarray = new Producto[20];
 String NombreRecibido;
 String HoraCaptada;
     public BuscarInventario(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
         ImagenFondo imgf = new ImagenFondo("src/imagenes/bi.jpg");
         this.setContentPane(imgf);
         initComponents();
-        labelID1.setVisible(false);
+         labelID1.setVisible(false);
         labelID2.setVisible(false);
         labelPre1.setVisible(false);
         labelPrecio2.setVisible(false);
@@ -27,40 +26,22 @@ String HoraCaptada;
         labelStock1.setVisible(false);
         labelStock2.setVisible(false);
         
+        horario=h;
+        if(emp!=null){
+            empleados = emp;
+        }
+        if(ContadorEmp!=0){
+           ContadorEmpleados = ContadorEmp;
+        }
+         if(ContadorInv!=0){
+            contInv=ContadorInv;
+        }
+        cola=COLA_INVENTARIO;
+        asignados=a;
           if(Nombre_Administrador!=null){
             NombreRecibido=Nombre_Administrador;
         }
-         if(Hora!=null){
-            HoraCaptada = Hora;
-        }
-        if(ContadorEmp!=0){
-            contEmp=ContadorEmp;
-        }
-        if(ContadorInv!=0){
-            contInv=ContadorInv;
-        }
-        initComponents();
-        if(COLA_INVENTARIO!=null){
-            cola_inventario  = COLA_INVENTARIO;
-        }
-        if(h!=null){
-            horario=h;
-        }
-        
-        if(a!=null){
-            asignados=a;
-        }
-        if(arrayp!=null){
-            productoarray=arrayp;
-        }
-        if(Nombre_Administrador!=null){
-            NombreRecibido=Nombre_Administrador;
-        }
-    if(emp!=null){
-            empleados = emp;
-        }
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -219,15 +200,15 @@ String HoraCaptada;
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray); 
+        MenuPrincipal menu  =  new MenuPrincipal(contInv,ContadorEmpleados,empleados,cola,NombreRecibido,HoraCaptada,horario,asignados,null); 
          menu.setVisible(true);
           this.setVisible(false);
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String name = txtName.getText();
-        Producto obj = cola_inventario.buscar(name);
-        if(txtName.getText().equals("")){
+        Producto obj = cola.buscar(name);
+        if(name.equals("")){
             JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
         }else{
             if(obj!=null){
