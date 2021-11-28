@@ -126,6 +126,11 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jButton1.setFocusPainted(false);
         jButton1.setRequestFocusEnabled(false);
         jButton1.setRolloverEnabled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         rSLabelHora1.setForeground(new java.awt.Color(255, 255, 255));
         rSLabelHora1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
@@ -481,6 +486,10 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         BH.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     public static void main(String args[]) {
