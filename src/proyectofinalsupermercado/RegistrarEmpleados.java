@@ -186,7 +186,10 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         if(TF_NOMEMPLEADO.getText().equals("") || TF_ID.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
         }else{
-           JOptionPane.showMessageDialog(this,"Se registro el empleado correctamente!","Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+             if(!TF_NOMEMPLEADO.getText().matches("^[a-zA-Z]+$")) {
+                  JOptionPane.showMessageDialog(this, "Porfavor, ingresa solo letras!","Ingresar solo carácteres", JOptionPane.ERROR_MESSAGE);
+           }  else {
+                 JOptionPane.showMessageDialog(this,"Se registro el empleado correctamente!","Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
              ContadorEmpleados = ContadorEmpleados + 1;
            setContadorEmpleados(ContadorEmpleados);
             int id = Integer.parseInt(TF_ID.getText());
@@ -210,7 +213,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                         i=empleados.length;
                     }
                 }
-            }//else
+            }
+             }
+           //else
             
             //for(int i=0;i<empleados.length;i++){ Esto nomas pá checarf que si jala
                 //if(empleados[i] == null){

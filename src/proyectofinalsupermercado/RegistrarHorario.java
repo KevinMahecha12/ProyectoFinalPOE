@@ -250,7 +250,6 @@ String NombreRecibido;
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
           int check=0;
         String dias="";
-        String seleccionadoEmpleado = cbbEmpleados.getSelectedItem().toString();
 
         if(cbxLun.isSelected()){
             check++;
@@ -276,10 +275,11 @@ String NombreRecibido;
             check++;
             dias+="Sa, ";
         }
-        if(Nom_H.getText().equals("") || dias.equals("") || TF_HE.getText().equals("") || TF_HS.getText().equals("") ){
+        if(cbbEmpleados.getItemCount() == 0 || dias.equals("") || TF_HE.getText().equals("") || TF_HS.getText().equals("") ){
               JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
         }else{
-            JOptionPane.showMessageDialog(this,"Se registro el horario correctamente!","Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+                  String seleccionadoEmpleado = cbbEmpleados.getSelectedItem().toString();
+                 JOptionPane.showMessageDialog(this,"Se registro el horario correctamente!","Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
             dias = dias.substring(0, dias.length()-2);
         String HoraEntrada = TF_HE.getText();
         String HoraSalida = TF_HS.getText();
@@ -312,7 +312,7 @@ String NombreRecibido;
             }//else
         }
         }
-         
+            
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
