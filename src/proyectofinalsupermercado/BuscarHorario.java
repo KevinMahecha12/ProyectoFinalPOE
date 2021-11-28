@@ -153,7 +153,7 @@ public class BuscarHorario extends javax.swing.JFrame {
                                 nombre.setText("Dia: "+horario[i].getDia());
                                 area.setText("Hora enntrada: "+horario[i].getHora_Entrada());
                                 turno.setText("Hora salida: "+horario[i].getHora_Salida());
-                                
+                                break;
                             }
                             }else {
                                 JOptionPane.showMessageDialog(null, "No se encontro el horario");
