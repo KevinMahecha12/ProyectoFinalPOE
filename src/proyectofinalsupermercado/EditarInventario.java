@@ -97,6 +97,11 @@ String NombreRecibido;
                 CB_InventarioItemStateChanged(evt);
             }
         });
+        CB_Inventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_InventarioActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 102));
@@ -247,10 +252,15 @@ String NombreRecibido;
         }else{
          JOptionPane.showMessageDialog(this,"Se editó completamente el inventario!","Edición exitosa", JOptionPane.INFORMATION_MESSAGE);
         Producto obj = new Producto(Integer.parseInt(ID_INV.getText()), Integer.parseInt(CANT_INV.getText()),NOM_INV.getText(),DESC_INV.getText(),Double.parseDouble(PREC_INV.getText()));
-        int index = CB_Inventario.getSelectedIndex() ;
-        arrayproducto[index] = obj;
-        arrayproducto = cola_inventario.recorrer();
- }
+        String name = CB_Inventario.getSelectedItem().toString() ;
+        //arrayproducto[index] = obj;
+        cola_inventario.modificar(name, obj);
+        
+        EditarInventario EI = new EditarInventario(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horarios,asignados,null);
+        EI.setVisible(true);
+        this.setVisible(false);
+    }
+    
     }//GEN-LAST:event_BT_EDITARActionPerformed
 
     private void CB_InventarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_InventarioItemStateChanged
@@ -275,6 +285,10 @@ String NombreRecibido;
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BT_VOLVERActionPerformed
+
+    private void CB_InventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_InventarioActionPerformed
+        
+    }//GEN-LAST:event_CB_InventarioActionPerformed
 
     /**
      * @param args the command line arguments

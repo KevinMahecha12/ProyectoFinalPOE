@@ -11,16 +11,16 @@ import javax.swing.table.DefaultTableModel;
 public class GestionEmpleados extends javax.swing.JFrame {
        Horario[] horarios = new Horario[20];
     Horario h = new Horario();
-     int contEmp;
-     int contInv;
-     Empleados[] empleados = new Empleados[20];
-Empleados empleado = new Empleados();
-Cola cola_inventario = new Cola();
-HorariosAsignados[] asignados = new HorariosAsignados[20];
-Producto[] productoarray = new Producto[20];
-String NombreRecibido;
+    int contEmp;
+    int contInv;
+    Empleados[] empleados = new Empleados[20];
+    Empleados empleado = new Empleados();
+    Cola cola_inventario = new Cola();
+    HorariosAsignados[] asignados = new HorariosAsignados[20];
+    Producto[] productoarray = new Producto[20];
+    String NombreRecibido;
     DefaultTableModel modelo = new DefaultTableModel();
-       Object []  datos = new Object[5];
+    Object []  datos = new Object[5];
     
     public GestionEmpleados(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
         if(ContadorEmp!=0){
@@ -30,7 +30,7 @@ String NombreRecibido;
         if(ContadorInv!=0){
             contInv=ContadorInv;
         }
-         ImagenFondo imgf = new ImagenFondo("src/imagenes/gestione_1.jpg");
+        ImagenFondo imgf = new ImagenFondo("src/imagenes/gestione_1.jpg");
         this.setContentPane(imgf);
         initComponents();
           
@@ -47,10 +47,10 @@ String NombreRecibido;
         if(arrayp!=null){
             productoarray=arrayp;
         }
-          if(Nombre_Administrador!=null){
+        if(Nombre_Administrador!=null){
             NombreRecibido=Nombre_Administrador;
         }
-            if(emp!=null){
+        if(emp!=null){
             empleados = emp;
         }
          String[] cabecera ={"ID_Empleado","Nombre","Area de Trabajo","Turno"};
