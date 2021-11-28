@@ -1,5 +1,6 @@
 package proyectofinalsupermercado;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class RegistrarEmpleados extends javax.swing.JFrame {
@@ -87,6 +88,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         RB_VESP.setText("Vespertino");
 
         BT_REG.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        BT_REG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reg_emp.png"))); // NOI18N
         BT_REG.setText("Registrar");
         BT_REG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +97,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         });
 
         BT_Volver.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        BT_Volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver.png"))); // NOI18N
         BT_Volver.setText("Volver");
         BT_Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,8 +113,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BT_REG)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BT_Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(258, 258, 258))
+                .addComponent(BT_Volver)
+                .addGap(226, 226, 226))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,9 +166,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                     .addComponent(RB_VESP))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BT_REG, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BT_Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(BT_REG)
+                    .addComponent(BT_Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         pack();
@@ -181,8 +184,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     private void BT_REGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_REGActionPerformed
         if(TF_NOMEMPLEADO.getText().equals("") || TF_ID.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
         }else{
+           JOptionPane.showMessageDialog(this,"Se registro el empleado correctamente!","Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
              ContadorEmpleados = ContadorEmpleados + 1;
            setContadorEmpleados(ContadorEmpleados);
             int id = Integer.parseInt(TF_ID.getText());

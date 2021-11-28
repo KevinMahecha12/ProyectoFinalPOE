@@ -107,7 +107,7 @@ String NombreRecibido;
         jScrollPane1.setViewportView(TXA_DESPROD);
 
         jLabel6.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel6.setForeground(new java.awt.Color(0, 0, 51));
         jLabel6.setText("Ingrese el precio del producto:");
 
         TF_PRECIOPROD.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
@@ -117,6 +117,7 @@ String NombreRecibido;
 
         BT_AGREGARPROD.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         BT_AGREGARPROD.setForeground(new java.awt.Color(0, 0, 102));
+        BT_AGREGARPROD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Regist_Inv.png"))); // NOI18N
         BT_AGREGARPROD.setText("Agregar producto");
         BT_AGREGARPROD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +128,7 @@ String NombreRecibido;
 
         BT_VOLVER.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         BT_VOLVER.setForeground(new java.awt.Color(0, 0, 102));
+        BT_VOLVER.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver.png"))); // NOI18N
         BT_VOLVER.setText("Volver");
         BT_VOLVER.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,10 +165,10 @@ String NombreRecibido;
                                     .addComponent(TF_IDPROD)))
                             .addComponent(jLabel5)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 10, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(108, 108, 108)
+                .addGap(22, 22, 22)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -195,9 +197,9 @@ String NombreRecibido;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(TF_PRECIOPROD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -220,8 +222,9 @@ String NombreRecibido;
 
     private void BT_AGREGARPRODActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AGREGARPRODActionPerformed
        if(TF_IDPROD.getText().equals("") || TF_CANTPROD.getText().equals("") || TF_NOMPROD.getText().equals("") || TXA_DESPROD.getText().equals("") || TF_PRECIOPROD.getText().equals("")){
-           JOptionPane.showMessageDialog(this, "Porfavor, ingrese los campos vacios!","Campos vacíos", JOptionPane.WARNING_MESSAGE);
+             JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
        } else {
+           JOptionPane.showMessageDialog(this,"Se registro el inventario correctamente!","Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
             contInv = contInv+1;
             setContadorProductos(contInv);
             inv.setID_Producto(Integer.parseInt(TF_IDPROD.getText()));

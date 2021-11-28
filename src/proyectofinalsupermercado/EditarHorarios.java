@@ -247,8 +247,9 @@ String NombreRecibido;
     private void BTEDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTEDITARActionPerformed
 
  if(NOM_H.getText().equals("") || DIAS_T.getText().equals("") || HORAE_T.getText().equals("")|| HORAS_T.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
+             JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
         }else{
+             JOptionPane.showMessageDialog(this,"Se editó correctamente el horario","Edición completada", JOptionPane.INFORMATION_MESSAGE);
              Horario obj = new Horario(NOM_H.getText(),DIAS_T.getText(),HORAE_T.getText(),HORAS_T.getText());
         int index = cbbHorarios.getSelectedIndex() ;
         horarios[index] = obj;

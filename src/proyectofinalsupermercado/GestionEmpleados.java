@@ -94,6 +94,7 @@ String NombreRecibido;
         JL_ERROR = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Mostrar empleados");
 
         jtableEmpleadosRegistrados.setBackground(new java.awt.Color(102, 153, 255));
         jtableEmpleadosRegistrados.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
@@ -110,6 +111,7 @@ String NombreRecibido;
 
         jbutton_VolverAlMenu1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jbutton_VolverAlMenu1.setForeground(new java.awt.Color(0, 0, 204));
+        jbutton_VolverAlMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver.png"))); // NOI18N
         jbutton_VolverAlMenu1.setText("Volver");
         jbutton_VolverAlMenu1.setToolTipText("RegresarMenu1");
         jbutton_VolverAlMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +142,7 @@ String NombreRecibido;
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 962, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(432, 432, 432)
-                                .addComponent(jbutton_VolverAlMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jbutton_VolverAlMenu1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(JL_ERROR, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))

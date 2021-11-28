@@ -19,7 +19,6 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         System.out.println("TRABAJADORES CONTADOS: "+ContadorEmp);
         System.out.println("INVENTARIOS CONTADOS: "+ContadorInv);
         Font f = new Font("sans-serif", Font.PLAIN, 20);
-
 jMenu1.setFont(new Font(jMenu1.getFont().getFontName(), jMenu1.getFont().getStyle(), 20));
 jMenu3.setFont(new Font(jMenu3.getFont().getFontName(), jMenu3.getFont().getStyle(), 20));
 jMenu2.setFont(new Font(jMenu2.getFont().getFontName(), jMenu2.getFont().getStyle(), 20));
@@ -53,6 +52,8 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         NombreRecibido = Nombre_Administrador;
         JL_NombreAdmin.setText("Bienvenido: " + NombreRecibido);
         System.out.println("Nombre que se recibio" + NombreRecibido);
+        PRODUCTOS.setText(String.valueOf(contEmp));
+        INVENTARIO.setText(String.valueOf(contInv));
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -63,6 +64,11 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         JL_TRegistrados = new javax.swing.JLabel();
         JL_PInventario = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        rSLabelHora1 = new rojeru_san.RSLabelHora();
+        rSLabelFecha1 = new rojeru_san.RSLabelFecha();
+        Fecha = new javax.swing.JLabel();
+        PRODUCTOS = new javax.swing.JLabel();
+        INVENTARIO = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         JMI_REMPLEADOS = new javax.swing.JMenuItem();
@@ -92,14 +98,17 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
 
         JL_Hora.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         JL_Hora.setForeground(new java.awt.Color(255, 255, 255));
+        JL_Hora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Hora_1.png"))); // NOI18N
         JL_Hora.setText("Hora actual: ");
 
         JL_TRegistrados.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         JL_TRegistrados.setForeground(new java.awt.Color(255, 255, 255));
+        JL_TRegistrados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/trabajadores.png"))); // NOI18N
         JL_TRegistrados.setText("Trabajadores registrados: ");
 
         JL_PInventario.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         JL_PInventario.setForeground(new java.awt.Color(255, 255, 255));
+        JL_PInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/productos.png"))); // NOI18N
         JL_PInventario.setText("Productos en el inventario: ");
 
         jButton1.setBackground(new java.awt.Color(0, 99, 177));
@@ -109,6 +118,20 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jButton1.setFocusPainted(false);
         jButton1.setRequestFocusEnabled(false);
         jButton1.setRolloverEnabled(false);
+
+        rSLabelHora1.setForeground(new java.awt.Color(255, 255, 255));
+        rSLabelHora1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+
+        rSLabelFecha1.setForeground(new java.awt.Color(255, 255, 255));
+        rSLabelFecha1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+
+        Fecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fecha_1.png"))); // NOI18N
+
+        PRODUCTOS.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        PRODUCTOS.setForeground(new java.awt.Color(255, 255, 255));
+
+        INVENTARIO.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        INVENTARIO.setForeground(new java.awt.Color(255, 255, 255));
 
         jMenuBar1.setBackground(new java.awt.Color(0, 99, 177));
         jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -121,6 +144,7 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         JMI_REMPLEADOS.setBackground(new java.awt.Color(0, 99, 177));
         JMI_REMPLEADOS.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         JMI_REMPLEADOS.setForeground(new java.awt.Color(255, 255, 255));
+        JMI_REMPLEADOS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reg_emp.png"))); // NOI18N
         JMI_REMPLEADOS.setText("Registrar Empleados");
         JMI_REMPLEADOS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +156,8 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem2.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jMenuItem2.setForeground(new java.awt.Color(255, 255, 255));
-        jMenuItem2.setText("Gestión de empleados");
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/gest.png"))); // NOI18N
+        jMenuItem2.setText("Mostrar Empleados");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -143,6 +168,7 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem1.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jMenuItem1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar_emp.png"))); // NOI18N
         jMenuItem1.setText("Editar empleados");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,12 +180,14 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem7.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem7.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jMenuItem7.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar_emp.png"))); // NOI18N
         jMenuItem7.setText("Buscar Empleados");
         jMenu1.add(jMenuItem7);
 
         jMenuItem8.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem8.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jMenuItem8.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Eliminar_emp.png"))); // NOI18N
         jMenuItem8.setText("Eliminar Empleados");
         jMenu1.add(jMenuItem8);
 
@@ -172,6 +200,7 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem3.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jMenuItem3.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RegHorario.png"))); // NOI18N
         jMenuItem3.setText("Registrar Horario");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,6 +212,7 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem4.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem4.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jMenuItem4.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/GestionH.png"))); // NOI18N
         jMenuItem4.setText("Gestión de horarios");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,6 +224,7 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem9.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem9.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jMenuItem9.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Editar_H.png"))); // NOI18N
         jMenuItem9.setText("Editar horario");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,12 +236,14 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem10.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem10.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jMenuItem10.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/B_Horario.png"))); // NOI18N
         jMenuItem10.setText("Buscar horario");
         jMenu2.add(jMenuItem10);
 
         jMenuItem11.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem11.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jMenuItem11.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Eliminar_Horario.png"))); // NOI18N
         jMenuItem11.setText("Eliminar Horario");
         jMenu2.add(jMenuItem11);
 
@@ -223,6 +256,7 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem5.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem5.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jMenuItem5.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Regist_Inv.png"))); // NOI18N
         jMenuItem5.setText("Registrar Inventario");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,7 +268,8 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem6.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem6.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jMenuItem6.setForeground(new java.awt.Color(255, 255, 255));
-        jMenuItem6.setText("Gestión de Inventarios");
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/MostrarInv.png"))); // NOI18N
+        jMenuItem6.setText("Mostrar Inventario");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -245,6 +280,7 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem12.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem12.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jMenuItem12.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/EditarInv.png"))); // NOI18N
         jMenuItem12.setText("Editar inventario");
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,12 +292,14 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem13.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem13.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jMenuItem13.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Busc_Inv.png"))); // NOI18N
         jMenuItem13.setText("Buscar inventario");
         jMenu3.add(jMenuItem13);
 
         jMenuItem14.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem14.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jMenuItem14.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuItem14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/delete_inv.png"))); // NOI18N
         jMenuItem14.setText("Eliminar Inventario");
         jMenu3.add(jMenuItem14);
 
@@ -273,31 +311,52 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JL_TRegistrados)
-                    .addComponent(JL_PInventario)
-                    .addComponent(JL_Hora)
-                    .addComponent(JL_NombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(310, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(JL_Hora)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(Fecha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rSLabelFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JL_NombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(JL_PInventario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(INVENTARIO, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(JL_TRegistrados)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(PRODUCTOS, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rSLabelFecha1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JL_Hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rSLabelHora1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Fecha))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JL_NombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JL_Hora)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JL_TRegistrados)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JL_PInventario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JL_TRegistrados)
+                    .addComponent(PRODUCTOS, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(INVENTARIO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JL_PInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
@@ -373,11 +432,14 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fecha;
+    private javax.swing.JLabel INVENTARIO;
     private javax.swing.JLabel JL_Hora;
     private javax.swing.JLabel JL_NombreAdmin;
     private javax.swing.JLabel JL_PInventario;
     private javax.swing.JLabel JL_TRegistrados;
     private javax.swing.JMenuItem JMI_REMPLEADOS;
+    private javax.swing.JLabel PRODUCTOS;
     private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -397,6 +459,8 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private rojeru_san.RSLabelFecha rSLabelFecha1;
+    private rojeru_san.RSLabelHora rSLabelHora1;
     // End of variables declaration//GEN-END:variables
 }
 

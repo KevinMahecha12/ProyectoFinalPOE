@@ -125,6 +125,7 @@ String NombreRecibido;
 
         txtRegresar1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         txtRegresar1.setForeground(new java.awt.Color(0, 0, 102));
+        txtRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/horariopred.png"))); // NOI18N
         txtRegresar1.setText("Crear");
         txtRegresar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +135,7 @@ String NombreRecibido;
 
         txtVolver.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         txtVolver.setForeground(new java.awt.Color(0, 0, 102));
+        txtVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver.png"))); // NOI18N
         txtVolver.setText("Volver");
         txtVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,15 +206,16 @@ String NombreRecibido;
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtRegresar1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtVolver))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtHoraEntrada)
-                                .addComponent(txtHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtHoraEntrada)
+                            .addComponent(txtHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(48, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtRegresar1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtVolver)
+                .addGap(78, 78, 78))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,10 +247,10 @@ String NombreRecibido;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRegresar1)
                     .addComponent(txtVolver))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(496, 349));
+        setSize(new java.awt.Dimension(496, 358));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -294,13 +297,10 @@ String NombreRecibido;
             dias+="Sa, ";
         }
         if(txtNOM.getText().equals("") || dias.equals("") || txtHoraEntrada.getText().equals("") || txtHoraSalida.getText().equals("") ){
-            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
         }else{
+            JOptionPane.showMessageDialog(this,"Se ha predefinido un horario correctamente!","Horario creado", JOptionPane.INFORMATION_MESSAGE);
             dias = dias.substring(0, dias.length()-2);
-        
-        if(check==0 || txtHoraEntrada.getText().equals("") || txtHoraSalida.getText().equals("") || txtNOM.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.WARNING_MESSAGE);
-        }else{
             String entrada = txtHoraEntrada.getText();
             String salida = txtHoraSalida.getText();
             String NombreHorario = txtNOM.getText();
@@ -316,7 +316,6 @@ String NombreRecibido;
                     }
                 }
             }//else
-        }
         }
     }//GEN-LAST:event_txtRegresar1ActionPerformed
 

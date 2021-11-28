@@ -140,6 +140,7 @@ if (selectedRow >= 0) {
 
         CrearHorario.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         CrearHorario.setForeground(new java.awt.Color(0, 0, 153));
+        CrearHorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/horariopred.png"))); // NOI18N
         CrearHorario.setText("Crear nuevo horario predefinido");
         CrearHorario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +155,7 @@ if (selectedRow >= 0) {
 
         txtRegresar.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         txtRegresar.setForeground(new java.awt.Color(0, 0, 153));
+        txtRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver.png"))); // NOI18N
         txtRegresar.setText("Regresar");
         txtRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,6 +165,7 @@ if (selectedRow >= 0) {
 
         AsignarHorario.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         AsignarHorario.setForeground(new java.awt.Color(0, 0, 153));
+        AsignarHorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Asign_Horarios.png"))); // NOI18N
         AsignarHorario.setText("Asignar horarios predefinidos");
         AsignarHorario.setToolTipText("");
         AsignarHorario.addActionListener(new java.awt.event.ActionListener() {
@@ -178,16 +181,15 @@ if (selectedRow >= 0) {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 817, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
                         .addComponent(CrearHorario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AsignarHorario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtRegresar)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addComponent(txtRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,16 +197,16 @@ if (selectedRow >= 0) {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(AsignarHorario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(CrearHorario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(27, 27, 27))
         );
 
-        setSize(new java.awt.Dimension(885, 415));
+        setSize(new java.awt.Dimension(942, 415));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

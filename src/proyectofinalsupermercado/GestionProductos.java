@@ -79,6 +79,7 @@ String NombreRecibido;
         JL_ERROR = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Mostrar inventario");
 
         jTable_MostrarProductos.setBackground(new java.awt.Color(102, 153, 255));
         jTable_MostrarProductos.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
@@ -102,8 +103,9 @@ String NombreRecibido;
         jLabel_TotalProductos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_TotalProductos.setToolTipText("ProductosRegistrados");
 
-        jbutton_VolverAlMenu2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        jbutton_VolverAlMenu2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         jbutton_VolverAlMenu2.setForeground(new java.awt.Color(0, 0, 102));
+        jbutton_VolverAlMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver.png"))); // NOI18N
         jbutton_VolverAlMenu2.setText("Volver");
         jbutton_VolverAlMenu2.setToolTipText("RegresarMenu2");
         jbutton_VolverAlMenu2.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +131,7 @@ String NombreRecibido;
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(293, 293, 293)
-                .addComponent(jbutton_VolverAlMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbutton_VolverAlMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
