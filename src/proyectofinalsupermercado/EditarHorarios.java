@@ -1,5 +1,7 @@
 package proyectofinalsupermercado;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 
@@ -82,6 +84,7 @@ String HoraCaptada;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Editar horario");
+        setIconImage(getIconImage());
 
         jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 102));
@@ -226,7 +229,11 @@ String HoraCaptada;
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
     private void cbbHorariosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbHorariosItemStateChanged
         String seleccionHorario = cbbHorarios.getSelectedItem().toString();
         for(Horario horario: horarios){

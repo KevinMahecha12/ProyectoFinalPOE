@@ -1,5 +1,7 @@
 package proyectofinalsupermercado;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 public class BuscarHorarios extends javax.swing.JFrame {
@@ -79,6 +81,8 @@ String HoraCaptada;
         Dias = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Buscar Horarios");
+        setIconImage(getIconImage());
 
         jbutton_VolverAlMenu1.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         jbutton_VolverAlMenu1.setForeground(new java.awt.Color(0, 0, 102));
@@ -187,7 +191,11 @@ String HoraCaptada;
         setSize(new java.awt.Dimension(414, 403));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
     private void jbutton_VolverAlMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_VolverAlMenu1ActionPerformed
         MenuPrincipal menu  =  new MenuPrincipal(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray);
         menu.setVisible(true);

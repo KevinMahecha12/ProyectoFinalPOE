@@ -4,6 +4,8 @@
  */
 package proyectofinalsupermercado;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -95,6 +97,7 @@ String HoraCaptada;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Horario Nuevo");
+        setIconImage(getIconImage());
 
         jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
@@ -259,7 +262,11 @@ String HoraCaptada;
         setSize(new java.awt.Dimension(496, 358));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
     private void txtHoraSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraSalidaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHoraSalidaActionPerformed

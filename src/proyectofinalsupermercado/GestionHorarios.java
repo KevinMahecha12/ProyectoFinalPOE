@@ -1,5 +1,7 @@
 package proyectofinalsupermercado;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.Vector;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
@@ -108,6 +110,8 @@ if (selectedRow >= 0) {
         AsignarHorario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gestion Horarios");
+        setIconImage(getIconImage());
 
         TablaHorarios.setBackground(new java.awt.Color(102, 153, 255));
         TablaHorarios.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
@@ -215,7 +219,11 @@ if (selectedRow >= 0) {
         setSize(new java.awt.Dimension(942, 415));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
     private void AsignarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarHorarioActionPerformed
         AsignarHorarioTrabajador nvo  =  new AsignarHorarioTrabajador(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null, horarios, asignados,null); 
         nvo.setVisible(true);

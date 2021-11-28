@@ -2,7 +2,20 @@ package proyectofinalsupermercado;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.MenuItem;
+import java.awt.Toolkit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComponent;
+import javax.swing.Painter;
 import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.basic.BasicMenuBarUI;
+import javax.swing.plaf.basic.BasicMenuItemUI;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 private  int contInv,contEmp;
@@ -17,16 +30,10 @@ public MenuPrincipal(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_I
         ImagenFondo imgf = new ImagenFondo("src/imagenes/menu3.jpg");
         this.setContentPane(imgf);
         initComponents();
+        PintarMenu();
         System.out.println("TRABAJADORES CONTADOS: "+ContadorEmp);
         System.out.println("INVENTARIOS CONTADOS: "+ContadorInv);
         Font f = new Font("sans-serif", Font.PLAIN, 20);
-jMenu1.setFont(new Font(jMenu1.getFont().getFontName(), jMenu1.getFont().getStyle(), 20));
-jMenu3.setFont(new Font(jMenu3.getFont().getFontName(), jMenu3.getFont().getStyle(), 20));
-jMenu2.setFont(new Font(jMenu2.getFont().getFontName(), jMenu2.getFont().getStyle(), 20));
-jMenu1.setFont(new Font(jMenu1.getFont().getFontName(), jMenu1.getFont().getStyle(), 20));
-jMenu1.setFont(new Font(jMenu1.getFont().getFontName(), jMenu1.getFont().getStyle(), 20));
-jMenu1.setFont(new Font(jMenu1.getFont().getFontName(), jMenu1.getFont().getStyle(), 20));
-jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         if(COLA_INVENTARIO!=null){
             cola_inventario  = COLA_INVENTARIO;
         }
@@ -61,6 +68,11 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         PRODUCTOS.setText(String.valueOf(contEmp));
         INVENTARIO.setText(String.valueOf(contInv));
     }
+@Override
+    public Image getIconImage(){
+        Image ValorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/IconoGlobal1.png"));
+        return ValorRetorno;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -75,6 +87,8 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         INVENTARIO = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         HORA_INGRESO = new javax.swing.JLabel();
+        rSLabelHora1 = new rojeru_san.RSLabelHora();
+        rSLabelFecha1 = new rojeru_san.RSLabelFecha();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         JMI_REMPLEADOS = new javax.swing.JMenuItem();
@@ -97,6 +111,7 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu principal");
+        setIconImage(getIconImage());
 
         JL_NombreAdmin.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         JL_NombreAdmin.setForeground(new java.awt.Color(255, 255, 255));
@@ -123,6 +138,12 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jButton1.setText("Salir");
         jButton1.setFocusPainted(false);
         jButton1.setRequestFocusEnabled(false);
+        jButton1.setRolloverEnabled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         Fecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fecha_1.png"))); // NOI18N
 
@@ -132,26 +153,47 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         INVENTARIO.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         INVENTARIO.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/SistemaHora.png"))); // NOI18N
         jLabel1.setText("Se ingresó al sistema a las: ");
 
-        HORA_INGRESO.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        HORA_INGRESO.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
         HORA_INGRESO.setForeground(new java.awt.Color(255, 255, 255));
+
+        rSLabelHora1.setForeground(new java.awt.Color(255, 255, 255));
+        rSLabelHora1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+
+        rSLabelFecha1.setForeground(new java.awt.Color(255, 255, 255));
+        rSLabelFecha1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
 
         jMenuBar1.setBackground(new java.awt.Color(0, 99, 177));
         jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jMenuBar1.setForeground(new java.awt.Color(204, 51, 0));
 
-        jMenu1.setBackground(new java.awt.Color(102, 102, 255));
+        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
         jMenu1.setForeground(new java.awt.Color(255, 255, 255));
         jMenu1.setText("Empleados");
+        jMenu1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
 
         JMI_REMPLEADOS.setBackground(new java.awt.Color(0, 99, 177));
         JMI_REMPLEADOS.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         JMI_REMPLEADOS.setForeground(new java.awt.Color(255, 255, 255));
         JMI_REMPLEADOS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reg_emp.png"))); // NOI18N
         JMI_REMPLEADOS.setText("Registrar Empleados");
+        JMI_REMPLEADOS.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                JMI_REMPLEADOSMouseMoved(evt);
+            }
+        });
+        JMI_REMPLEADOS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JMI_REMPLEADOSMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JMI_REMPLEADOSMouseExited(evt);
+            }
+        });
         JMI_REMPLEADOS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JMI_REMPLEADOSActionPerformed(evt);
@@ -164,6 +206,11 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem2.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/gest.png"))); // NOI18N
         jMenuItem2.setText("Mostrar Empleados");
+        jMenuItem2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jMenuItem2MouseMoved(evt);
+            }
+        });
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -212,6 +259,7 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenu2.setBackground(new java.awt.Color(0, 99, 177));
         jMenu2.setForeground(new java.awt.Color(255, 255, 255));
         jMenu2.setText("Horarios");
+        jMenu2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
 
         jMenuItem3.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -266,6 +314,11 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem11.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Eliminar_Horario.png"))); // NOI18N
         jMenuItem11.setText("Eliminar Horario");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem11);
 
         jMenuBar1.add(jMenu2);
@@ -273,6 +326,7 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenu3.setBackground(new java.awt.Color(0, 99, 177));
         jMenu3.setForeground(new java.awt.Color(255, 255, 255));
         jMenu3.setText("Inventario");
+        jMenu3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
 
         jMenuItem5.setBackground(new java.awt.Color(0, 99, 177));
         jMenuItem5.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -341,18 +395,7 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(HORA_INGRESO, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(JL_Hora)
-                                .addGap(178, 178, 178)
-                                .addComponent(Fecha))
                             .addComponent(JL_NombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(JL_PInventario)
@@ -362,16 +405,36 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
                                 .addComponent(JL_TRegistrados)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(PRODUCTOS, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(262, Short.MAX_VALUE))))
+                        .addContainerGap(262, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(JL_Hora)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Fecha)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rSLabelFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(HORA_INGRESO, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(30, 30, 30))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(JL_Hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Fecha))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Fecha)
+                        .addComponent(rSLabelHora1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rSLabelFecha1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JL_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JL_NombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,14 +446,14 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
                     .addComponent(JL_PInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(HORA_INGRESO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -462,10 +525,16 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
-        EliminarEmpleados REGINV  =  new  EliminarEmpleados (contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
-       REGINV.setVisible(true);
+        EliminarEmpleados EEm  =  new  EliminarEmpleados(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
+        EEm.setVisible(true);
         this.setVisible(false);   
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+      EliminarHorarios EH = new EliminarHorarios(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
+       EH.setVisible(true);
+        this.setVisible(false);   
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         BuscarEmpleado BE = new BuscarEmpleado(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horario,asignados,productoarray);
         BE.setVisible(true);
@@ -478,12 +547,87 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void JMI_REMPLEADOSMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMI_REMPLEADOSMouseMoved
+
+    }//GEN-LAST:event_JMI_REMPLEADOSMouseMoved
+
+    private void JMI_REMPLEADOSMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMI_REMPLEADOSMouseEntered
+     
+    }//GEN-LAST:event_JMI_REMPLEADOSMouseEntered
+
+    private void JMI_REMPLEADOSMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMI_REMPLEADOSMouseExited
+    
+    }//GEN-LAST:event_JMI_REMPLEADOSMouseExited
+
+    private void jMenuItem2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2MouseMoved
+
+public void PintarMenu()  {
+      jMenuItem1.setForeground(Color.white);
+      jMenuItem1.setBackground(new java.awt.Color(0,99,177));
+      jMenuItem1.setOpaque(true);
+            jMenuItem2.setForeground(Color.white);
+      jMenuItem2.setBackground(new java.awt.Color(0,99,177));
+      jMenuItem2.setOpaque(true);
+            jMenuItem3.setForeground(Color.white);
+      jMenuItem3.setBackground(new java.awt.Color(0,99,177));
+      jMenuItem3.setOpaque(true);
+            jMenuItem4.setForeground(Color.white);
+      jMenuItem4.setBackground(new java.awt.Color(0,99,177));
+      jMenuItem4.setOpaque(true);     
+      jMenuItem5.setForeground(Color.white);
+      jMenuItem5.setBackground(new java.awt.Color(0,99,177));
+      jMenuItem5.setOpaque(true);
+            jMenuItem6.setForeground(Color.white);
+      jMenuItem6.setBackground(new java.awt.Color(0,99,177));
+      jMenuItem6.setOpaque(true);
+      jMenuItem7.setForeground(Color.white);
+      jMenuItem7.setBackground(new java.awt.Color(0,99,177));
+      jMenuItem7.setOpaque(true);
+            jMenuItem8.setForeground(Color.white);
+      jMenuItem8.setBackground(new java.awt.Color(0,99,177));
+      jMenuItem8.setOpaque(true);
+            jMenuItem9.setForeground(Color.white);
+      jMenuItem9.setBackground(new java.awt.Color(0,99,177));
+      jMenuItem9.setOpaque(true);
+            jMenuItem10.setForeground(Color.white);
+      jMenuItem10.setBackground(new java.awt.Color(0,99,177));
+      jMenuItem10.setOpaque(true);
+            jMenuItem11.setForeground(Color.white);
+      jMenuItem11.setBackground(new java.awt.Color(0,99,177));
+      jMenuItem11.setOpaque(true);
+            jMenuItem12.setForeground(Color.white);
+      jMenuItem12.setBackground(new java.awt.Color(0,99,177));
+      jMenuItem12.setOpaque(true);
+            jMenuItem13.setForeground(Color.white);
+      jMenuItem13.setBackground(new java.awt.Color(0,99,177));
+      jMenuItem13.setOpaque(true);
+            jMenuItem14.setForeground(Color.white);
+      jMenuItem14.setBackground(new java.awt.Color(0,99,177));
+      jMenuItem14.setOpaque(true);
+            JMI_REMPLEADOS.setForeground(Color.white);
+      JMI_REMPLEADOS.setBackground(new java.awt.Color(0,99,177));
+      JMI_REMPLEADOS.setOpaque(true);
+jMenuBar1.setUI ( new BasicMenuBarUI (){
+    public void paint ( Graphics g, JComponent c ){
+       g.setColor ( new java.awt.Color(0,99,177) );
+       g.fillRect ( 0, 0, c.getWidth (), c.getHeight () );
+            
+    }
+} );
+}
 
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                 new MenuPrincipal(0,0,null,null,null,null,null,null,null).setVisible(true);
+                    new MenuPrincipal(0,0,null,null,null,null,null,null,null).setVisible(true);
+                
             }
         });
     }
@@ -518,6 +662,8 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private rojeru_san.RSLabelFecha rSLabelFecha1;
+    private rojeru_san.RSLabelHora rSLabelHora1;
     // End of variables declaration//GEN-END:variables
 }
 
