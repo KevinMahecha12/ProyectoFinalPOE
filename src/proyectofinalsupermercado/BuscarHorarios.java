@@ -117,7 +117,7 @@ String HoraCaptada;
 
         jPanel1.setBackground(new java.awt.Color(222, 240, 240));
         jPanel1.setForeground(new java.awt.Color(0, 0, 102));
-        jPanel1.setLayout(new java.awt.GridLayout(5, 1, 0, 10));
+        jPanel1.setLayout(new java.awt.GridLayout(5, 1, 0, 5));
 
         nombre.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -198,6 +198,10 @@ String HoraCaptada;
         if (buscador.getText().equals("")) {
             JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
         }   else {
+             if (horario[0] == null) {
+            JOptionPane.showMessageDialog(this, "No hay horarios registrados o que coincidan","No se encontraron horarios", JOptionPane.ERROR_MESSAGE);
+                            
+        }
               String seleccionHorario = buscador.getText();
         for(Horario horario: horario){
             if(horario!=null){
