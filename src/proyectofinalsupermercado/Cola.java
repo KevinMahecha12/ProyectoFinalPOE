@@ -74,6 +74,21 @@ public class Cola {
             i++;
         }
     }
+    
+    public Producto buscar(String name){
+        Producto aux = inicio;
+        int i=0;
+        
+        while(aux!=null){
+            if(aux.Nombre_producto.equals(name)){
+                break;
+            }
+            aux = aux.siguienteProducto;
+            i++;
+            
+        }
+        return aux;
+    }
 
 
 }

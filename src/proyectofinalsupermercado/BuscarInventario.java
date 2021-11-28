@@ -1,21 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectofinalsupermercado;
 
-/**
- *
- * @author kevin
- */
+import javax.swing.JOptionPane;
+
 public class BuscarInventario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form BuscarInventario
-     */
-    public BuscarInventario() {
+    Empleados[] empleados = new Empleados[20];
+    int ContadorEmpleados;
+    int contInv;
+    Cola cola = new Cola();
+    Horario[] horario = new Horario[20];
+    HorariosAsignados[] asignados = new HorariosAsignados[20];
+    String NombreRecibido;
+    
+    public BuscarInventario(int ContadorInv,int ContadorEmp,Empleados[] emp,Cola COLA_INVENTARIO,String Nombre_Administrador, String Hora, Horario[] h, HorariosAsignados[] a, Producto[] arrayp) {
         initComponents();
+        labelID1.setVisible(false);
+        labelID2.setVisible(false);
+        labelPre1.setVisible(false);
+        labelPrecio2.setVisible(false);
+        labelDesc1.setVisible(false);
+        labelDesc2.setVisible(false);
+        labelStock1.setVisible(false);
+        labelStock2.setVisible(false);
+        
+        horario=h;
+        if(emp!=null){
+            empleados = emp;
+        }
+        if(ContadorEmp!=0){
+           ContadorEmpleados = ContadorEmp;
+        }
+         if(ContadorInv!=0){
+            contInv=ContadorInv;
+        }
+        cola=COLA_INVENTARIO;
+        asignados=a;
+          if(Nombre_Administrador!=null){
+            NombreRecibido=Nombre_Administrador;
+        }
     }
 
     /**
@@ -27,21 +49,177 @@ public class BuscarInventario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        labelID1 = new javax.swing.JLabel();
+        btnVolver = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        labelID2 = new javax.swing.JLabel();
+        labelPre1 = new javax.swing.JLabel();
+        labelPrecio2 = new javax.swing.JLabel();
+        labelStock1 = new javax.swing.JLabel();
+        labelStock2 = new javax.swing.JLabel();
+        labelDesc1 = new javax.swing.JLabel();
+        labelDesc2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Nombre:");
+
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
+
+        labelID1.setText("ID:");
+
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        labelID2.setText("0");
+
+        labelPre1.setText("Precio:");
+
+        labelPrecio2.setText("0");
+
+        labelStock1.setText("Cantidad (Stock): ");
+
+        labelStock2.setText("0");
+
+        labelDesc1.setText("Descripcion:");
+
+        labelDesc2.setText("a");
+        labelDesc2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelID1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelID2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelPre1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelPrecio2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelStock1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelStock2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelDesc1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelDesc2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 11, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelID1)
+                    .addComponent(labelID2))
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelStock1)
+                    .addComponent(labelStock2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelPre1)
+                    .addComponent(labelPrecio2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelDesc1)
+                    .addComponent(labelDesc2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVolver)
+                    .addComponent(btnBuscar))
+                .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        MenuPrincipal menu  =  new MenuPrincipal(contInv,ContadorEmpleados,empleados,cola,NombreRecibido,null, horario, asignados,null); 
+         menu.setVisible(true);
+          this.setVisible(false);
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String name = txtName.getText();
+        Producto obj = cola.buscar(name);
+        
+        if(name.equals("")){
+            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
+        }else{
+            if(obj!=null){
+                labelID1.setVisible(true);
+                labelID2.setVisible(true);
+                labelPre1.setVisible(true);
+                labelPrecio2.setVisible(true);
+                labelDesc1.setVisible(true);
+                labelDesc2.setVisible(true);
+                labelStock1.setVisible(true);
+                labelStock2.setVisible(true);
+                
+                labelID2.setText(String.valueOf(obj.ID_Producto));
+                labelPrecio2.setText(Double.toString(obj.Precio_Producto));
+                labelDesc2.setText(String.valueOf(obj.Desc_prod));
+                labelStock2.setText(String.valueOf(obj.Cant_prod));
+            }else{
+                labelID1.setVisible(false);
+                labelID2.setVisible(false);
+                labelPre1.setVisible(false);
+                labelPrecio2.setVisible(false);
+                labelDesc1.setVisible(false);
+                labelDesc2.setVisible(false);
+                labelStock1.setVisible(false);
+                labelStock2.setVisible(false);
+                JOptionPane.showMessageDialog(this,"No existe ningun producto con ese nombre","404", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -69,15 +247,28 @@ public class BuscarInventario extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(BuscarInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BuscarInventario().setVisible(true);
+                new BuscarInventario(0,0,null,null,null,null,null,null,null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel labelDesc1;
+    private javax.swing.JLabel labelDesc2;
+    private javax.swing.JLabel labelID1;
+    private javax.swing.JLabel labelID2;
+    private javax.swing.JLabel labelPre1;
+    private javax.swing.JLabel labelPrecio2;
+    private javax.swing.JLabel labelStock1;
+    private javax.swing.JLabel labelStock2;
+    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

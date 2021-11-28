@@ -303,6 +303,11 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
         jMenuItem13.setForeground(new java.awt.Color(255, 255, 255));
         jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Busc_Inv.png"))); // NOI18N
         jMenuItem13.setText("Buscar inventario");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem13);
 
         jMenuItem14.setBackground(new java.awt.Color(0, 99, 177));
@@ -454,6 +459,12 @@ jMenuBar1.setBackground (new java.awt.Color(0,99,177));
        REGINV.setVisible(true);
         this.setVisible(false);   
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        BuscarInventario b = new BuscarInventario(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horario,asignados,null); 
+        b.setVisible(true);
+        this.setVisible(false); 
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
 
 
     public static void main(String args[]) {
