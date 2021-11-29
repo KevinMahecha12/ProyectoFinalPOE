@@ -290,7 +290,7 @@ String HoraCaptada;
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
           int check=0;
         String dias="";
-
+       String Nombre_Horarios;
         if(cbxLun.isSelected()){
             check++;
             dias+="Lu, ";
@@ -315,31 +315,34 @@ String HoraCaptada;
             check++;
             dias+="Sa, ";
         }
-        if(cbbEmpleados.getItemCount() == 0 || dias.equals("") || TF_HE.getText().equals("") || TF_HS.getText().equals("") ){
-              JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
-        }else{
-                  String seleccionadoEmpleado = cbbEmpleados.getSelectedItem().toString();
-                 JOptionPane.showMessageDialog(this,"Se registro el horario correctamente!","Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
-            dias = dias.substring(0, dias.length()-2);
-        String HoraEntrada = TF_HE.getText();
-        String HoraSalida = TF_HS.getText();
-         Object item = cbbEmpleados.getSelectedItem();
-         int ID_EMPLEADO = 0;
-         String NOMBRE_EMPLEADO;
-         
-        for(Empleados empleado: empleados){
+    if (cbbEmpleados.getItemCount() <1) {
+            JOptionPane.showMessageDialog(this,"Por favor, llene todos los campos para continuar","Campos vacios", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this,"Se ha asignado el horario correctamente!", "Horario asignado",JOptionPane.INFORMATION_MESSAGE);
+        int id=0;
+        int turno=0;
+        String seleccionadoEmpleado = cbbEmpleados.getSelectedItem().toString();
+        String entrada="";
+        String salida="";
+        String nom_horario = "";
+               for(Empleados empleado: empleados){
             if(empleado!=null){
                 if(empleado.Nombre_Empleado.equals(seleccionadoEmpleado)){
-                   ID_EMPLEADO =  empleado.ID_EMPLEADO;
-                   NOMBRE_EMPLEADO = empleado.Nombre_Empleado;
-                      
+                id = empleado.ID_EMPLEADO;
+                turno = empleado.Turno;
             }
             }else{
                 break;
             }
-            
-              String Nombre_Horario =  Nom_H.getText();
-        HorariosAsignados obj = new HorariosAsignados(ID_EMPLEADO,seleccionadoEmpleado,Nombre_Horario,dias,HoraEntrada,HoraSalida);
+           
+        }//for empleados
+                     Nombre_Horarios = Nom_H.getText();
+                    entrada = TF_HE.getText();
+                    salida = TF_HS.getText();
+       
+        
+        HorariosAsignados obj = new HorariosAsignados(id,seleccionadoEmpleado,Nombre_Horarios,dias,entrada,salida);
+        
         if(asignados.length==0){
                 asignados[0] = obj;
             }else{
@@ -351,8 +354,6 @@ String HoraCaptada;
                 }
             }//else
         }
-        }
-            
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void cbbEmpleadosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbEmpleadosMouseMoved

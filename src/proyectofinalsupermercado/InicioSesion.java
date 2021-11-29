@@ -4,6 +4,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -34,6 +36,7 @@ public class InicioSesion extends javax.swing.JFrame {
         Error = new javax.swing.JLabel();
         rSLabelHora1 = new rojeru_san.RSLabelHora();
         rSLabelFecha1 = new rojeru_san.RSLabelFecha();
+        Hora = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar sesion");
@@ -129,7 +132,9 @@ public class InicioSesion extends javax.swing.JFrame {
                             .addComponent(Error, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 43, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(188, 188, 188)
+                .addComponent(Hora, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rSLabelFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,12 +144,14 @@ public class InicioSesion extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rSLabelFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rSLabelFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Hora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(Error, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,19 +166,20 @@ public class InicioSesion extends javax.swing.JFrame {
                     .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BotonIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         setSize(new java.awt.Dimension(783, 421));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+ 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
 
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void BotonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIngresarActionPerformed
-       String turn = String.valueOf(ComboBoxTurno.getSelectedItem());
+
+        String turn = String.valueOf(ComboBoxTurno.getSelectedItem());
     if (txtUsuario.getText().equals("") || txtContraseña.getText().equals("")){
      JOptionPane.showMessageDialog(this, "Porfavor, ingrese los campos vacios!","Campos vacíos", JOptionPane.ERROR_MESSAGE);
     } else {
@@ -193,7 +201,7 @@ public class InicioSesion extends javax.swing.JFrame {
         String HoraCaptada;
         HoraCaptada = String.valueOf(rSLabelHora1.getHora());
         for (int i=0; i<e.empleados.length; i++){
-           
+        
           System.out.println(e.empleados[i]);
           if (e.empleados[i].toString().equals(usr+cont + e.getTurno())) {
          System.out.println("LA HORA QUE SE CAPTÓ FUE: "+HoraCaptada);
@@ -235,7 +243,6 @@ public class InicioSesion extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
          e.empleados[0]=new EmpleadosInicioSesion( "Kevin", "12345", 1);
          e.empleados[1]=new EmpleadosInicioSesion( "Rogelio", "12345", 1);
          e.empleados[2]=new EmpleadosInicioSesion( "Angel", "12345", 2);
@@ -285,6 +292,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JButton BotonIngresar;
     private javax.swing.JComboBox<String> ComboBoxTurno;
     private javax.swing.JLabel Error;
+    private static javax.swing.JLabel Hora;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
