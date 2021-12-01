@@ -202,7 +202,6 @@ String HoraCaptada;
                         for(int j = i; j < empleados.length - 1; j++){
                             HorarioCopy[j] = horarios[j+1];
                         }
-                        contEmp--;
                         JOptionPane.showMessageDialog(null, "Empleado eliminado");
                         break;
                     }
