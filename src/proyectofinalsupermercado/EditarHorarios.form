@@ -183,7 +183,7 @@
           <Color blue="99" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Seleccione el ID del horario que quiere editar:"/>
+        <Property name="text" type="java.lang.String" value="Seleccione el nombre del horario que quiere editar:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">

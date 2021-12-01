@@ -156,7 +156,7 @@ c = tk.createCustomCursor(img.getImage(),new Point(1,1),null);
         jLabel5.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 153));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Seleccione el ID del horario que quiere editar:");
+        jLabel5.setText("Seleccione el nombre del horario que quiere editar:");
 
         jLabel6.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 102));

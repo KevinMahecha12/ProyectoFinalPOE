@@ -117,6 +117,11 @@ String HoraCaptada;
                 cbbTrabajadorComponentMoved(evt);
             }
         });
+        cbbTrabajador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbTrabajadorActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 99, 177));
@@ -268,6 +273,10 @@ String HoraCaptada;
     private void cbbTrabajadorComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_cbbTrabajadorComponentMoved
              setCursor(c);
     }//GEN-LAST:event_cbbTrabajadorComponentMoved
+
+    private void cbbTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTrabajadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbTrabajadorActionPerformed
 
     public static void main(String args[]) {
         

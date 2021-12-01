@@ -290,7 +290,7 @@ String HoraCaptada;
         //arrayproducto[index] = obj;
         cola_inventario.modificar(name, obj);
         
-        EditarInventario EI = new EditarInventario(contInv,contEmp,empleados,cola_inventario,NombreRecibido,null,horarios,asignados,null);
+        EditarInventario EI = new EditarInventario(contInv,contEmp,empleados,cola_inventario,NombreRecibido,HoraCaptada,horarios,asignados,productoarray);
         EI.setVisible(true);
         this.setVisible(false);
     }
